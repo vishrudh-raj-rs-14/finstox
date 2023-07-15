@@ -1,0 +1,9 @@
+.nav-link {
+    color: initial;
+    text-decoration: none;
+}
+  
+.nav-link:hover {
+    color: red; /* Set the desired color for hover */
+}
+  
