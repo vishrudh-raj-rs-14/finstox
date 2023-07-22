@@ -32,7 +32,7 @@ function LearnDashboard() {
         new window.TradingView.widget({
           autosize: true,
           //symbol: "TSE:4262",
-          interval: "D",
+          interval: "5",
           timezone: "Etc/UTC",
           theme: "light",
           style: "1",
@@ -41,7 +41,7 @@ function LearnDashboard() {
           enable_publishing: false,
           hide_top_toolbar: true,
           hide_side_toolbar: false,
-          allow_symbol_change: true,
+          //allow_symbol_change: true,
           container_id: "tradingview_89d4a",
         });
       }

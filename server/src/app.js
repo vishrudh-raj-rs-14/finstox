@@ -14,6 +14,11 @@ app.use(require('./routes/index'));
 app.use(require('./routes/register'));
 app.use(require('./routes/login'));
 
+//handle errors
+const handleErrors = (err) =>{
+  console.error(err.message,err.code);
+};
+
 app.listen(PORT, () => {
   console.log(`Server Started at Port ${PORT}`);
 });
