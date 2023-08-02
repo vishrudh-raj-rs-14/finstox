@@ -6,7 +6,7 @@ function PractiseDashboard() {
   return (
     <DashboardLayout>
       <h1>Live chart of IBM</h1>
-      <LiveChart symbol="IBM" />
+      <LiveChart symbol="AAPL" />
     </DashboardLayout>
   );
 }

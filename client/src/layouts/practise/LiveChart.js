@@ -19,6 +19,8 @@ const LiveChart = ({ symbol }) => {
 
   const seriesData = useMemo(() => formatStockData(stockData), [stockData]);
 
+  //console.log(seriesData);
+
   return (
     <>
       {seriesData && seriesData.length > 0 ? (
