@@ -1,11 +1,37 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import React, { useEffect, useRef, useState } from "react";
 import "./Graph.css";
+import axios from "axios";
 
 let tvScriptLoadingPromise;
 
 function LearnDashboard() {
-  const [selectedSymbol, setSelectedSymbol] = useState("NSE:IBM");
+  const [selectedSymbol, setSelectedSymbol] = useState("NASDAQ:AAPL");
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Get the token from localStorage
+    const jwtCookie = localStorage.getItem("jwt");
+    axios
+      .get("http://localhost:4337/checkAuthentication", {
+        headers: {
+          Authorization: `Bearer ${jwtCookie}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.status);
+        // If the response status is "ok", the user is authenticated
+        if (response.data.status != "ok") {
+          //setIsLoggedIn(true);
+          window.location.href = "/pages/authentication/sign-in";
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking authentication:", error);
+        //setIsLoggedIn(false);
+        window.location.href = "/pages/authentication/sign-in";
+      });
+  }, []);
 
   const onLoadScriptRef = useRef();
 
@@ -64,8 +90,10 @@ function LearnDashboard() {
         <div>
           <label htmlFor="symbolSelect">Select Symbol: </label>
           <select id="symbolSelect" value={selectedSymbol} onChange={handleSymbolChange}>
-            <option value="IBM">IBM</option>
-            <option value="NASDAQ:AAPL">NASDAQ:AAPL</option>
+            <option value="NASDAQ:AAPL">AAPL</option>
+            <option value="NYSE:TSE">NYSE:TSE</option>
+            <option value="BSE:SENSEX">BSE:SENSEX</option>
+            <option value="LSE:IBM">LSE:IBM</option>
             {/* Add more symbols as needed */}
           </select>
         </div>

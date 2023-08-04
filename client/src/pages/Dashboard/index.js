@@ -34,6 +34,8 @@ import brandDark from "assets/images/logo-ct-dark.png";
 
 export default function Dashboard() {
   const [controller, dispatch] = useMaterialUIController();
+  //const navigate = useNavigate(); // Initialize the navigate function
+  //const [dashboardData, setDashboardData] = useState(null);
   const {
     miniSidenav,
     layout,

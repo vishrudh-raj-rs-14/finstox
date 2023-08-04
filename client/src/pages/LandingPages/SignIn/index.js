@@ -67,12 +67,15 @@ function SignInBasic() {
         email,
         password,
       }),
+      credentials: "include",
     });
 
     const data = await response.json();
     //setHelloData(data);
+    console.log(data.token);
     if (data.status === "ok") {
       //console.log(hellodata);
+      localStorage.setItem("jwt", data.token);
       navigate("/dashboard", { replace: true });
     }
     if (data.status !== "ok") {

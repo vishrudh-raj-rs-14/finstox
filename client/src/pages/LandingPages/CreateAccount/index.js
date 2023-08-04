@@ -1,5 +1,3 @@
-//import { useState } from "react";
-
 // react-router-dom components
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -7,12 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 //import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
-//import MuiLink from "@mui/material/Link";
-
-// @mui icons
-// import FacebookIcon from "@mui/icons-material/Facebook";
-// import GitHubIcon from "@mui/icons-material/GitHub";
-// import GoogleIcon from "@mui/icons-material/Google";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -52,33 +44,26 @@ function SignUpBasic() {
   // const [lastName, setLastName] = useState("");
   // const [termsChecked, setTermsChecked] = useState(false);
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    setEmailError("");
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setPasswordError("");
   };
 
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
   };
-
-  // const handleFirstNameChange = (event) => {
-  //   setFirstName(event.target.value);
-  // };
-
-  // const handleLastNameChange = (event) => {
-  //   setLastName(event.target.value);
-  // };
-
-  // const handleTermsChecked = (event) => {
-  //   setTermsChecked(event.target.checked);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -96,7 +81,13 @@ function SignUpBasic() {
           //name,
         }),
       });
-
+      const data = await response.json();
+      console.log(data);
+      if (data) {
+        // Update email and password errors based on the response
+        setEmailError(data.email || "");
+        setPasswordError(data.password || "");
+      }
       if (response.ok) {
         navigate("/pages/authentication/sign-in");
       } else {
@@ -134,38 +125,6 @@ function SignUpBasic() {
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
           <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
             <Card>
-              {/* <MKBox
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-                mx={2}
-                mt={-3}
-                p={2}
-                mb={1}
-                textAlign="center"
-              >
-                <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-                  Sign in
-                </MKTypography>
-                <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid>
-              </MKBox> */}
               <MKBox pt={4} pb={3} px={3}>
                 <MKTypography variant="h4" fontWeight="medium" color="blue" mt={-2} mb={2} mx={10}>
                   Sign up
@@ -190,6 +149,11 @@ function SignUpBasic() {
                       required
                       fullWidth
                     />
+                    {emailError && (
+                      <div className="email error" style={{ color: "red", fontSize: "11px" }}>
+                        {emailError}
+                      </div>
+                    )}
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput
@@ -200,6 +164,11 @@ function SignUpBasic() {
                       required
                       fullWidth
                     />
+                    {passwordError && (
+                      <div className="password error" style={{ color: "red", fontSize: "11px" }}>
+                        {passwordError}
+                      </div>
+                    )}
                   </MKBox>
                   <MKBox mb={2}>
                     <MKInput

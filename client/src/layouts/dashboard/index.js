@@ -14,12 +14,72 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+import axios from "axios";
+import React, { useEffect } from "react";
+
+// function getCookie(name) {
+//   const value = "; " + document.cookie;
+//   const parts = value.split("; " + name + "=");
+//   if (parts.length === 2) return parts.pop().split(";").shift();
+// }
 
 // Dashboard components
 //import Projects from "layouts/dashboard/components/Projects";
 //import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    // Get the token from localStorage
+    const jwtCookie = localStorage.getItem("jwt");
+    axios
+      .get("http://localhost:4337/checkAuthentication", {
+        headers: {
+          Authorization: `Bearer ${jwtCookie}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.status);
+        // If the response status is "ok", the user is authenticated
+        if (response.data.status != "ok") {
+          //setIsLoggedIn(true);
+          window.location.href = "/pages/authentication/sign-in";
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking authentication:", error);
+        //setIsLoggedIn(false);
+        window.location.href = "/pages/authentication/sign-in";
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(isLoggedIn);
+  //   if (!isLoggedIn) {
+  //     window.location.href = "/pages/authentication/sign-in";
+  //     return null;
+  //   }
+  // }, [isLoggedIn]);
+
+  // useEffect(() => {
+  //   // Make a request to the backend API to check if the user is authenticated
+  //   axios
+  //     .get("http://localhost:4337/checkAuthentication")
+  //     .then((response) => {
+  //       console.log(response.data.status);
+  //       // If the response status is "ok", the user is authenticated
+  //       if (response.data.status === "ok") {
+  //         setIsLoggedIn(true);
+  //       } else {
+  //         // If the response status is "error", the user is not authenticated
+  //         setIsLoggedIn(false);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error checking authentication:", error);
+  //       setIsLoggedIn(false);
+  //     });
+  // }, []);
 
   return (
     <DashboardLayout>
