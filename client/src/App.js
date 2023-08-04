@@ -19,8 +19,9 @@ import Sidenav from "examples/Sidenav";
 //import Configurator from "examples/Configurator";
 //import MDBox from "components/MDBox";
 
-import brandWhite from "assets/images/logo-ct.png";
-import brandDark from "assets/images/logo-ct-dark.png";
+//import brandWhite from "assets/images/logo-ct.png";
+//import brandDark from "assets/images/logo-ct-dark.png";
+import finstoxLogo from "assets/images/finstox-logo.png";
 
 //import Icon from "@mui/material/Icon";
 import Learn from "pages/LandingPages/Learn";
@@ -52,9 +53,9 @@ export default function App() {
     //openConfigurator,
     layout,
     sidenavColor,
-    transparentSidenav,
-    whiteSidenav,
-    darkMode,
+    //transparentSidenav,
+    //whiteSidenav,
+    //darkMode,
   } = controller;
 
   const [onMouseEnter, setOnMouseEnter] = useState(false);
@@ -125,8 +126,9 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
-              brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-              brandName="FinstoX"
+              //brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+              brand={finstoxLogo}
+              //brandName="FinstoX"
               routes={dashroutes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}

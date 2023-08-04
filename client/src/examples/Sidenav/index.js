@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // react-router-dom components
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
@@ -31,12 +31,28 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
 } from "context";
+import MKButton from "components/MKButton";
 
 function Sidenav({ /*color,*/ brand, brandName, routes, ...rest }) {
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode /*, sidenavColor*/ } = controller;
   const location = useLocation();
   const collapseName = location.pathname.replace("/", "");
+  const [logoutStatus, setLogoutStatus] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear the JWT token from localStorage
+    localStorage.removeItem("jwt");
+    // Set logout status to true
+    setLogoutStatus(true);
+  };
+  useEffect(() => {
+    if (logoutStatus) {
+      // Redirect to home page
+      navigate("/");
+    }
+  }, [logoutStatus, history]);
 
   let textColor = "white";
 
@@ -146,7 +162,15 @@ function Sidenav({ /*color,*/ brand, brandName, routes, ...rest }) {
           </MDTypography>
         </MDBox>
         <MDBox component={NavLink} to="/" display="flex" alignItems="center">
-          {brand && <MDBox component="img" src={brand} alt="Brand" width="2rem" />}
+          {brand && (
+            <MDBox
+              component="img"
+              src={brand}
+              alt="Brand"
+              width="7rem"
+              style={{ marginLeft: "30px" }}
+            />
+          )}
           <MDBox
             width={!brandName && "100%"}
             sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
@@ -177,6 +201,11 @@ function Sidenav({ /*color,*/ brand, brandName, routes, ...rest }) {
           upgrade to pro
         </MDButton>
       </MDBox> */}
+      <MDBox p={2} mt="auto">
+        <MKButton variant="outlined" color="error" fullWidth onClick={handleLogout}>
+          Logout
+        </MKButton>
+      </MDBox>
     </SidenavRoot>
   );
 }
