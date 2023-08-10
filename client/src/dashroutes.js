@@ -70,6 +70,22 @@ const dashroutes = [
     route: "/dashboard/compete",
     component: <CompeteDashboard />,
   },
+  {
+    type: "collapse",
+    name: "Analyze",
+    key: "analyze",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/dashboard/history",
+    component: <CompeteDashboard />,
+  },
+  {
+    type: "collapse",
+    name: "Career",
+    key: "career",
+    icon: <Icon fontSize="small">receipt_long</Icon>,
+    route: "/dashboard/history",
+    component: <CompeteDashboard />,
+  },
   // {
   //   type: "collapse",
   //   name: "Notifications",

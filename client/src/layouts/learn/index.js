@@ -83,6 +83,21 @@ function LearnDashboard() {
   const handleSymbolChange = (event) => {
     setSelectedSymbol(event.target.value);
   };
+  const [orderType, setOrderType] = useState(""); // "buy" or "sell"
+  const [orderAmount, setOrderAmount] = useState(0);
+
+  const handleOrderTypeChange = (event) => {
+    setOrderType(event.target.value);
+  };
+
+  const handleOrderAmountChange = (event) => {
+    setOrderAmount(event.target.value);
+  };
+  const handleOrderSubmit = () => {
+    // Here you can handle the order submission logic, like sending the order to a backend API
+    console.log("Order type:", orderType);
+    console.log("Order amount:", orderAmount);
+  };
 
   return (
     <DashboardLayout>
@@ -102,6 +117,22 @@ function LearnDashboard() {
           {/* <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
           <span className="blue-text">Track all markets on TradingView</span>
         </a> */}
+        </div>
+        <div className="order-form">
+          <label htmlFor="orderType">Order Type: </label>
+          <select id="orderType" value={orderType} onChange={handleOrderTypeChange}>
+            <option value="">Select</option>
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
+          <label htmlFor="orderAmount">Amount: </label>
+          <input
+            type="number"
+            id="orderAmount"
+            value={orderAmount}
+            onChange={handleOrderAmountChange}
+          />
+          <button onClick={handleOrderSubmit}>Submit</button>
         </div>
       </div>
     </DashboardLayout>
