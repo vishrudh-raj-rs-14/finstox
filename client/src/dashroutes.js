@@ -56,8 +56,8 @@ const dashroutes = [
   },
   {
     type: "collapse",
-    name: "Practise",
-    key: "practise",
+    name: "Practice",
+    key: "practice",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/dashboard/practice",
     component: <PractiseDashboard />,
