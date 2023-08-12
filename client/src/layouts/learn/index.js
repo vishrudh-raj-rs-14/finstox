@@ -1,6 +1,7 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import React, { useEffect, useRef, useState } from "react";
 import "./Graph.css";
+import "./LearnDashboard.css";
 import axios from "axios";
 
 let tvScriptLoadingPromise;
@@ -119,20 +120,26 @@ function LearnDashboard() {
         </a> */}
         </div>
         <div className="order-form">
-          <label htmlFor="orderType">Order Type: </label>
-          <select id="orderType" value={orderType} onChange={handleOrderTypeChange}>
-            <option value="">Select</option>
-            <option value="buy">Buy</option>
-            <option value="sell">Sell</option>
-          </select>
-          <label htmlFor="orderAmount">Amount: </label>
-          <input
-            type="number"
-            id="orderAmount"
-            value={orderAmount}
-            onChange={handleOrderAmountChange}
-          />
-          <button onClick={handleOrderSubmit}>Submit</button>
+          <div className="order-type">
+            <label htmlFor="orderType">Order Type:</label>
+            <select id="orderType" value={orderType} onChange={handleOrderTypeChange}>
+              <option value="">Select</option>
+              <option value="buy">Buy</option>
+              <option value="sell">Sell</option>
+            </select>
+          </div>
+          <div className="order-amount">
+            <label htmlFor="orderAmount">Amount:</label>
+            <input
+              type="number"
+              id="orderAmount"
+              value={orderAmount}
+              onChange={handleOrderAmountChange}
+            />
+          </div>
+          <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
+            {orderType === "buy" ? "Buy" : "Sell"}
+          </button>
         </div>
       </div>
     </DashboardLayout>

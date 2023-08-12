@@ -1,7 +1,7 @@
 export const fetchStockData = async (symbol) => {
   console.log(symbol);
   const response = await fetch(
-    `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=Q55B2FMBML1KMZ6E`
+    `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=${process.env.STOCK_DATA_API_KEY}`
   );
   const data = await response.json();
   //console.log(data);
