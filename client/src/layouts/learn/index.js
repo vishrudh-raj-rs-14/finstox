@@ -114,6 +114,11 @@ function LearnDashboard() {
             <option value="FX:GBPUSD">FX:GBPJPY</option>
             <option value="OANDA:GBPUSD">OANDA:GBPUSD</option>
             <option value="FX:AUDUSD">FX:AUDUSD</option>
+            <option value="FX:USDCAD">FX:USDCAD</option>
+            <option value="OANDA:USDJPY">OANDA:USDJPY</option>
+            <option value="FX:EURJPY">FX:EURJPY</option>
+            <option value="OANDA:GBPJPY">OANDA:GBPJPY</option>
+            <option value="FX:USDCHF">FX:USDCHF</option>
             <option value="NASDAQ:AAPL">AAPL</option>
             {/* Add more symbols as needed */}
           </select>
