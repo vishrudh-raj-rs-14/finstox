@@ -7,7 +7,7 @@ import axios from "axios";
 let tvScriptLoadingPromise;
 
 function LearnDashboard() {
-  const [selectedSymbol, setSelectedSymbol] = useState("NASDAQ:AAPL");
+  const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -106,10 +106,15 @@ function LearnDashboard() {
         <div>
           <label htmlFor="symbolSelect">Select Symbol: </label>
           <select id="symbolSelect" value={selectedSymbol} onChange={handleSymbolChange}>
+            <option value="FX:EURUSD">FX:EURUSD</option>
+            <option value="FX:GBPUSD">FX:GBPUSD</option>
+            <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
+            <option value="FX:USDJPY">FX:USDJPY</option>
+            <option value="OANDA:EURUSD">OANDA:EURUSD</option>
+            <option value="FX:GBPUSD">FX:GBPJPY</option>
+            <option value="OANDA:GBPUSD">OANDA:GBPUSD</option>
+            <option value="FX:AUDUSD">FX:AUDUSD</option>
             <option value="NASDAQ:AAPL">AAPL</option>
-            <option value="NYSE:TSE">NYSE:TSE</option>
-            <option value="BSE:SENSEX">BSE:SENSEX</option>
-            <option value="LSE:IBM">LSE:IBM</option>
             {/* Add more symbols as needed */}
           </select>
         </div>
