@@ -8,6 +8,7 @@ let tvScriptLoadingPromise;
 
 function LearnDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
+  const [selectedSymbol2, setSelectedSymbol2] = useState("FX:EURUSD");
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ function LearnDashboard() {
         autosize: true,
         symbol: selectedSymbol,
         interval: "1",
-        timezone: "Etc/UTC",
+        timezone: "America/New_York",
         theme: "light",
         style: "1",
         locale: "en",
@@ -83,6 +84,9 @@ function LearnDashboard() {
 
   const handleSymbolChange = (event) => {
     setSelectedSymbol(event.target.value);
+  };
+  const handleSymbolChange2 = (event) => {
+    setSelectedSymbol2(event.target.value);
   };
   const [orderType, setOrderType] = useState(""); // "buy" or "sell"
   const [orderAmount, setOrderAmount] = useState(0);
@@ -110,14 +114,10 @@ function LearnDashboard() {
             <option value="FX:GBPUSD">FX:GBPUSD</option>
             <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
             <option value="FX:USDJPY">FX:USDJPY</option>
-            <option value="OANDA:EURUSD">OANDA:EURUSD</option>
             <option value="FX:GBPUSD">FX:GBPJPY</option>
-            <option value="OANDA:GBPUSD">OANDA:GBPUSD</option>
             <option value="FX:AUDUSD">FX:AUDUSD</option>
             <option value="FX:USDCAD">FX:USDCAD</option>
-            <option value="OANDA:USDJPY">OANDA:USDJPY</option>
             <option value="FX:EURJPY">FX:EURJPY</option>
-            <option value="OANDA:GBPJPY">OANDA:GBPJPY</option>
             <option value="FX:USDCHF">FX:USDCHF</option>
             <option value="NASDAQ:AAPL">AAPL</option>
             {/* Add more symbols as needed */}
@@ -138,6 +138,22 @@ function LearnDashboard() {
               <option value="sell">Sell</option>
             </select>
           </div>
+          <div>
+            <label htmlFor="symbolSelect">Select Symbol: </label>
+            <select id="symbolSelect" value={selectedSymbol2} onChange={handleSymbolChange2}>
+              <option value="FX:EURUSD">FX:EURUSD</option>
+              <option value="FX:GBPUSD">FX:GBPUSD</option>
+              <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
+              <option value="FX:USDJPY">FX:USDJPY</option>
+              <option value="FX:GBPUSD">FX:GBPJPY</option>
+              <option value="FX:AUDUSD">FX:AUDUSD</option>
+              <option value="FX:USDCAD">FX:USDCAD</option>
+              <option value="FX:EURJPY">FX:EURJPY</option>
+              <option value="FX:USDCHF">FX:USDCHF</option>
+              <option value="NASDAQ:AAPL">AAPL</option>
+              {/* Add more symbols as needed */}
+            </select>
+          </div>
           <div className="order-amount">
             <label htmlFor="orderAmount">Amount:</label>
             <input
@@ -147,9 +163,29 @@ function LearnDashboard() {
               onChange={handleOrderAmountChange}
             />
           </div>
-          <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
-            {orderType === "buy" ? "Buy" : "Sell"}
-          </button>
+          <div className="order-button-container">
+            <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
+              {orderType === "buy" ? "Buy" : "Sell"}
+            </button>
+          </div>
+        </div>
+        <div className="order-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Order Type</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{selectedSymbol2}</td>
+                <td>{orderType}</td>
+                <td>{orderAmount}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </DashboardLayout>

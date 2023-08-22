@@ -1,44 +1,67 @@
 .order-form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .order-type,
-  .order-amount {
-    margin-right: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  select,
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .order-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .order-button.buy {
-    background-color: #3cb371; /* Green color for Buy button */
-  }
-  
-  .order-button.sell {
-    background-color: #ff6347; /* Red color for Sell button */
-  }
-  
-  /* Additional styles for responsiveness and layout can be added here */
-  
+  display: flex;
+  flex-direction: column;
+  /* Change to column to stack elements vertically */
+  align-items: flex-start;
+  /* Align items to the start of the column */
+  margin-top: 20px;
+}
+
+.order-type,
+.order-amount,
+.order-button-container {
+  margin-bottom: 20px;
+  /* Add margin at the bottom to separate elements */
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select,
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.order-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.order-button.buy {
+  background-color: #3cb371;
+  /* Green color for Buy button */
+}
+
+.order-button.sell {
+  background-color: #ff6347;
+  /* Red color for Sell button */
+}
+
+.order-table {
+  flex: 1; /* Make the table take up remaining space */
+  padding: 0 20px; /* Add padding to the table content */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+
+/* Additional styles for responsiveness and layout can be added here */
