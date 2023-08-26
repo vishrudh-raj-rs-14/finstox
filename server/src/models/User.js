@@ -23,7 +23,32 @@ const UserSchema = new mongoose.Schema({
   ranking: {
     type : Number,
     required:false,
-  }
+  },
+  amountLeft: {
+    type: Number,
+    required: true,
+  },
+  practiceHistory: [
+    {
+      orderType: {
+        type: String,
+        required: true,
+      },
+      symbol: {
+        type: String,
+        required: true,
+      },
+      amount: {
+        type: Number,
+        required: true,
+      },
+      currentValue: {
+        type: Number,
+        required: true,
+      }
+    }
+  ],
+  
 });
 UserSchema.pre('save',async function(next) {
   const salt = await bcrypt.genSalt();

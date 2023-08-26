@@ -122,7 +122,9 @@ export default function App() {
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/practice" ||
-          pathname == "/dashboard/compete") && (
+          pathname == "/dashboard/compete" ||
+          pathname == "/dashboard/get-funded" ||
+          pathname == "/dashboard/career") && (
           <>
             <Sidenav
               color={sidenavColor}

@@ -1,12 +1,12 @@
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import React, { useEffect, useRef, useState } from "react";
 import "./Graph.css";
-import "./competeDashboard.css";
+import "./LearnDashboard.css";
 import axios from "axios";
 
 let tvScriptLoadingPromise;
 
-function CompeteDashboard() {
+function LearnDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
   const [selectedSymbol2, setSelectedSymbol2] = useState("FX:EURUSD");
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -76,6 +76,7 @@ function CompeteDashboard() {
         enable_publishing: false,
         hide_top_toolbar: false,
         hide_side_toolbar: false,
+        details: true,
         //allow_symbol_change: true,
         container_id: "tradingview_89d4a",
       });
@@ -172,7 +173,7 @@ function CompeteDashboard() {
           </div>
         </div>
         <div style={{ paddingTop: "20px", marginLeft: "20px", marginBottom: "20px" }}>
-          <h4>Compete History</h4>
+          <h4>Practice History</h4>
         </div>
         <div className="order-table">
           <table>
@@ -197,4 +198,4 @@ function CompeteDashboard() {
   );
 }
 
-export default CompeteDashboard;
+export default LearnDashboard;

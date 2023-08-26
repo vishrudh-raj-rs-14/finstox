@@ -34,8 +34,10 @@ import Dashboard from "layouts/dashboard";
 import Icon from "@mui/material/Icon";
 //import CreateAccountPage from "layouts/pages/authentication/create-account";
 import LearnDashboard from "layouts/learn";
-import PractiseDashboard from "layouts/practise";
-import CompeteDashboard from "layouts/compete";
+import PracticeDashboard from "layouts/practice";
+//import CompeteDashboard from "layouts/compete";
+import FundDashboard from "layouts/funding";
+import CareerDashboard from "layouts/career";
 
 const dashroutes = [
   {
@@ -60,31 +62,31 @@ const dashroutes = [
     key: "practice",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/dashboard/practice",
-    component: <PractiseDashboard />,
+    component: <PracticeDashboard />,
   },
+  // {
+  //   type: "collapse",
+  //   name: "Compete",
+  //   key: "compete",
+  //   icon: <Icon fontSize="small">receipt_long</Icon>,
+  //   route: "/dashboard/compete",
+  //   component: <CompeteDashboard />,
+  // },
   {
     type: "collapse",
-    name: "Compete",
-    key: "compete",
+    name: "Get funded",
+    key: "Get funded",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/dashboard/compete",
-    component: <CompeteDashboard />,
-  },
-  {
-    type: "collapse",
-    name: "Analyze",
-    key: "analyze",
-    icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/dashboard/history",
-    component: <CompeteDashboard />,
+    route: "/dashboard/get-funded",
+    component: <FundDashboard />,
   },
   {
     type: "collapse",
     name: "Career",
     key: "career",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/dashboard/history",
-    component: <CompeteDashboard />,
+    route: "/dashboard/career",
+    component: <CareerDashboard />,
   },
   // {
   //   type: "collapse",
