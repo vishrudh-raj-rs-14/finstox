@@ -76,6 +76,7 @@ function SignInBasic() {
     if (data.status === "ok") {
       //console.log(hellodata);
       localStorage.setItem("jwt", data.token);
+      localStorage.setItem("userEmail", email);
       navigate("/dashboard", { replace: true });
     }
     if (data.status !== "ok") {

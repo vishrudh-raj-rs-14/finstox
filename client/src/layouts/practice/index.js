@@ -99,10 +99,39 @@ function LearnDashboard() {
   const handleOrderAmountChange = (event) => {
     setOrderAmount(event.target.value);
   };
-  const handleOrderSubmit = () => {
-    // Here you can handle the order submission logic, like sending the order to a backend API
-    console.log("Order type:", orderType);
-    console.log("Order amount:", orderAmount);
+  const handleOrderSubmit = async () => {
+    try {
+      const response = await axios.get("https://realstonks.p.rapidapi.com/EURUSD", {
+        headers: {
+          "X-RapidAPI-Key": "19238387f5msh1d8258beeb6ced7p1a9c19jsnea69006e119d",
+          "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
+        },
+      });
+
+      // Extract the price from the API response
+      //console.log(response);
+      const price = response.data.price;
+      //const price = 1.0798;
+
+      console.log(selectedSymbol2);
+      console.log("Order type:", orderType);
+      console.log("Order amount:", orderAmount);
+      console.log("Price:", price);
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const orderData = {
+        email: storedUserEmail,
+        symbol: selectedSymbol2,
+        orderType,
+        amount: orderAmount,
+        currentValue: price,
+      };
+
+      // Send the data to the backend endpoint
+      const backendResponse = await axios.post("http://localhost:4337/practice", orderData);
+      console.log("Backend Response:", backendResponse.data);
+    } catch (error) {
+      console.error("Error fetching price:", error);
+    }
   };
 
   return (
