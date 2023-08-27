@@ -6,23 +6,23 @@ router.post('/practice', async (req, res) => {
   const { email, symbol, orderType, amount, currentValue } = req.body;
   console.log(req.body);
 
-  // Find the user in the database based on the provided email
   try {
     const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-
-    // Add the practice order data to the user's practiceHistory array
     user.practiceHistory.push({
       symbol,
       orderType,
       amount,
       currentValue,
     });
-
-    // Save the updated user document
+    const updatedAmountLeft = user.amountLeft - amount;
+    if (updatedAmountLeft < 0) {
+      return res.status(400).json({ error: 'Insufficient funds' });
+    }
+    user.amountLeft = updatedAmountLeft;
     await user.save();
 
     res.json({ message: 'Order data received and saved successfully.' });
