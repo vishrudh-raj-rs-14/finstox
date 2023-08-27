@@ -27,14 +27,28 @@ const UserSchema = new mongoose.Schema({
   amountLeft: {
     type: Number,
     required: true,
+    default: 1000000,
   },
+  symbolStock: [
+    {
+      symbol: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      stockLeft:{
+        type: Number,
+        required: false,
+      }
+    }
+  ],
   practiceHistory: [
     {
-      orderType: {
+      symbol: {
         type: String,
         required: true,
       },
-      symbol: {
+      orderType: {
         type: String,
         required: true,
       },
