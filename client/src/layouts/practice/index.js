@@ -185,13 +185,19 @@ function LearnDashboard() {
         </a> */}
         </div>
         <div className="order-form">
-          <div className="order-type">
-            <label htmlFor="orderType">Order Type:</label>
-            <select id="orderType" value={orderType} onChange={handleOrderTypeChange}>
-              <option value="">Select</option>
-              <option value="buy">Buy</option>
-              <option value="sell">Sell</option>
-            </select>
+          <div className="order-type-toggle">
+            <button
+              className={`order-button ${orderType === "buy" ? "active" : ""}`}
+              onClick={() => handleOrderTypeChange({ target: { value: "buy" } })}
+            >
+              Buy
+            </button>
+            <button
+              className={`order-button ${orderType === "sell" ? "active" : ""}`}
+              onClick={() => handleOrderTypeChange({ target: { value: "sell" } })}
+            >
+              Sell
+            </button>
           </div>
           <div>
             <label htmlFor="symbolSelect">Select Symbol: </label>

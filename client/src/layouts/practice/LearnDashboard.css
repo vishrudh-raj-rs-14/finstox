@@ -49,7 +49,6 @@
   .order-table {
     flex: 1; /* Make the table take up remaining space */
     padding: 10 20px;
-     /* Add padding to the table content */
   }
   
   table {
@@ -63,6 +62,41 @@
     padding: 8px;
     text-align: left;
   }
+
+  .order-type-toggle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
   
+  .order-type-toggle button {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgb(187, 187, 240);
+    transition: background-color 0.3s ease;
+  }
   
-  /* Additional styles for responsiveness and layout can be added here */
+  /* .order-type-toggle button.buy {
+    background-color: #3cb371;
+  }
+  
+  .order-type-toggle button.sell {
+    background-color: #ff6347;
+  } */
+  
+  .order-type-toggle button.active {
+    color: black;
+    background-color: rgb(89, 89, 238);
+  }
+  
+  /* .order-type-toggle button.active.buy {
+    background-color: #2b865e;
+  }
+  
+  .order-type-toggle button.active.sell {
+    background-color: #d93f2b;
+  } */

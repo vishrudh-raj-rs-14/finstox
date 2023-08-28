@@ -33,8 +33,8 @@ const UserSchema = new mongoose.Schema({
     {
       symbol: {
         type: String,
-        required: true,
-        unique: true,
+        required: false,
+        unique: false,
       },
       stockLeft:{
         type: Number,
