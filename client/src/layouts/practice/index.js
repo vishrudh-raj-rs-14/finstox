@@ -9,6 +9,8 @@ let tvScriptLoadingPromise;
 function LearnDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
   const [selectedSymbol2, setSelectedSymbol2] = useState("FX:EURUSD");
+  const [practiceHistory, setPracticeHistory] = useState([]);
+
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -62,6 +64,23 @@ function LearnDashboard() {
     createWidget();
   }, [selectedSymbol]);
 
+  //to get practice history
+  const fetchPracticeHistory = async () => {
+    try {
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
+        email: storedUserEmail,
+      });
+      setPracticeHistory(practiceHistoryResponse.data);
+    } catch (error) {
+      console.error("Error fetching practice history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPracticeHistory();
+  }, []);
+
   function createWidget() {
     if (document.getElementById("tradingview_89d4a") && "TradingView" in window) {
       new window.TradingView.widget({
@@ -101,7 +120,7 @@ function LearnDashboard() {
   };
   const handleOrderSubmit = async () => {
     try {
-      const response = await axios.get("https://realstonks.p.rapidapi.com/EURUSD", {
+      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
         headers: {
           "X-RapidAPI-Key": "19238387f5msh1d8258beeb6ced7p1a9c19jsnea69006e119d",
           "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
@@ -129,6 +148,11 @@ function LearnDashboard() {
       // Send the data to the backend endpoint
       const backendResponse = await axios.post("http://localhost:4337/practice", orderData);
       console.log("Backend Response:", backendResponse.data);
+
+      const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
+        email: storedUserEmail,
+      });
+      setPracticeHistory(practiceHistoryResponse.data);
     } catch (error) {
       console.error("Error fetching price:", error);
     }
@@ -172,17 +196,17 @@ function LearnDashboard() {
           <div>
             <label htmlFor="symbolSelect">Select Symbol: </label>
             <select id="symbolSelect" value={selectedSymbol2} onChange={handleSymbolChange2}>
-              <option value="FX:EURUSD">FX:EURUSD</option>
-              <option value="FX:GBPUSD">FX:GBPUSD</option>
-              <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
-              <option value="FX:USDJPY">FX:USDJPY</option>
-              <option value="FX:GBPUSD">FX:GBPJPY</option>
-              <option value="FX:AUDUSD">FX:AUDUSD</option>
-              <option value="FX:USDCAD">FX:USDCAD</option>
-              <option value="FX:EURJPY">FX:EURJPY</option>
-              <option value="FX:USDCHF">FX:USDCHF</option>
-              <option value="FX:USDCNH">FX:USDCNH</option>
-              <option value="NASDAQ:AAPL">AAPL</option>
+              <option value="EURUSD">FX:EURUSD</option>
+              <option value="GBPUSD">FX:GBPUSD</option>
+              <option value="USDINR">FX_IDC:USDINR</option>
+              <option value="USDJPY">FX:USDJPY</option>
+              <option value="GBPUSD">FX:GBPJPY</option>
+              <option value="AUDUSD">FX:AUDUSD</option>
+              <option value="USDCAD">FX:USDCAD</option>
+              <option value="EURJPY">FX:EURJPY</option>
+              <option value="USDCHF">FX:USDCHF</option>
+              <option value="USDCNH">FX:USDCNH</option>
+              <option value="AAPL">AAPL</option>
               {/* Add more symbols as needed */}
             </select>
           </div>
@@ -214,11 +238,13 @@ function LearnDashboard() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{selectedSymbol2}</td>
-                <td>{orderType}</td>
-                <td>{orderAmount}</td>
-              </tr>
+              {practiceHistory.map((entry, index) => (
+                <tr key={index}>
+                  <td>{entry.symbol}</td>
+                  <td>{entry.orderType}</td>
+                  <td>{entry.amount}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

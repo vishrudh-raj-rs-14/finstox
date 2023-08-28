@@ -39,6 +39,7 @@ const UserSchema = new mongoose.Schema({
       stockLeft:{
         type: Number,
         required: false,
+        default: 0,
       }
     }
   ],
