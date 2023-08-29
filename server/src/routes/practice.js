@@ -35,6 +35,20 @@ router.post('/practice', async (req, res) => {
         });
       }
     }
+    if(orderType === 'sell') {
+      const symbolStockEntry = user.symbolStock.find(entry => entry.symbol === symbol);
+      if(!symbolStockEntry) {
+        return res.status(400).json({ error: 'No stock available' });
+      }
+      else if(amount > symbolStockEntry.stockLeft) {
+        return res.status(400).json({ error: 'Insufficient stock'});
+      }
+      else{
+        symbolStockEntry.stockLeft = symbolStockEntry.stockLeft - amount;
+      }
+      const updatedAmountLeft = user.amountLeft + (amount * currentValue);
+      user.amountLeft = updatedAmountLeft;
+    }
     await user.save();
 
     res.json({ message: 'Order data received and saved successfully.' });

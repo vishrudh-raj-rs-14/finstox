@@ -8,7 +8,7 @@ let tvScriptLoadingPromise;
 
 function LearnDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
-  const [selectedSymbol2, setSelectedSymbol2] = useState("FX:EURUSD");
+  const [selectedSymbol2, setSelectedSymbol2] = useState("EURUSD");
   const [practiceHistory, setPracticeHistory] = useState([]);
 
   //const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -22,7 +22,7 @@ router.post('/registerUser', async (req, res) => {
     const {username, email, password} = req.body;
     console.log(req.body);
     // check if the user is already present
-    const isPresent = await User.findOne({ username: username});
+    const isPresent = await User.findOne({ username: username,email:email});
     if (isPresent) {
       console.log('User already present');
     }

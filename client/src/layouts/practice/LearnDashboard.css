@@ -13,6 +13,9 @@
     margin-bottom: 20px;
     /* Add margin at the bottom to separate elements */
   }
+  .order-amount{
+    margin-top: 20px;
+  }
   
   label {
     display: block;
@@ -46,22 +49,34 @@
     /* Red color for Sell button */
   }
   
+
   .order-table {
-    flex: 1; /* Make the table take up remaining space */
-    padding: 10 20px;
+    flex: 1;
+    padding: 10px 20px;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccc;
+    border: 1px solid #282525; /* Use a lighter border color */
+    background-color: #efefef; /* Add a subtle background color */
   }
-  
+
   th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 12px; /* Slightly larger padding for better spacing */
     text-align: left;
   }
+
+  th {
+    background-color: #f0f0f0; /* Light gray background for table header */
+  }
+
+  /* Hover effect for table rows */
+  tbody tr:hover {
+    background-color: #64bc4c; /* Light background on hover */
+  }
+
 
   .order-type-toggle {
     display: flex;

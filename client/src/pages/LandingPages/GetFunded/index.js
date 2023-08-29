@@ -1,13 +1,27 @@
-import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import React from "react";
 import bgImage from "assets/images/stock-lap.jpg";
 import MKBox from "components/MKBox";
 import { Link } from "react-router-dom";
 import "./FundDashboard.css"; // Import the CSS file
+import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+import routes from "routes";
+import DefaultFooter from "examples/Footers/DefaultFooter";
+import footerRoutes from "footer.routes";
 
-function FundDashboard() {
+function GetFundDashboard() {
   return (
-    <DashboardLayout>
+    <>
+      <DefaultNavbar
+        routes={routes}
+        action={{
+          type: "internal",
+          route: "../pages/authentication/sign-in",
+          label: "Sign in",
+          color: "default",
+        }}
+        transparent
+        light
+      />
       <MKBox
         minHeight="80vh"
         width="100%"
@@ -32,8 +46,11 @@ function FundDashboard() {
           </Link>
         </div>
       </MKBox>
-    </DashboardLayout>
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
+    </>
   );
 }
 
-export default FundDashboard;
+export default GetFundDashboard;

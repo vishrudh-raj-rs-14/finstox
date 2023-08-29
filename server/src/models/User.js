@@ -33,8 +33,7 @@ const UserSchema = new mongoose.Schema({
     {
       symbol: {
         type: String,
-        required: false,
-        unique: false,
+        required: true,
       },
       stockLeft:{
         type: Number,
@@ -65,9 +64,11 @@ const UserSchema = new mongoose.Schema({
   ],
   
 });
-UserSchema.pre('save',async function(next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
+UserSchema.pre('save', async function(next) {
+  if (this.isNew) {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+  }
   next();
 });
 module.exports = new mongoose.model('User', UserSchema);

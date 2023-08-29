@@ -27,6 +27,7 @@ import { Link } from "react-router-dom";
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import ContactUs from "layouts/pages/landing-pages/contact-us";
+import GetFunded from "layouts/pages/landing-pages/get-funded";
 //import SignIn from "layouts/pages/authentication/sign-in";
 
 // Sections
@@ -70,7 +71,7 @@ const routes = [
   {
     name: "Get Funded",
     route: "/pages/landing-pages/get-funded",
-    component: <ContactUs />,
+    component: <GetFunded />,
     key: "getfunded",
     columns: 1,
     rowsPerColumn: 2,
