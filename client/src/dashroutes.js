@@ -22,7 +22,7 @@
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
+//import Tables from "layouts/tables";
 //import Billing from "layouts/billing";
 //import RTL from "layouts/rtl";
 //import Notifications from "layouts/notifications";
@@ -88,14 +88,14 @@ const dashroutes = [
     route: "/dashboard/career",
     component: <CareerDashboard />,
   },
-  {
-    type: "collapse",
-    name: "Table",
-    key: "Table",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/tables",
-    component: <Tables />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Table",
+  //   key: "Table",
+  //   icon: <Icon fontSize="small">notifications</Icon>,
+  //   route: "/tables",
+  //   component: <Tables />,
+  // },
   // {
   //   type: "collapse",
   //   name: "Profile",

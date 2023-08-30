@@ -26,7 +26,7 @@ function FundDashboard() {
         <div className="fund-dashboard-container">
           <p className="fund-text">QUALIFY NOW</p>
           <p className="fund-text">AND GET FUNDED</p>
-          <p className="fund-text">UPTO 1000000</p>
+          <p className="fund-text">UPTO ₹1000000</p>
           <Link to="/dashboard/practice">
             <button className="fund-button">Start Trading</button>
           </Link>

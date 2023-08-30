@@ -13,6 +13,7 @@ let tvScriptLoadingPromise;
 function LearnDashboard() {
   const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
   const [selectedSymbol2, setSelectedSymbol2] = useState("EURUSD");
+  const [selectedSymbol3, setSelectedSymbol3] = useState("EURUSD");
   const [practiceHistory, setPracticeHistory] = useState([]);
 
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -112,17 +113,24 @@ function LearnDashboard() {
   const handleSymbolChange2 = (event) => {
     setSelectedSymbol2(event.target.value);
   };
-  const [orderType, setOrderType] = useState(""); // "buy" or "sell"
-  const [orderAmount, setOrderAmount] = useState(0);
-
-  const handleOrderTypeChange = (event) => {
-    setOrderType(event.target.value);
+  const handleSymbolChange3 = (event) => {
+    setSelectedSymbol3(event.target.value);
   };
+  //const [orderType, setOrderType] = useState(""); // "buy" or "sell"
+  const [orderAmount, setOrderAmount] = useState(0);
+  const [orderStock, setOrderStock] = useState(0);
+
+  //   const handleOrderTypeChange = (event) => {
+  //     setOrderType(event.target.value);
+  //   };
 
   const handleOrderAmountChange = (event) => {
     setOrderAmount(event.target.value);
   };
-  const handleOrderSubmit = async () => {
+  const handleOrderStockChange = (event) => {
+    setOrderStock(event.target.value);
+  };
+  const handleOrderSubmitBuy = async () => {
     try {
       const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
         headers: {
@@ -130,12 +138,8 @@ function LearnDashboard() {
           "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
         },
       });
-
-      // Extract the price from the API response
-      //console.log(response);
       const price = response.data.price;
-      //const price = 1.0798;
-
+      const orderType = "Buy";
       console.log(selectedSymbol2);
       console.log("Order type:", orderType);
       console.log("Order amount:", orderAmount);
@@ -146,6 +150,41 @@ function LearnDashboard() {
         symbol: selectedSymbol2,
         orderType,
         amount: orderAmount,
+        currentValue: price,
+      };
+
+      // Send the data to the backend endpoint
+      const backendResponse = await axios.post("http://localhost:4337/practice", orderData);
+      console.log("Backend Response:", backendResponse.data);
+
+      const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
+        email: storedUserEmail,
+      });
+      setPracticeHistory(practiceHistoryResponse.data);
+    } catch (error) {
+      console.error("Error fetching price:", error);
+    }
+  };
+  const handleOrderSubmitSell = async () => {
+    try {
+      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
+        headers: {
+          "X-RapidAPI-Key": "19238387f5msh1d8258beeb6ced7p1a9c19jsnea69006e119d",
+          "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
+        },
+      });
+      const price = response.data.price;
+      const orderType = "Sell";
+      console.log(selectedSymbol3);
+      console.log("Order type:", orderType);
+      console.log("Order amount:", orderStock);
+      console.log("Price:", price);
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const orderData = {
+        email: storedUserEmail,
+        symbol: selectedSymbol3,
+        orderType,
+        amount: orderStock,
         currentValue: price,
       };
 
@@ -200,53 +239,118 @@ function LearnDashboard() {
           <span className="blue-text">Track all markets on TradingView</span>
         </a> */}
         </div>
-        <div className="order-form">
-          <div className="order-type-toggle">
-            <button
-              className={`order-button ${orderType === "buy" ? "active" : ""}`}
-              onClick={() => handleOrderTypeChange({ target: { value: "buy" } })}
+
+        <Grid
+          container
+          spacing={3}
+          alignItems="center"
+          style={{ marginTop: "30px", marginLeft: "1px" }}
+        >
+          <Grid item xs={6} style={{ backgroundColor: "lightblue" }}>
+            <MDBox
+              style={{
+                marginBottom: "5px",
+                paddingLeft: "200px",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              Buy
-            </button>
-            <button
-              className={`order-button ${orderType === "sell" ? "active" : ""}`}
-              onClick={() => handleOrderTypeChange({ target: { value: "sell" } })}
+              <MDTypography
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  fontFamily: "Your-Desired-Font, sans-serif",
+                }}
+              >
+                Buy
+              </MDTypography>
+            </MDBox>
+
+            <div>
+              <label htmlFor="symbolSelect1">Select Symbol:</label>
+              <select id="symbolSelect1" value={selectedSymbol2} onChange={handleSymbolChange2}>
+                <option value="EURUSD">FX:EURUSD</option>
+                <option value="GBPUSD">FX:GBPUSD</option>
+                <option value="USDINR">FX_IDC:USDINR</option>
+                <option value="USDJPY">FX:USDJPY</option>
+                <option value="GBPUSD">FX:GBPJPY</option>
+                <option value="AUDUSD">FX:AUDUSD</option>
+                <option value="USDCAD">FX:USDCAD</option>
+                <option value="EURJPY">FX:EURJPY</option>
+                <option value="USDCHF">FX:USDCHF</option>
+                <option value="USDCNH">FX:USDCNH</option>
+                <option value="AAPL">AAPL</option>
+              </select>
+            </div>
+            <div className="order-amount">
+              <label htmlFor="orderAmount">Amount:</label>
+              <input
+                type="number"
+                id="orderAmount"
+                value={orderAmount}
+                onChange={handleOrderAmountChange}
+              />
+            </div>
+            <div className="order-button-container">
+              <button className="order-button buy" onClick={handleOrderSubmitBuy}>
+                Buy
+              </button>
+            </div>
+          </Grid>
+
+          <Grid item xs={6} style={{ backgroundColor: "lightred" }}>
+            <MDBox
+              style={{
+                marginBottom: "5px",
+                paddingLeft: "200px",
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              Sell
-            </button>
-          </div>
-          <div>
-            <label htmlFor="symbolSelect">Select Symbol: </label>
-            <select id="symbolSelect" value={selectedSymbol2} onChange={handleSymbolChange2}>
-              <option value="EURUSD">FX:EURUSD</option>
-              <option value="GBPUSD">FX:GBPUSD</option>
-              <option value="USDINR">FX_IDC:USDINR</option>
-              <option value="USDJPY">FX:USDJPY</option>
-              <option value="GBPUSD">FX:GBPJPY</option>
-              <option value="AUDUSD">FX:AUDUSD</option>
-              <option value="USDCAD">FX:USDCAD</option>
-              <option value="EURJPY">FX:EURJPY</option>
-              <option value="USDCHF">FX:USDCHF</option>
-              <option value="USDCNH">FX:USDCNH</option>
-              <option value="AAPL">AAPL</option>
-              {/* Add more symbols as needed */}
-            </select>
-          </div>
-          <div className="order-amount">
-            <label htmlFor="orderAmount">Amount:</label>
-            <input
-              type="number"
-              id="orderAmount"
-              value={orderAmount}
-              onChange={handleOrderAmountChange}
-            />
-          </div>
-          <div className="order-button-container">
-            <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
-              {orderType === "buy" ? "Buy" : "Sell"}
-            </button>
-          </div>
-        </div>
+              <MDTypography
+                style={{
+                  fontSize: "25px",
+                  fontWeight: "bold",
+                  fontFamily: "Your-Desired-Font, sans-serif",
+                }}
+              >
+                Sell
+              </MDTypography>
+            </MDBox>
+
+            <div>
+              <label htmlFor="symbolSelect1">Select Symbol:</label>
+              <select id="symbolSelect1" value={selectedSymbol3} onChange={handleSymbolChange3}>
+                <option value="EURUSD">FX:EURUSD</option>
+                <option value="GBPUSD">FX:GBPUSD</option>
+                <option value="USDINR">FX_IDC:USDINR</option>
+                <option value="USDJPY">FX:USDJPY</option>
+                <option value="GBPUSD">FX:GBPJPY</option>
+                <option value="AUDUSD">FX:AUDUSD</option>
+                <option value="USDCAD">FX:USDCAD</option>
+                <option value="EURJPY">FX:EURJPY</option>
+                <option value="USDCHF">FX:USDCHF</option>
+                <option value="USDCNH">FX:USDCNH</option>
+                <option value="AAPL">AAPL</option>
+              </select>
+            </div>
+            <div className="order-amount">
+              <label htmlFor="orderAmount">Stock:</label>
+              <input
+                type="number"
+                id="orderAmount"
+                value={orderStock}
+                onChange={handleOrderStockChange}
+              />
+            </div>
+            <div className="order-button-container">
+              <button className="order-button sell" onClick={handleOrderSubmitSell}>
+                Sell
+              </button>
+            </div>
+          </Grid>
+        </Grid>
+
         {/* <div className="order-table">
           <table>
             <thead>
@@ -304,3 +408,52 @@ function LearnDashboard() {
 }
 
 export default LearnDashboard;
+
+{
+  /* <div className="order-form">
+          <div className="order-type-toggle">
+            <button
+              className={`order-button ${orderType === "buy" ? "active" : ""}`}
+              onClick={() => handleOrderTypeChange({ target: { value: "buy" } })}
+            >
+              Buy
+            </button>
+            <button
+              className={`order-button ${orderType === "sell" ? "active" : ""}`}
+              onClick={() => handleOrderTypeChange({ target: { value: "sell" } })}
+            >
+              Sell
+            </button>
+          </div>
+          <div>
+            <label htmlFor="symbolSelect">Select Symbol: </label>
+            <select id="symbolSelect" value={selectedSymbol2} onChange={handleSymbolChange2}>
+              <option value="EURUSD">FX:EURUSD</option>
+              <option value="GBPUSD">FX:GBPUSD</option>
+              <option value="USDINR">FX_IDC:USDINR</option>
+              <option value="USDJPY">FX:USDJPY</option>
+              <option value="GBPUSD">FX:GBPJPY</option>
+              <option value="AUDUSD">FX:AUDUSD</option>
+              <option value="USDCAD">FX:USDCAD</option>
+              <option value="EURJPY">FX:EURJPY</option>
+              <option value="USDCHF">FX:USDCHF</option>
+              <option value="USDCNH">FX:USDCNH</option>
+              <option value="AAPL">AAPL</option>
+            </select>
+          </div>
+          <div className="order-amount">
+            <label htmlFor="orderAmount">Amount:</label>
+            <input
+              type="number"
+              id="orderAmount"
+              value={orderAmount}
+              onChange={handleOrderAmountChange}
+            />
+          </div>
+          <div className="order-button-container">
+            <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
+              {orderType === "buy" ? "Buy" : "Sell"}
+            </button>
+          </div>
+        </div> */
+}

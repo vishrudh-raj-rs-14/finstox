@@ -18,7 +18,7 @@ router.post('/practice', async (req, res) => {
       amount,
       currentValue,
     });
-    if (orderType === 'buy') {
+    if (orderType === 'Buy') {
       const updatedAmountLeft = user.amountLeft - amount;
       if (updatedAmountLeft < 0) {
         return res.status(400).json({ error: 'Insufficient funds' });
@@ -35,7 +35,7 @@ router.post('/practice', async (req, res) => {
         });
       }
     }
-    if(orderType === 'sell') {
+    if(orderType === 'Sell') {
       const symbolStockEntry = user.symbolStock.find(entry => entry.symbol === symbol);
       if(!symbolStockEntry) {
         return res.status(400).json({ error: 'No stock available' });
