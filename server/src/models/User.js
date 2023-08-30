@@ -24,6 +24,10 @@ const UserSchema = new mongoose.Schema({
     type : Number,
     required:false,
   },
+  membership:{
+    type : Number,
+    default: 0,
+  },
   amountLeft: {
     type: Number,
     required: true,

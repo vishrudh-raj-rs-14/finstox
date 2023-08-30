@@ -3,6 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Graph.css";
 import "./LearnDashboard.css";
 import axios from "axios";
+import MDBox from "components/MDBox";
+import { Card, Grid } from "@mui/material";
+import MDTypography from "components/MDTypography";
+import DataTable from "examples/Tables/DataTable";
 
 let tvScriptLoadingPromise;
 
@@ -157,6 +161,18 @@ function LearnDashboard() {
       console.error("Error fetching price:", error);
     }
   };
+  const { columns: pColumns, rows: pRows } = {
+    columns: [
+      { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
+      { Header: "Order Type", accessor: "orderType", align: "center" },
+      { Header: "Amount", accessor: "amount", align: "center" },
+    ],
+    rows: practiceHistory.map((entry) => ({
+      symbol: entry.symbol,
+      orderType: entry.orderType,
+      amount: entry.amount,
+    })),
+  };
 
   return (
     <DashboardLayout>
@@ -231,10 +247,7 @@ function LearnDashboard() {
             </button>
           </div>
         </div>
-        <div style={{ paddingTop: "20px", marginLeft: "20px", marginBottom: "20px" }}>
-          <h4>Practice History</h4>
-        </div>
-        <div className="order-table">
+        {/* <div className="order-table">
           <table>
             <thead>
               <tr>
@@ -253,7 +266,38 @@ function LearnDashboard() {
               ))}
             </tbody>
           </table>
-        </div>
+        </div> */}
+        <MDBox pt={6} pb={3}>
+          <Grid container spacing={6}>
+            <Grid item xs={12}>
+              <Card>
+                <MDBox
+                  mx={2}
+                  mt={-3}
+                  py={3}
+                  px={2}
+                  variant="gradient"
+                  bgColor="info"
+                  borderRadius="lg"
+                  coloredShadow="info"
+                >
+                  <MDTypography variant="h6" color="white">
+                    Practice History
+                  </MDTypography>
+                </MDBox>
+                <MDBox pt={3}>
+                  <DataTable
+                    table={{ columns: pColumns, rows: pRows }}
+                    isSorted={false}
+                    entriesPerPage={false}
+                    showTotalEntries={false}
+                    noEndBorder
+                  />
+                </MDBox>
+              </Card>
+            </Grid>
+          </Grid>
+        </MDBox>
       </div>
     </DashboardLayout>
   );
