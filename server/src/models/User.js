@@ -58,11 +58,28 @@ const UserSchema = new mongoose.Schema({
       },
       amount: {
         type: Number,
-        required: true,
+        required: false,
+      },
+      stock: {
+        type: Number,
+        required: false,
       },
       currentValue: {
         type: Number,
         required: true,
+      },
+      stockLeft: {
+        type: Number, // Added to track remaining stock
+        required: function() {
+          return this.orderType === 'Buy'; // Not required for Sell orders
+        },
+      },
+      profitSell:{
+        type: Number, // Added to track remaining stock
+        required: function() {
+          return this.orderType === 'Sell'; // Not required for Buy orders
+        },
+        defualt: 0,
       }
     }
   ],

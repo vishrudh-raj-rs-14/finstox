@@ -33,7 +33,7 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
-import bgImage from "assets/images/bg-home1.jpg";
+import bgImage from "assets/images/fund4.jpg";
 import { useEffect } from "react";
 import { setLayout } from "context";
 import { useMaterialUIController } from "context";
@@ -60,7 +60,7 @@ function Presentation() {
         light
       />
       <MKBox
-        minHeight="75vh"
+        minHeight="72vh"
         width="100%"
         sx={{
           backgroundImage: `url(${bgImage})`,

@@ -132,9 +132,10 @@ function LearnDashboard() {
   };
   const handleOrderSubmitBuy = async () => {
     try {
+      const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
       const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
         headers: {
-          "X-RapidAPI-Key": "19238387f5msh1d8258beeb6ced7p1a9c19jsnea69006e119d",
+          "X-RapidAPI-Key": rapidApiKey,
           "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
         },
       });
@@ -154,7 +155,7 @@ function LearnDashboard() {
       };
 
       // Send the data to the backend endpoint
-      const backendResponse = await axios.post("http://localhost:4337/practice", orderData);
+      const backendResponse = await axios.post("http://localhost:4337/practiceBuy", orderData);
       console.log("Backend Response:", backendResponse.data);
 
       const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
@@ -167,9 +168,10 @@ function LearnDashboard() {
   };
   const handleOrderSubmitSell = async () => {
     try {
-      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
+      const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
+      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol3}`, {
         headers: {
-          "X-RapidAPI-Key": "19238387f5msh1d8258beeb6ced7p1a9c19jsnea69006e119d",
+          "X-RapidAPI-Key": rapidApiKey,
           "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
         },
       });
@@ -184,12 +186,12 @@ function LearnDashboard() {
         email: storedUserEmail,
         symbol: selectedSymbol3,
         orderType,
-        amount: orderStock,
+        stock: orderStock,
         currentValue: price,
       };
 
       // Send the data to the backend endpoint
-      const backendResponse = await axios.post("http://localhost:4337/practice", orderData);
+      const backendResponse = await axios.post("http://localhost:4337/practiceSell", orderData);
       console.log("Backend Response:", backendResponse.data);
 
       const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
@@ -205,11 +207,15 @@ function LearnDashboard() {
       { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
       { Header: "Order Type", accessor: "orderType", align: "center" },
       { Header: "Amount", accessor: "amount", align: "center" },
+      { Header: "Stock", accessor: "stock", align: "center" },
+      { Header: "Market Price", accessor: "marketPrice", align: "center" },
     ],
     rows: practiceHistory.map((entry) => ({
       symbol: entry.symbol,
       orderType: entry.orderType,
       amount: entry.amount,
+      stock: entry.stock,
+      marketPrice: entry.currentValue,
     })),
   };
 
@@ -223,7 +229,7 @@ function LearnDashboard() {
             <option value="FX:GBPUSD">FX:GBPUSD</option>
             <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
             <option value="FX:USDJPY">FX:USDJPY</option>
-            <option value="FX:GBPUSD">FX:GBPJPY</option>
+            <option value="FX:GBPJPY">FX:GBPJPY</option>
             <option value="FX:AUDUSD">FX:AUDUSD</option>
             <option value="FX:USDCAD">FX:USDCAD</option>
             <option value="FX:EURJPY">FX:EURJPY</option>
@@ -273,7 +279,7 @@ function LearnDashboard() {
                 <option value="GBPUSD">FX:GBPUSD</option>
                 <option value="USDINR">FX_IDC:USDINR</option>
                 <option value="USDJPY">FX:USDJPY</option>
-                <option value="GBPUSD">FX:GBPJPY</option>
+                <option value="GBPJPY">FX:GBPJPY</option>
                 <option value="AUDUSD">FX:AUDUSD</option>
                 <option value="USDCAD">FX:USDCAD</option>
                 <option value="EURJPY">FX:EURJPY</option>
@@ -325,7 +331,7 @@ function LearnDashboard() {
                 <option value="GBPUSD">FX:GBPUSD</option>
                 <option value="USDINR">FX_IDC:USDINR</option>
                 <option value="USDJPY">FX:USDJPY</option>
-                <option value="GBPUSD">FX:GBPJPY</option>
+                <option value="GBPJPY">FX:GBPJPY</option>
                 <option value="AUDUSD">FX:AUDUSD</option>
                 <option value="USDCAD">FX:USDCAD</option>
                 <option value="EURJPY">FX:EURJPY</option>
@@ -350,27 +356,6 @@ function LearnDashboard() {
             </div>
           </Grid>
         </Grid>
-
-        {/* <div className="order-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Order Type</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {practiceHistory.map((entry, index) => (
-                <tr key={index}>
-                  <td>{entry.symbol}</td>
-                  <td>{entry.orderType}</td>
-                  <td>{entry.amount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div> */}
         <MDBox pt={6} pb={3}>
           <Grid container spacing={6}>
             <Grid item xs={12}>
@@ -408,52 +393,3 @@ function LearnDashboard() {
 }
 
 export default LearnDashboard;
-
-{
-  /* <div className="order-form">
-          <div className="order-type-toggle">
-            <button
-              className={`order-button ${orderType === "buy" ? "active" : ""}`}
-              onClick={() => handleOrderTypeChange({ target: { value: "buy" } })}
-            >
-              Buy
-            </button>
-            <button
-              className={`order-button ${orderType === "sell" ? "active" : ""}`}
-              onClick={() => handleOrderTypeChange({ target: { value: "sell" } })}
-            >
-              Sell
-            </button>
-          </div>
-          <div>
-            <label htmlFor="symbolSelect">Select Symbol: </label>
-            <select id="symbolSelect" value={selectedSymbol2} onChange={handleSymbolChange2}>
-              <option value="EURUSD">FX:EURUSD</option>
-              <option value="GBPUSD">FX:GBPUSD</option>
-              <option value="USDINR">FX_IDC:USDINR</option>
-              <option value="USDJPY">FX:USDJPY</option>
-              <option value="GBPUSD">FX:GBPJPY</option>
-              <option value="AUDUSD">FX:AUDUSD</option>
-              <option value="USDCAD">FX:USDCAD</option>
-              <option value="EURJPY">FX:EURJPY</option>
-              <option value="USDCHF">FX:USDCHF</option>
-              <option value="USDCNH">FX:USDCNH</option>
-              <option value="AAPL">AAPL</option>
-            </select>
-          </div>
-          <div className="order-amount">
-            <label htmlFor="orderAmount">Amount:</label>
-            <input
-              type="number"
-              id="orderAmount"
-              value={orderAmount}
-              onChange={handleOrderAmountChange}
-            />
-          </div>
-          <div className="order-button-container">
-            <button className={`order-button ${orderType}`} onClick={handleOrderSubmit}>
-              {orderType === "buy" ? "Buy" : "Sell"}
-            </button>
-          </div>
-        </div> */
-}

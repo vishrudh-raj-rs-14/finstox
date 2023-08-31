@@ -20,7 +20,7 @@
         "space-in-parens": "warn",
         "space-infix-ops": "warn",
         "space-unary-ops": "warn",
-        "quotes": ["warn", "single"],
+        "quotes": ["off", "single"],
         //* Avoid Bugs
         "no-undef": "warn",
         "semi": "warn",
