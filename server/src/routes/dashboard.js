@@ -76,7 +76,7 @@ router.post("/getTotalProfit", async (req, res) => {
   }
 });
 
-router.post("/getTotalActions", async (req, res) => {
+router.post("/getSuccess", async (req, res) => {
   const { email } = req.body;
 
   try {
@@ -85,9 +85,50 @@ router.post("/getTotalActions", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    const totalPracticeHistory = user.practiceHistory.length;
 
-    res.status(200).json(totalPracticeHistory);
+    const sellProfits = user.practiceHistory.filter(
+      (transaction) => transaction.orderType === "Sell" && transaction.profitSell > 0
+    );
+
+    const totalSellProfits = sellProfits.length;
+    const totalSellTransactions = user.practiceHistory.filter(
+      (transaction) => transaction.orderType === "Sell"
+    ).length;
+
+    const successPercentage = (totalSellProfits / totalSellTransactions) * 100;
+    const roundedsuccess = parseFloat(successPercentage.toFixed(4));
+
+
+    res.status(200).json(roundedsuccess);
+   
+  } catch (error) {
+    console.error("Error fetching success percentage:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+
+router.post('/getTotalReturns', async (req,res)=>{
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const sellRoi = user.practiceHistory.filter(
+      (transaction) => transaction.orderType === "Sell"
+    );
+
+    // Calculate the total profit by summing up profitSell values
+    const totalRoi = sellRoi.reduce(
+      (total, transaction) => total + transaction.roi,
+      0
+    );
+    const roundedtotalRoi = parseFloat(totalRoi.toFixed(4));
+
+    res.json(roundedtotalRoi);
    
   } catch (error) {
     console.error("Error fetching total profit:", error);

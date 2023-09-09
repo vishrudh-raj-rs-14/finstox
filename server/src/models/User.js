@@ -80,6 +80,13 @@ const UserSchema = new mongoose.Schema({
           return this.orderType === 'Sell'; // Not required for Buy orders
         },
         defualt: 0,
+      },
+      roi:{
+        type: Number, // Added to track remaining stock
+        required: function() {
+          return this.orderType === 'Sell'; // Not required for Buy orders
+        },
+        defualt: 0,
       }
     }
   ],

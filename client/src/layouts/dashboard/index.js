@@ -7,18 +7,19 @@ import MDBox from "components/MDBox";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-//import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
+import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
-//import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
+import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Card } from "@mui/material";
-import MDTypography from "components/MDTypography";
-import DataTable from "examples/Tables/DataTable";
+//import { Card } from "@mui/material";
+//import MDTypography from "components/MDTypography";
+//import DataTable from "examples/Tables/DataTable";
+//import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 
 // function getCookie(name) {
 //   const value = "; " + document.cookie;
@@ -30,7 +31,7 @@ import DataTable from "examples/Tables/DataTable";
 //import Projects from "layouts/dashboard/components/Projects";
 //import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 function Dashboard() {
-  const { tasks } = reportsLineChartData;
+  const { sales, tasks } = reportsLineChartData;
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     // Get the token from localStorage
@@ -56,24 +57,24 @@ function Dashboard() {
       });
   }, []);
 
-  const [symbolStock, setSymbolStock] = useState([]);
-  const [sellProfit, setSellProfit] = useState([]);
+  // const [symbolStock, setSymbolStock] = useState([]);
+  // const [sellProfit, setSellProfit] = useState([]);
 
-  const fetchSymbolStock = async () => {
-    try {
-      const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getStocks", {
-        email: storedUserEmail,
-      });
-      setSymbolStock(SymbolStockResponse.data);
-    } catch (error) {
-      console.error("Error fetching practice history:", error);
-    }
-  };
+  // const fetchSymbolStock = async () => {
+  //   try {
+  //     const storedUserEmail = localStorage.getItem("userEmail");
+  //     const SymbolStockResponse = await axios.post("http://localhost:4337/getStocks", {
+  //       email: storedUserEmail,
+  //     });
+  //     setSymbolStock(SymbolStockResponse.data);
+  //   } catch (error) {
+  //     console.error("Error fetching practice history:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchSymbolStock();
-  }, []);
+  // useEffect(() => {
+  //   fetchSymbolStock();
+  // }, []);
 
   const [totalProfit, setTotalProfit] = useState(0);
   const fetchTotalProfit = async () => {
@@ -96,7 +97,7 @@ function Dashboard() {
   const fetchTotalAction = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getTotalActions", {
+      const SymbolStockResponse = await axios.post("http://localhost:4337/getSuccess", {
         email: storedUserEmail,
       });
       setTotalAction(SymbolStockResponse.data);
@@ -108,43 +109,60 @@ function Dashboard() {
   useEffect(() => {
     fetchTotalAction();
   }, []);
-  const fetchSellProfit = async () => {
+
+  const [totalRoi, setTotalRoi] = useState(0);
+  const fetchTotalRoi = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/sellProfits", {
+      const SymbolStockResponse = await axios.post("http://localhost:4337/getTotalReturns", {
         email: storedUserEmail,
       });
-      setSellProfit(SymbolStockResponse.data);
+      setTotalRoi(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
     }
   };
 
   useEffect(() => {
-    fetchSellProfit();
+    fetchTotalRoi();
   }, []);
+  // const fetchSellProfit = async () => {
+  //   try {
+  //     const storedUserEmail = localStorage.getItem("userEmail");
+  //     const SymbolStockResponse = await axios.post("http://localhost:4337/sellProfits", {
+  //       email: storedUserEmail,
+  //     });
+  //     setSellProfit(SymbolStockResponse.data);
+  //   } catch (error) {
+  //     console.error("Error fetching practice history:", error);
+  //   }
+  // };
 
-  const { columns: pColumns, rows: pRows } = {
-    columns: [
-      { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
-      { Header: "Stock", accessor: "stockLeft", align: "center" },
-    ],
-    rows: symbolStock.map((entry) => ({
-      symbol: entry.symbol,
-      stockLeft: entry.stockLeft,
-    })),
-  };
+  // useEffect(() => {
+  //   fetchSellProfit();
+  // }, []);
 
-  const { columns: sColumns, rows: sRows } = {
-    columns: [
-      { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
-      { Header: "Profit", accessor: "profit", align: "center" },
-    ],
-    rows: sellProfit.map((entry) => ({
-      symbol: entry.symbol,
-      profit: entry.profitSell,
-    })),
-  };
+  // const { columns: pColumns, rows: pRows } = {
+  //   columns: [
+  //     { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
+  //     { Header: "Stock", accessor: "stockLeft", align: "center" },
+  //   ],
+  //   rows: symbolStock.map((entry) => ({
+  //     symbol: entry.symbol,
+  //     stockLeft: entry.stockLeft,
+  //   })),
+  // };
+
+  // const { columns: sColumns, rows: sRows } = {
+  //   columns: [
+  //     { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
+  //     { Header: "Profit", accessor: "profit", align: "center" },
+  //   ],
+  //   rows: sellProfit.map((entry) => ({
+  //     symbol: entry.symbol,
+  //     profit: entry.profitSell,
+  //   })),
+  // };
 
   return (
     <DashboardLayout>
@@ -156,8 +174,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Participated"
-                count={totalAction}
+                title="Success Rate"
+                count={totalAction + "%"}
                 // percentage={{
                 //   color: "success",
                 //   amount: "+55%",
@@ -186,7 +204,7 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title="ROI"
-                count="60%"
+                count={totalRoi + "%"}
                 // percentage={{
                 //   color: "success",
                 //   amount: "+1%",
@@ -213,7 +231,7 @@ function Dashboard() {
         </Grid>
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
-            {/* <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
@@ -238,8 +256,8 @@ function Dashboard() {
                   chart={sales}
                 />
               </MDBox>
-            </Grid> */}
-            <Grid item xs={12} md={6} lg={4}>
+            </Grid>
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <Card>
                   <MDBox
@@ -267,8 +285,8 @@ function Dashboard() {
                   </MDBox>
                 </Card>
               </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            </Grid> */}
+            {/* <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <Card>
                   <MDBox
@@ -296,7 +314,7 @@ function Dashboard() {
                   </MDBox>
                 </Card>
               </MDBox>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
                 <ReportsLineChart

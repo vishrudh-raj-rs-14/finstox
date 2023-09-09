@@ -73,7 +73,7 @@ router.post("/practiceSell", async (req, res) => {
     // Calculate profit and update stock and stockLeft
     let remainingStockToSell = stock;
     let totalProfit = 0;
-
+    let totalroi = 0;
     for (const transaction of user.practiceHistory) {
       if (remainingStockToSell <= 0) {
         break; // All stocks are sold
@@ -85,15 +85,18 @@ router.post("/practiceSell", async (req, res) => {
         const sellAmount = Math.min(remainingStockToSell, transaction.stockLeft);
         const profit = (currentValue - marketPriceBuy) * sellAmount;
         
+        const returns = (profit * 100) / (marketPriceBuy * sellAmount);
         // Update stockLeft and totalProfit
         transaction.stockLeft -= sellAmount;
         totalProfit += profit;
-
+        totalroi += returns;
+        
         // Update remainingStockToSell
         remainingStockToSell -= sellAmount;
       }
     }
     const profitSell = totalProfit;
+    const roi = totalroi;
     user.practiceHistory.push({
       symbol,
       orderType,
@@ -101,6 +104,7 @@ router.post("/practiceSell", async (req, res) => {
       stock,
       currentValue,
       profitSell,
+      roi,
     });
 
     const updatedAmountLeft = user.amountLeft + stock * currentValue;
