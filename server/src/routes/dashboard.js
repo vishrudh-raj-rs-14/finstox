@@ -200,12 +200,11 @@ router.post('/getTradesDay', async (req, res) => {
     // Construct the graph data
     const graphData = {
       labels,
-      datasets: [
+      datasets:
         {
           label: "Trades",
           data: tradeCounts,
         },
-      ],
     };
 
     res.status(200).json(graphData);
@@ -214,6 +213,8 @@ router.post('/getTradesDay', async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+
 
 
 module.exports = router;

@@ -50,7 +50,6 @@ router.post("/practiceBuy", async (req, res) => {
   }
 });
 
-
 router.post("/practiceSell", async (req, res) => {
   const { email, symbol, orderType, stock, currentValue, journal } = req.body;
   console.log(req.body);
@@ -89,16 +88,27 @@ router.post("/practiceSell", async (req, res) => {
           remainingStockToSell,
           transaction.stockLeft
         );
-        const profit = (currentValue - marketPriceBuy) * sellAmount;
 
-        const returns = (profit * 100) / (marketPriceBuy * sellAmount);
-        // Update stockLeft and totalProfit
-        transaction.stockLeft -= sellAmount;
-        totalProfit += profit;
-        totalroi += returns;
-
-        // Update remainingStockToSell
-        remainingStockToSell -= sellAmount;
+        if (sellAmount > 0) {
+          const profit = (currentValue - marketPriceBuy) * sellAmount;
+          console.log(profit, marketPriceBuy, sellAmount);
+          const returns = (profit * 100) / (marketPriceBuy * sellAmount);
+          console.log(returns);
+    
+          // Update stockLeft and totalProfit
+          if (!isNaN(returns)) {
+            // Update stockLeft and totalProfit
+            transaction.stockLeft -= sellAmount;
+            totalProfit += profit;
+            totalroi += returns;
+    
+            // Update remainingStockToSell
+            remainingStockToSell -= sellAmount;
+          } else {
+            console.error("Invalid ROI calculation");
+            return res.status(400).json({ error: "Invalid ROI calculation" });
+          }
+        }
       }
     }
     const profitSell = totalProfit;
