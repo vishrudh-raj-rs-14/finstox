@@ -3,7 +3,7 @@ var router = express.Router();
 const User = require(__dirname + "/../models/User");
 
 router.post("/practiceBuy", async (req, res) => {
-  const { email, symbol, orderType, amount, currentValue } = req.body;
+  const { email, symbol, orderType, amount, currentValue, journal } = req.body;
   console.log(req.body);
   const stock = amount / currentValue;
   const stockLeft = stock;
@@ -13,7 +13,7 @@ router.post("/practiceBuy", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    
+
     user.practiceHistory.push({
       symbol,
       orderType,
@@ -21,6 +21,7 @@ router.post("/practiceBuy", async (req, res) => {
       stock,
       currentValue,
       stockLeft,
+      journal,
     });
     const updatedAmountLeft = user.amountLeft - amount;
     if (updatedAmountLeft < 0) {
@@ -48,8 +49,10 @@ router.post("/practiceBuy", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+
 router.post("/practiceSell", async (req, res) => {
-  const { email, symbol, orderType, stock, currentValue } = req.body;
+  const { email, symbol, orderType, stock, currentValue, journal } = req.body;
   console.log(req.body);
   const amount = stock * currentValue;
   try {
@@ -58,7 +61,7 @@ router.post("/practiceSell", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    
+
     const symbolStockEntry = user.symbolStock.find(
       (entry) => entry.symbol === symbol
     );
@@ -82,15 +85,18 @@ router.post("/practiceSell", async (req, res) => {
       if (transaction.symbol === symbol && transaction.orderType === "Buy") {
         const marketPriceBuy = transaction.currentValue;
 
-        const sellAmount = Math.min(remainingStockToSell, transaction.stockLeft);
+        const sellAmount = Math.min(
+          remainingStockToSell,
+          transaction.stockLeft
+        );
         const profit = (currentValue - marketPriceBuy) * sellAmount;
-        
+
         const returns = (profit * 100) / (marketPriceBuy * sellAmount);
         // Update stockLeft and totalProfit
         transaction.stockLeft -= sellAmount;
         totalProfit += profit;
         totalroi += returns;
-        
+
         // Update remainingStockToSell
         remainingStockToSell -= sellAmount;
       }
@@ -105,6 +111,7 @@ router.post("/practiceSell", async (req, res) => {
       currentValue,
       profitSell,
       roi,
+      journal,
     });
 
     const updatedAmountLeft = user.amountLeft + stock * currentValue;

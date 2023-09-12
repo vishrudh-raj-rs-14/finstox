@@ -19,8 +19,7 @@
   10. The `title` key is only for the item with the type of `title` and its used for the title text on the Sidenav.
   10. The `component` key is used to store the component of its route.
 */
-
-// Material Dashboard 2 React layouts
+import React from "react";
 import Dashboard from "layouts/dashboard";
 //import Tables from "layouts/tables";
 //import Billing from "layouts/billing";
@@ -37,7 +36,8 @@ import LearnDashboard from "layouts/learn";
 import PracticeDashboard from "layouts/practice";
 //import CompeteDashboard from "layouts/compete";
 import FundDashboard from "layouts/funding";
-import CareerDashboard from "layouts/career";
+import AnalyseDashboard from "layouts/analyse";
+//import CareerDashboard from "layouts/career";
 
 const dashroutes = [
   {
@@ -82,11 +82,11 @@ const dashroutes = [
   },
   {
     type: "collapse",
-    name: "Career",
-    key: "career",
+    name: "Analyse",
+    key: "Analyse",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/dashboard/career",
-    component: <CareerDashboard />,
+    route: "/dashboard/analyse",
+    component: <AnalyseDashboard />,
   },
   // {
   //   type: "collapse",

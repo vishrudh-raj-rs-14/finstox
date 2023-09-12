@@ -23,7 +23,7 @@
 
 // @mui material components
 //import Icon from "@mui/material/Icon";
-import { Link } from "react-router-dom";
+import React, { Link } from "react-router-dom";
 // Pages
 import AboutUs from "layouts/pages/landing-pages/about-us";
 import ContactUs from "layouts/pages/landing-pages/contact-us";

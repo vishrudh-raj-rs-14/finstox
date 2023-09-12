@@ -31,7 +31,7 @@
   }
   
   .gradient-text::before {
-    content: "HOW IT WORKS";
+    content: "MILESTONE";
     position: relative;
     top: 0;
     left: 0;
@@ -42,5 +42,66 @@
     font-size: 30px;
     font-weight: 500;
     z-index: -1;
+  }
+  .milestone-line {
+    position: relative;
+    width: 80%;
+    height: 5px;
+    margin-left: 40px;
+    background-color: #322e2e;
+  }
+  
+  .mark {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 50%;
+    top: -3px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .mark:hover {
+    background-color: #2883eb;
+  }
+  
+  .score-popup {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #080e13;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  
+  .mark:hover .score-popup {
+    opacity: 1;
+    transition: opacity 0.3s;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #080e13;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+  }
+  
+  .win-mark {
+    background-color: #28a745;
+  }
+  
+  .win-mark:hover {
+    background-color: #1e7e34;
   }
   

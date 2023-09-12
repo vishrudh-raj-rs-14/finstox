@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, /*Navigate,*/ useLocation } from "react-router-dom";
 
 // @mui material components
@@ -124,7 +124,7 @@ export default function App() {
           pathname == "/dashboard/practice" ||
           pathname == "/dashboard/compete" ||
           pathname == "/dashboard/get-funded" ||
-          pathname == "/dashboard/career") && (
+          pathname == "/dashboard/analyse") && (
           <>
             <Sidenav
               color={sidenavColor}

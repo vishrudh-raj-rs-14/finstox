@@ -38,7 +38,7 @@ router.post("/sellProfits", async (req, res) => {
     // Filter practiceHistory objects with orderType === "Sell"
     const sellProfits = user.practiceHistory.filter(
       (transaction) => transaction.orderType === "Sell"
-    );
+    ).slice(-6).reverse();
 
     res.json(sellProfits);
   } catch (error) {
@@ -67,7 +67,11 @@ router.post("/getTotalProfit", async (req, res) => {
       (total, transaction) => total + transaction.profitSell,
       0
     );
+    
     const roundedtotalProfit = parseFloat(totalProfit.toFixed(2));
+    
+    user.totalProfit = roundedtotalProfit;
+    await user.save();
 
     res.json(roundedtotalProfit); // Respond with the total profit as JSON
   } catch (error) {
@@ -94,10 +98,12 @@ router.post("/getSuccess", async (req, res) => {
     const totalSellTransactions = user.practiceHistory.filter(
       (transaction) => transaction.orderType === "Sell"
     ).length;
-
-    const successPercentage = (totalSellProfits / totalSellTransactions) * 100;
+    const successPercentage = totalSellTransactions > 0 ? (totalSellProfits / totalSellTransactions) * 100 : 0;
     const roundedsuccess = parseFloat(successPercentage.toFixed(4));
 
+    
+    user.totalSuccessRate = roundedsuccess;
+    await user.save();
 
     res.status(200).json(roundedsuccess);
    
@@ -128,6 +134,9 @@ router.post('/getTotalReturns', async (req,res)=>{
     );
     const roundedtotalRoi = parseFloat(totalRoi.toFixed(4));
 
+    user.totalRoi = roundedtotalRoi;
+    await user.save();
+
     res.json(roundedtotalRoi);
    
   } catch (error) {
@@ -135,5 +144,76 @@ router.post('/getTotalReturns', async (req,res)=>{
     res.status(500).json({ error: "Server error" });
   }
 });
+
+router.post('/getScore', async (req,res)=>{
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const score = user.totalRoi + user.totalSuccessRate;
+
+    user.score = score;
+    await user.save();
+
+    res.json(score);
+   
+  } catch (error) {
+    console.error("Error fetching total profit:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.post('/getTradesDay', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Calculate the number of trades for the last 7 days
+    const currentDate = new Date();
+    const sevenDaysAgo = new Date(currentDate);
+    sevenDaysAgo.setDate(currentDate.getDate() - 6); // Go back 6 days, including today
+
+    const tradeCounts = [];
+    const labels = [];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(sevenDaysAgo);
+      date.setDate(sevenDaysAgo.getDate() + i); // Increment date for each day
+
+      const trades = user.practiceHistory.filter((trade) => {
+        const tradeDate = new Date(trade.createdAt);
+        return tradeDate.toDateString() === date.toDateString();
+      });
+
+      tradeCounts.push(trades.length);
+      labels.push(date.getDate()); // Get only the day of the month
+    }
+
+    // Construct the graph data
+    const graphData = {
+      labels,
+      datasets: [
+        {
+          label: "Trades",
+          data: tradeCounts,
+        },
+      ],
+    };
+
+    res.status(200).json(graphData);
+  } catch (error) {
+    console.error("Error fetching trade data:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 module.exports = router;
