@@ -2,6 +2,8 @@
 
 // react-router-dom components
 import { Link, useLocation, useNavigate } from "react-router-dom";
+// import dotenv from "dotenv";
+// dotenv.config();
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -55,10 +57,12 @@ function SignInBasic() {
   //   localStorage.removeItem("hellodata");
   //   localStorage.removeItem("facsemdata");
   // }, []);
-
   const validateUser = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:4337/loginUser", {
+    const api = process.env.REACT_APP_BACKEND_URL;
+    console.log(api);
+
+    const response = await fetch(`${api}/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

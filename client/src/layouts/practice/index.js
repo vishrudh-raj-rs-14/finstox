@@ -116,8 +116,8 @@ function LearnDashboard() {
           <span className="blue-text">Track all markets on TradingView</span>
         </a> */}
         </div>
-        <WalletProfit></WalletProfit>
         <BuySell></BuySell>
+        <WalletProfit></WalletProfit>
       </div>
     </DashboardLayout>
   );

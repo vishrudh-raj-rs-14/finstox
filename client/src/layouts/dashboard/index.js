@@ -6,14 +6,14 @@ import MDBox from "components/MDBox";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-//import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
 //import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+//import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 //import { Card } from "@mui/material";
@@ -27,7 +27,7 @@ import React, { useEffect, useState } from "react";
 // }
 
 function Dashboard() {
-  const { sales, tasks } = reportsLineChartData;
+  //const { tasks } = reportsLineChartData;
   useEffect(() => {
     // Get the token from localStorage
     const jwtCookie = localStorage.getItem("jwt");
@@ -103,26 +103,60 @@ function Dashboard() {
     fetchTotalRoi();
   }, []);
 
-  const [chartData, setChartData] = useState({});
-  const fetchchartData = async () => {
+  const [tradeChartData, setTradeChartData] = useState({});
+  const fetchTradechartData = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post("http://localhost:4337/getTradesDay", {
         email: storedUserEmail,
       });
-      setChartData(SymbolStockResponse.data);
+      setTradeChartData(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
     }
   };
 
   useEffect(() => {
-    fetchchartData();
+    fetchTradechartData();
+  }, []);
+
+  const [profitChartData, setProfitChartData] = useState({});
+  const fetchProfitchartData = async () => {
+    try {
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const SymbolStockResponse = await axios.post("http://localhost:4337/getProfitDay", {
+        email: storedUserEmail,
+      });
+      setProfitChartData(SymbolStockResponse.data);
+    } catch (error) {
+      console.error("Error fetching practice history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfitchartData();
+  }, []);
+
+  const [roiChartData, setRoiChartData] = useState({});
+  const fetchRoichartData = async () => {
+    try {
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const SymbolStockResponse = await axios.post("http://localhost:4337/getRoiDay", {
+        email: storedUserEmail,
+      });
+      setRoiChartData(SymbolStockResponse.data);
+    } catch (error) {
+      console.error("Error fetching practice history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRoichartData();
   }, []);
 
   return (
     <DashboardLayout>
-      {/*<DashboardNavbar />*/}
+      <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -194,7 +228,7 @@ function Dashboard() {
                   title="Trades"
                   description="Last week daily trades"
                   //date="2 days ago"
-                  chart={chartData}
+                  chart={tradeChartData}
                 />
               </MDBox>
             </Grid>
@@ -202,15 +236,15 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="Revenue"
+                  title="Profit"
                   // description={
                   //   <>
                   //     (<strong>+15%</strong>) increase in today revenue.
                   //   </>
                   // }
-                  description="Last week daily revenue"
+                  description="Last week daily Profit"
                   //date="updated 4 min ago"
-                  chart={sales}
+                  chart={profitChartData}
                 />
               </MDBox>
             </Grid>
@@ -218,10 +252,10 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="dark"
-                  title="Profit"
-                  description="Last week daily profit"
+                  title="ROI"
+                  description="Last week daily ROI"
                   //date="just updated"
-                  chart={tasks}
+                  chart={roiChartData}
                 />
               </MDBox>
             </Grid>

@@ -64,14 +64,6 @@ const dashroutes = [
     route: "/dashboard/practice",
     component: <PracticeDashboard />,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Compete",
-  //   key: "compete",
-  //   icon: <Icon fontSize="small">receipt_long</Icon>,
-  //   route: "/dashboard/compete",
-  //   component: <CompeteDashboard />,
-  // },
   {
     type: "collapse",
     name: "Get funded",
@@ -88,30 +80,6 @@ const dashroutes = [
     route: "/dashboard/analyse",
     component: <AnalyseDashboard />,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Table",
-  //   key: "Table",
-  //   icon: <Icon fontSize="small">notifications</Icon>,
-  //   route: "/tables",
-  //   component: <Tables />,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Profile",
-  //   key: "profile",
-  //   icon: <Icon fontSize="small">person</Icon>,
-  //   route: "/profile",
-  //   component: <Profile />,
-  // },
-  // {
-  //   type: "collapse",
-  //   name: "Logout",
-  //   key: "sign-up",
-  //   icon: <Icon fontSize="small">assignment</Icon>,
-  //   route: "/authentication/create-account",
-  //   component: <CreateAccountPage />,
-  // },
 ];
 
 export default dashroutes;

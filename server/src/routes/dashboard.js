@@ -158,8 +158,8 @@ router.post('/getScore', async (req,res)=>{
 
     user.score = score;
     await user.save();
-
-    res.json(score);
+    const roundedScore = parseFloat(score.toFixed(4));
+    res.json(roundedScore);
    
   } catch (error) {
     console.error("Error fetching total profit:", error);
@@ -215,6 +215,93 @@ router.post('/getTradesDay', async (req, res) => {
 });
 
 
+router.post('/getProfitDay', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Calculate the sum of profitSell for each day in the last 7 days
+    const currentDate = new Date();
+    const labels = [];
+    const data = [];
+
+    for (let i = 0; i < 7; i++) {
+      const startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - i);
+      const endDate = new Date(currentDate);
+      endDate.setDate(currentDate.getDate() - i + 1);
+
+      const profitSum = user.practiceHistory.reduce((sum, trade) => {
+        if (
+          trade.createdAt >= startDate &&
+          trade.createdAt < endDate &&
+          trade.orderType === "Sell"
+        ) {
+          return sum + trade.profitSell;
+        }
+        return sum;
+      }, 0);
+
+      labels.unshift(startDate.toLocaleDateString("en-US", { weekday: 'short' }));
+      data.unshift(profitSum);
+    }
+
+    // Send the data as a response
+    res.json({ labels, datasets: { label: "Sales", data } });
+  } catch (error) {
+    console.error("Error fetching trade data:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.post('/getRoiDay', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Calculate the sum of profitSell for each day in the last 7 days
+    const currentDate = new Date();
+    const labels = [];
+    const data = [];
+
+    for (let i = 0; i < 7; i++) {
+      const startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - i);
+      const endDate = new Date(currentDate);
+      endDate.setDate(currentDate.getDate() - i + 1);
+
+      const roiSum = user.practiceHistory.reduce((sum, trade) => {
+        if (
+          trade.createdAt >= startDate &&
+          trade.createdAt < endDate &&
+          trade.orderType === "Sell"
+        ) {
+          return sum + trade.roi;
+        }
+        return sum;
+      }, 0);
+
+      labels.unshift(startDate.toLocaleDateString("en-US", { weekday: 'short' }));
+      data.unshift(roiSum);
+    }
+
+    // Send the data as a response
+    res.json({ labels, datasets: { label: "Sales", data } });
+  } catch (error) {
+    console.error("Error fetching trade data:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 
 module.exports = router;

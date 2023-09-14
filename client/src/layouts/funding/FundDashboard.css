@@ -43,7 +43,17 @@
     font-weight: 500;
     z-index: -1;
   }
-  .milestone-line {
+  .score-text {
+    color: #fff; /* Text color */
+    background-color: #007bff; /* Background color */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    font-size: 24px; /* Font size */
+    text-align: center; /* Center text */
+  }
+  
+  /* .milestone-line {
     position: relative;
     width: 80%;
     height: 5px;
@@ -103,5 +113,5 @@
   
   .win-mark:hover {
     background-color: #1e7e34;
-  }
+  } */
   
