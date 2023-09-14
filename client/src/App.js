@@ -7,25 +7,35 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 // Material Kit 2 React themes
 import theme from "assets/theme";
+import themeDark from "assets/theme-dark";
 import Presentation from "layouts/pages/presentation";
 
-// Material Kit 2 React routes
 import routes from "routes";
-import dashroutes from "dashroutes";
+//import dashroutes from "dashroutes";
 import SignIn from "layouts/pages/authentication/sign-in";
 import CreateAccount from "layouts/pages/authentication/create-account";
-import { useMaterialUIController, setMiniSidenav /*,setOpenConfigurator*/ } from "context";
+import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import Sidenav from "examples/Sidenav";
-//import Configurator from "examples/Configurator";
+import Configurator from "examples/Configurator";
 //import MDBox from "components/MDBox";
 
-//import brandWhite from "assets/images/logo-ct.png";
-//import brandDark from "assets/images/logo-ct-dark.png";
+// import brandWhite from "assets/images/logo-ct.png";
+// import brandDark from "assets/images/logo-ct-dark.png";
 import finstoxLogo from "assets/images/finstox-logo.png";
 
 //import Icon from "@mui/material/Icon";
 import Learn from "pages/LandingPages/Learn";
-import Graph from "pages/Graph";
+
+import Dashboard from "layouts/dashboard";
+import Icon from "@mui/material/Icon";
+import LearnDashboard from "layouts/learn";
+import PracticeDashboard from "layouts/practice";
+import FundDashboard from "layouts/funding";
+import AnalyseDashboard from "layouts/analyse";
+import axios from "axios";
+//import Pricing from "layouts/pricing";
+import MDBox from "components/MDBox";
+import PriceList from "layouts/priceList";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -50,12 +60,12 @@ export default function App() {
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
-    //openConfigurator,
+    openConfigurator,
     layout,
     sidenavColor,
-    //transparentSidenav,
-    //whiteSidenav,
-    //darkMode,
+    // transparentSidenav,
+    // whiteSidenav,
+    darkMode,
   } = controller;
 
   const [onMouseEnter, setOnMouseEnter] = useState(false);
@@ -78,34 +88,110 @@ export default function App() {
   };
 
   // Change the openConfigurator state
-  //const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
+  const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
-  // const configsButton = (
-  //   <MDBox
-  //     display="flex"
-  //     justifyContent="center"
-  //     alignItems="center"
-  //     width="3.25rem"
-  //     height="3.25rem"
-  //     bgColor="white"
-  //     shadow="sm"
-  //     borderRadius="50%"
-  //     position="fixed"
-  //     right="2rem"
-  //     bottom="2rem"
-  //     zIndex={99}
-  //     color="dark"
-  //     sx={{ cursor: "pointer" }}
-  //     onClick={handleConfiguratorOpen}
-  //   >
-  //     <Icon fontSize="small" color="inherit">
-  //       settings
-  //     </Icon>
-  //   </MDBox>
-  // );
+  const configsButton = (
+    <MDBox
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      width="3.25rem"
+      height="3.25rem"
+      bgColor="white"
+      shadow="sm"
+      borderRadius="50%"
+      position="fixed"
+      right="2rem"
+      bottom="2rem"
+      zIndex={99}
+      color="dark"
+      sx={{ cursor: "pointer" }}
+      onClick={handleConfiguratorOpen}
+    >
+      <Icon fontSize="small" color="inherit">
+        settings
+      </Icon>
+    </MDBox>
+  );
+  const [membership, setMember] = useState(0);
+
+  const fetchMember = async () => {
+    try {
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const SymbolStockResponse = await axios.post("http://localhost:4337/membership", {
+        email: storedUserEmail,
+      });
+      setMember(SymbolStockResponse.data);
+    } catch (error) {
+      console.error("Error fetching practice history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMember();
+  }, []);
+  const dashroutes = [
+    {
+      type: "collapse",
+      name: "Dashboard",
+      key: "dashboard",
+      icon: <Icon fontSize="small">dashboard</Icon>,
+      route: "/dashboard",
+      component: <Dashboard />,
+    },
+    {
+      type: "collapse",
+      name: "Learn",
+      key: "learn",
+      icon: <Icon fontSize="small">table_view</Icon>,
+      route: "/dashboard/learn",
+      component: <LearnDashboard />,
+    },
+    {
+      type: "collapse",
+      name: "Pricing",
+      key: "pricing",
+      icon: <Icon fontSize="small">table_view</Icon>,
+      route: "/dashboard/pricing",
+      component: <PriceList />,
+    },
+  ];
+  if (membership >= 1) {
+    // Add Practice route for membership >= 1
+    dashroutes.push({
+      type: "collapse",
+      name: "Practice",
+      key: "practice",
+      icon: <Icon fontSize="small">table_view</Icon>,
+      route: "/dashboard/practice",
+      component: <PracticeDashboard />,
+    });
+  }
+  if (membership >= 2) {
+    // Add Analyse route for membership >= 2
+    dashroutes.push({
+      type: "collapse",
+      name: "Analyse",
+      key: "analyse",
+      icon: <Icon fontSize="small">receipt_long</Icon>,
+      route: "/dashboard/analyse",
+      component: <AnalyseDashboard />,
+    });
+  }
+  if (membership >= 3) {
+    // Add Get funded route for membership >= 3
+    dashroutes.push({
+      type: "collapse",
+      name: "Get funded",
+      key: "getFunded",
+      icon: <Icon fontSize="small">receipt_long</Icon>,
+      route: "/dashboard/get-funded",
+      component: <FundDashboard />,
+    });
+  }
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
       <Routes>
         {getRoutes(routes)}
@@ -114,7 +200,6 @@ export default function App() {
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
         <Route path="pages/LandingPages/learn" element={<Learn />} />
-        <Route path="pages/Graph" element={<Graph />} />
         {getRoutes(dashroutes)}
       </Routes>
       {layout === "dashboard" &&
@@ -122,6 +207,7 @@ export default function App() {
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/practice" ||
+          pathname == "/dashboard/pricing" ||
           pathname == "/dashboard/compete" ||
           pathname == "/dashboard/get-funded" ||
           pathname == "/dashboard/analyse") && (
@@ -135,8 +221,8 @@ export default function App() {
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
             />
-            {/* <Configurator />
-          {configsButton} */}
+            <Configurator />
+            {configsButton}
           </>
         )}
     </ThemeProvider>

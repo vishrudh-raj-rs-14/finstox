@@ -16,6 +16,8 @@ app.use(require('./routes/register'));
 app.use(require('./routes/login'));
 app.use(require('./routes/dashboard'));
 app.use(require('./routes/practice'));
+app.use(require('./routes/membership'));
+app.use(require('./routes/payment'));
 
 app.listen(PORT, () => {
   console.log(`Server Started at Port ${PORT}`);
