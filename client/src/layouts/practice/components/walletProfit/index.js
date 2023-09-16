@@ -44,7 +44,7 @@ function WalletProfit() {
   const { columns: stColumns, rows: stRows } = {
     columns: [
       { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
-      { Header: "Stock", accessor: "stockLeft", align: "center" },
+      { Header: "Quantity", accessor: "stockLeft", align: "center" },
     ],
     rows: symbolStock.map((entry) => ({
       symbol: entry.symbol,

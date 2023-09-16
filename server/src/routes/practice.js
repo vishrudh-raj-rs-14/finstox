@@ -145,7 +145,7 @@ router.post("/practiceHistory", async (req, res) => {
     }
 
     // Get the last six practice history entries
-    const lastSixPracticeHistory = user.practiceHistory.slice(-6).reverse();
+    const lastSixPracticeHistory = user.practiceHistory.reverse();
     res.status(200).json(lastSixPracticeHistory);
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });

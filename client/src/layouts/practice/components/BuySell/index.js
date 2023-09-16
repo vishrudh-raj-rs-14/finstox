@@ -13,8 +13,12 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import DataTable from "examples/Tables/DataTable";
 import { useEffect, useState } from "react";
+import "./dialog.css";
+import { useMaterialUIController } from "context";
 
 function BuySell() {
+  const [controller] = useMaterialUIController();
+  const { darkMode } = controller;
   const [selectedSymbol2, setSelectedSymbol2] = useState("EURUSD");
   const [selectedSymbol3, setSelectedSymbol3] = useState("EURUSD");
   const [practiceHistory, setPracticeHistory] = useState([]);
@@ -124,7 +128,7 @@ function BuySell() {
       { Header: "Symbol", accessor: "symbol", width: "30%", align: "center" },
       { Header: "Order Type", accessor: "orderType", align: "center" },
       { Header: "Amount(₹)", accessor: "amount", align: "center" },
-      { Header: "Stock", accessor: "stock", align: "center" },
+      { Header: "Quantity", accessor: "stock", align: "center" },
     ],
     rows: practiceHistory.map((entry) => ({
       symbol: entry.symbol,
@@ -195,11 +199,11 @@ function BuySell() {
         alignItems="center"
         style={{ marginTop: "30px", marginLeft: "1px" }}
       >
-        <Grid item xs={6} style={{ backgroundColor: "lightblue" }}>
+        <Grid item xs={12} sm={6} style={{ backgroundColor: "lightblue" }}>
           <MDBox
             style={{
               marginBottom: "5px",
-              paddingLeft: "200px",
+              paddingLeft: "35%",
               display: "flex",
               alignItems: "center",
             }}
@@ -247,11 +251,11 @@ function BuySell() {
           </div>
         </Grid>
 
-        <Grid item xs={6} style={{ backgroundColor: "lightred" }}>
+        <Grid item xs={12} sm={6} style={{ backgroundColor: "lightred" }}>
           <MDBox
             style={{
               marginBottom: "5px",
-              paddingLeft: "200px",
+              paddingLeft: "35px",
               display: "flex",
               alignItems: "center",
             }}
@@ -284,7 +288,7 @@ function BuySell() {
             </select>
           </div>
           <div className="order-amount">
-            <label htmlFor="orderAmount">Stock:</label>
+            <label htmlFor="orderAmount">Quantity:</label>
             <input
               type="number"
               id="orderAmount"
@@ -299,7 +303,7 @@ function BuySell() {
           </div>
         </Grid>
       </Grid>
-      <MDBox pt={6} pb={3}>
+      <MDBox pt={6} pb={3} xs={12}>
         <Grid container spacing={6}>
           <Grid item xs={12}>
             <Card>
@@ -309,7 +313,7 @@ function BuySell() {
                 py={3}
                 px={2}
                 variant="gradient"
-                bgColor="info"
+                bgColor="dark"
                 borderRadius="lg"
                 coloredShadow="info"
               >
@@ -331,8 +335,10 @@ function BuySell() {
         </Grid>
       </MDBox>
       <Dialog open={openModal} onClose={handleCloseModal} fullWidth maxWidth="sm">
-        <DialogTitle>Trade Details</DialogTitle>
-        <DialogContent>
+        <DialogTitle style={{ backgroundColor: "black", color: "white" }}>
+          Trade Details
+        </DialogTitle>
+        <DialogContent className={darkMode ? "dark-mode-dialog" : "light-mode-dialog"}>
           <form>
             <TextField
               label="Order Type"
@@ -409,7 +415,8 @@ function BuySell() {
             <Box display="flex" justifyContent="center" marginTop={2}>
               <Button
                 variant="contained"
-                color="dark"
+                color="white"
+                style={{ backgroundColor: "blue", color: "white" }}
                 onClick={() => {
                   handleOrderSubmitBuy();
                   handleCloseModal();
@@ -424,8 +431,10 @@ function BuySell() {
       </Dialog>
 
       <Dialog open={openModalSell} onClose={handleCloseModalSell} fullWidth maxWidth="sm">
-        <DialogTitle>Trade Details</DialogTitle>
-        <DialogContent>
+        <DialogTitle style={{ backgroundColor: "black", color: "white" }}>
+          Trade Details
+        </DialogTitle>
+        <DialogContent className={darkMode ? "dark-mode-dialog" : "light-mode-dialog"}>
           <form>
             <TextField
               label="Order Type"
@@ -460,6 +469,7 @@ function BuySell() {
               <Button
                 variant="contained"
                 color="dark"
+                style={{ backgroundColor: "blue", color: "white" }}
                 onClick={() => {
                   handleOrderSubmitSell();
                   handleCloseModalSell();

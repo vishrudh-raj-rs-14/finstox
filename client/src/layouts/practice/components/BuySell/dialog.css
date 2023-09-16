@@ -1,0 +1,12 @@
+/* Light Mode */
+.light-mode-dialog {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Dark Mode */
+  .dark-mode-dialog {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  

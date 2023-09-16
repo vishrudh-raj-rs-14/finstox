@@ -20,6 +20,7 @@ function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
       width={width}
       py={1.5}
       px={3}
+      bgColor={darkMode ? "light" : "dark"}
       sx={({ palette: { light }, borders: { borderWidth } }) => ({
         borderBottom: `${borderWidth[1]} solid ${light.main}`,
       })}
@@ -28,7 +29,7 @@ function DataTableHeadCell({ width, children, sorted, align, ...rest }) {
         {...rest}
         position="relative"
         textAlign={align}
-        color={darkMode ? "white" : "secondary"}
+        color={darkMode ? "dark" : "white"}
         opacity={0.7}
         sx={({ typography: { size, fontWeightBold } }) => ({
           fontSize: size.xxs,

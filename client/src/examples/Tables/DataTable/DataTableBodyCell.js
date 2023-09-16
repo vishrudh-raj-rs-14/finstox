@@ -3,14 +3,18 @@ import PropTypes from "prop-types";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
+import { useMaterialUIController } from "context";
 
 function DataTableBodyCell({ noBorder, align, children }) {
+  const [controller] = useMaterialUIController();
+  const { darkMode } = controller;
   return (
     <MDBox
       component="td"
       textAlign={align}
       py={1.5}
       px={3}
+      bgColor={darkMode ? "dark" : "light"}
       sx={({ palette: { light }, typography: { size }, borders: { borderWidth } }) => ({
         fontSize: size.sm,
         borderBottom: noBorder ? "none" : `${borderWidth[1]} solid ${light.main}`,
@@ -19,7 +23,7 @@ function DataTableBodyCell({ noBorder, align, children }) {
       <MDBox
         display="inline-block"
         width="max-content"
-        color="text"
+        color={darkMode ? "white" : "dark"}
         sx={{ verticalAlign: "middle" }}
       >
         {children}

@@ -36,7 +36,7 @@ import axios from "axios";
 //import Pricing from "layouts/pricing";
 import MDBox from "components/MDBox";
 import PriceList from "layouts/priceList";
-
+//import PricePlan from "layouts/pricePlan";
 export default function App() {
   const { pathname } = useLocation();
 
@@ -155,40 +155,31 @@ export default function App() {
       route: "/dashboard/pricing",
       component: <PriceList />,
     },
-  ];
-  if (membership >= 1) {
-    // Add Practice route for membership >= 1
-    dashroutes.push({
+    {
       type: "collapse",
       name: "Practice",
       key: "practice",
       icon: <Icon fontSize="small">table_view</Icon>,
       route: "/dashboard/practice",
-      component: <PracticeDashboard />,
-    });
-  }
-  if (membership >= 2) {
-    // Add Analyse route for membership >= 2
-    dashroutes.push({
+      component: membership >= 1 ? <PracticeDashboard /> : null,
+    },
+    {
       type: "collapse",
       name: "Analyse",
       key: "analyse",
       icon: <Icon fontSize="small">receipt_long</Icon>,
       route: "/dashboard/analyse",
-      component: <AnalyseDashboard />,
-    });
-  }
-  if (membership >= 3) {
-    // Add Get funded route for membership >= 3
-    dashroutes.push({
+      component: membership >= 2 ? <AnalyseDashboard /> : null,
+    },
+    {
       type: "collapse",
       name: "Get funded",
       key: "getFunded",
       icon: <Icon fontSize="small">receipt_long</Icon>,
       route: "/dashboard/get-funded",
-      component: <FundDashboard />,
-    });
-  }
+      component: membership >= 3 ? <FundDashboard /> : null,
+    },
+  ];
 
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
