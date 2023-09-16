@@ -24,7 +24,7 @@ const rows = [
       },
       {
         videoId: "p7HKvqRI_Bo?si=WdQGHr_SYoFhTKPD",
-        subtopic: "How does the stock market works?",
+        subtopic: "How does the stock market work?",
       },
       {
         videoId: "NkxHXz-TuxuG-Yen",
@@ -53,14 +53,22 @@ const rows = [
       },
       {
         videoId: "2020-01-02",
-        subtopic: "How does the stock market works?",
+        subtopic: "How does the stock market work?",
       },
     ],
   },
 ];
 
 function LearnDashboard() {
-  const [open, setOpen] = useState(false);
+  // Create an array to store the open/close state of each row
+  const [openRows, setOpenRows] = useState(Array(rows.length).fill(false));
+
+  const toggleRow = (index) => {
+    // Create a new copy of the openRows array with the clicked row toggled
+    const newOpenRows = [...openRows];
+    newOpenRows[index] = !newOpenRows[index];
+    setOpenRows(newOpenRows);
+  };
 
   const embedYouTubeVideo = (videoId) => {
     // Create an iframe element with the YouTube video embed URL
@@ -116,8 +124,12 @@ function LearnDashboard() {
               <React.Fragment key={row.name}>
                 <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
                   <TableCell style={{ width: "35px", paddingRight: "0px" }}>
-                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                      {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    <IconButton
+                      aria-label="expand row"
+                      size="small"
+                      onClick={() => toggleRow(index)} // Toggle the specific row
+                    >
+                      {openRows[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                   </TableCell>
                   <TableCell component="th" scope="row">
@@ -126,15 +138,12 @@ function LearnDashboard() {
                 </TableRow>
                 <TableRow key={`subtopic-${index}`}>
                   <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
+                    <Collapse in={openRows[index]} timeout="auto" unmountOnExit>
                       <Box sx={{ margin: 1 }}>
                         <Table size="small" aria-label="purchases">
                           <TableBody>
                             {row.history.map((historyRow) => (
-                              <TableRow key={historyRow.image}>
-                                {/* <TableCell component="th" scope="row">
-                                  {historyRow.image}
-                                </TableCell> */}
+                              <TableRow key={historyRow.videoId}>
                                 <TableCell component="th" scope="row">
                                   <span
                                     id={`video-placeholder-${historyRow.videoId}`}
@@ -143,7 +152,7 @@ function LearnDashboard() {
                                   >
                                     <img
                                       src={`https://img.youtube.com/vi/${historyRow.videoId}/0.jpg`}
-                                      alt={historyRow.subtopic}
+                                      //alt={historyRow.subtopic}
                                     />
                                   </span>
                                 </TableCell>
