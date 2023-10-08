@@ -3,7 +3,8 @@ import * as ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
 import { MaterialUIControllerProvider } from "context";
-
+import "./index.css";
+// import NavBar from "examples/Navbars/NewNavBar/NavBar";
 const container = document.getElementById("root");
 
 // Create a root.
@@ -12,6 +13,7 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <BrowserRouter>
     <MaterialUIControllerProvider>
+      {/* <NavBar/> */}
       <App />
     </MaterialUIControllerProvider>
   </BrowserRouter>

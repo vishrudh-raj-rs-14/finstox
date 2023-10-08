@@ -36,6 +36,7 @@ import axios from "axios";
 //import Pricing from "layouts/pricing";
 import MDBox from "components/MDBox";
 import PriceList from "layouts/priceList";
+// import NavBar from "examples/Navbars/NewNavBar/NavBar";
 //import PricePlan from "layouts/pricePlan";
 export default function App() {
   const { pathname } = useLocation();
@@ -184,9 +185,12 @@ export default function App() {
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
+
       <Routes>
         {getRoutes(routes)}
+
         <Route path="/" element={<Presentation />} />
+      
         {/*<Route path="*" element={<Navigate to="/" />} />*/}
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
