@@ -45,6 +45,8 @@ import DetailBox from "pages/LandingPages/DetailBox/DetailBox";
 
 // Images
 import generalImg from "../../assets/newImages/mentroshipbg.jpg";
+import Pricing from "pages/LandingPages/Pricing/Pricing";
+import DeviceModel from "pages/LandingPages/DeviceModel/DeviceModel";
 
 function Presentation() {
   const [, dispatch] = useMaterialUIController();
@@ -71,7 +73,10 @@ function Presentation() {
       <HeroSection />
       <ComprehensiveServices />
       <DetailBox props={{ generalImg }} />
-      <MKBox pt={6} px={1} mt={6}>
+      {/* <DetailBox props={{ generalImg }} /> */}
+      <DeviceModel />
+      <Pricing />
+      <MKBox  mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

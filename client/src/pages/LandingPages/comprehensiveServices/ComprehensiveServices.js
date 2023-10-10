@@ -13,15 +13,15 @@
   ```
 */
 // import { motion } from "framer-motion";
-import analysisImg from "../../../assets/newImages/analysisbg.jpg";
+import practiceImg from "../../../assets/newImages/practiceImg.jpg";
 import financialliteracyImg from "../../../assets/newImages/financialliteracy.jpg";
-// import mentorshipImg from "../../../assets/newImages/mentorshipbg.jpg";
+import mentorshipImg from "../../../assets/newImages/mentroshipbg.jpg";
 
 const callouts = [
   {
     name: "Financial Literacy",
     description:
-      "Work from home accessoriesUnlock a wealth of educational resources, tutorials, and interactive materials that simplify complex financial concepts.",
+      "Unlock a wealth of educational resources, tutorials, and interactive materials that simplify complex financial concepts.",
     imageSrc: financialliteracyImg,
     imageAlt:
       "Unlock a wealth of educational resources, tutorials, and interactive materials that simplify complex financial concepts.",
@@ -31,7 +31,7 @@ const callouts = [
     name: "Virtual Trading & Practice",
     description:
       "Hone Strategies with 5 Lakh INR Virtual Capital in Realistic, Risk-Free Environments",
-    imageSrc: analysisImg,
+    imageSrc: practiceImg,
     imageAlt:
       "Hone Strategies with 5 Lakh INR Virtual Capital in Realistic, Risk-Free Environments.",
     href: "#",
@@ -40,7 +40,7 @@ const callouts = [
     name: "Personalized Mentorships",
     description:
       "Learn from past mistakes, optimize your trading with one-on-one guidance, and receive weekly expert strategies directly to your inbox/WhatsApp.",
-    imageSrc: analysisImg,
+    imageSrc: mentorshipImg,
     imageAlt:
       "Learn from past mistakes, optimize your trading with one-on-one guidance, and receive weekly expert strategies directly to your inbox/WhatsApp.",
     href: "#",
@@ -69,12 +69,14 @@ export default function ComprehensiveServices() {
   return (
     <div className="bg-gray-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+        <div className="mx-auto max-w-4xl py-16 sm:py-24 lg:max-w-none lg:py-32">
           <h2 className="text-4xl font-bold text-gray-900">
             Comprehensive Services
             <br />{" "}
           </h2>
-          <p className="mt-2 mb-8 text-md sm:mb-12">Your Financial Journey, All in One Place</p>
+          <p className="mt-2 mb-8 text-md lg:text-sm sm:mb-12">
+            Your Financial Journey, All in One Place
+          </p>
 
           <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
             {callouts.map((callout) => (

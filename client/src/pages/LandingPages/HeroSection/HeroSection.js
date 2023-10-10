@@ -1,5 +1,6 @@
 import React from "react";
 import HeroImage from "../../../assets/newImages/generalImg1.jpg";
+import whitebgImg from "../../../assets/logo/whitebgLogo.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -27,10 +28,11 @@ export default function HeroSection() {
       <section className="bg-white text-gray-800 pt-36 lg:px-48">
         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
           <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-            <h1 className="text-5xl font-bold leadi sm:text-7xl pb-4">
+            {/* <h1 className="text-5xl font-bold leadi sm:text-7xl pb-4">
               FinstoX
               <br />
-            </h1>
+            </h1> */}
+            <img src={whitebgImg} className="lg:-ml-7" alt="imgage" />
             <h2 className="text-3xl font-bold leadi sm:text-6xl">
               <span className="text-blue-600"> Where Learning </span>Meets Funding for Irresistible
               <br />

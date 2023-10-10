@@ -1,28 +1,26 @@
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+// import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import smallLogo from "../../../assets/logo/smallLogo.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import "./index.css";
-const user = {
-  name: "GKT",
-  email: "gkt@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+
+// const user = {
+//   name: "GKT",
+//   email: "gkt@example.com",
+//   imageUrl:
+//     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+// };
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Contact Us", href: "/pages/landing-pages/contact-us", current: false },
   { name: "Get Funded", href: "/pages/landing-pages/get-funded", current: false },
   // { name: "About", href: "/about", current: false },
 ];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Dashboard", href: "/dashboard" },
-  { name: "Sign In", href: "/pages/authentication/sign-in" },
-];
+const userNavigation = [{ name: "Sign In", href: "/pages/authentication/sign-in" }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -86,18 +84,18 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div className="hidden md:block">
-                    <div className="ml-4 flex items-center md:ml-6">
-                      {/* <button
+                    <div className="my-4 flex items-center md:ml-6 rounded-md">
+                      <Link to="/pages/authentication/sign-in"
                         type="button"
-                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="relative rounded-md min-w-24 bg-slate-950 lg:bg-slate-800  p-1 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="absolute -inset-1.5" />
-                        <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button> */}
+                        <span className="sr-only">Sign In</span>
+                        Sign In
+                      </Link>
 
                       {/* Profile dropdown */}
-                      <Menu as="div" className="relative ml-3">
+                      {/* <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
@@ -132,7 +130,7 @@ export default function NavBar() {
                             ))}
                           </Menu.Items>
                         </Transition>
-                      </Menu>
+                      </Menu> */}
                     </div>
                   </div>
                   <div className="-mr-2 flex md:hidden">
@@ -171,17 +169,6 @@ export default function NavBar() {
                 </div>
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
-                    <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
-                    </div>
-                    <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">
-                        {user.name}
-                      </div>
-                      <div className="text-sm font-medium leading-none text-gray-400">
-                        {user.email}
-                      </div>
-                    </div>
                     {/* <button
                       type="button"
                       className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -204,6 +191,19 @@ export default function NavBar() {
                     ))}
                   </div>
                 </div>
+
+                {/* <div className="hidden md:block">
+                    <div className="my-4 flex items-center md:ml-6 rounded-md">
+                      <button
+                        type="button"
+                        className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">Sign In</span>
+                        Sign In
+                      </button>
+                      </div>
+                </div> */}
               </Disclosure.Panel>
             </>
           )}
