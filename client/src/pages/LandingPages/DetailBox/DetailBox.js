@@ -46,12 +46,12 @@ export default function DetailBox() {
             </h2>
             <ul className="lg:mt-20 text-md text-gray-500 sm:text-base ">
               <li className="mt-4 text-xl pb-10 lg:text-2xl max-w-1/2 wrap ">
-                Join our journey to inclusive
-                <span className="text-blue-400"> financial empowerment.</span>
+                Join our journey to inclusive `&#39;`
+                <span className="text-blue-400">financial empowerment.</span>
                 <br />
               </li>
               <li className="mt-4 text-xl pb-10 lg:text-2xl">
-                Regardless of your situation, we're here to help you learn and grow in the {" "}
+                Regardless of your situation, we're here to help you learn and grow in the `&#39;`
                 <span className="text-orange-400">trading world.</span>
               </li>
               <li className="mt-4 text-xl pb-10 lg:text-2xl">
@@ -74,7 +74,7 @@ export default function DetailBox() {
             <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[72px] rounded-l-lg"></div>
             <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
             <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
-            <div class="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+            <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
             <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
               <img
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"

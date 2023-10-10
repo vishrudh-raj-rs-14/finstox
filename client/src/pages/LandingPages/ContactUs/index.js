@@ -18,13 +18,15 @@ import footerRoutes from "footer.routes";
 // Image
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
+import NewContactUs from "./newContactUs/ContactUs";
 
 function ContactUs() {
   return (
     <>
-      <MKBox position="fixed" top="0.0rem" width="100%">
+     <MKBox position="absolute" z-index={300} top="0" width="100%">
         <DefaultNavbar routes={routes} />
       </MKBox>
+    
       {/* <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} lg={6}>
           <MKBox
@@ -117,13 +119,19 @@ function ContactUs() {
         </Grid>
       </Grid> */}
 
-      <div className="grid max-w-screen-xl grid-cols-1 mt-32 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-gray-100 text-gray-800">
+      {/* <div className="grid max-w-screen-xl grid-cols-1 z-0 mt-32 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-gray-100 text-gray-800">
         <div className="flex flex-col justify-between">
-          <div className="space-y-2">
-            <h2 className="text-4xl font-bold leadi lg:text-5xl">Let's talk!</h2>
-            <div className="text-gray-600">Vivamus in nisl metus? Phasellus.</div>
+          
+          <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-xl">
+              <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+              <div class="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+              <div class="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+              <div class="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+              <div class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-2-light.png" class=" w-[272px] h-[572px]" alt=""/>
+              </div>
           </div>
-          <img src="https://cdn.pixabay.com/photo/2020/11/10/22/28/contact-us-5731121_1280.png" alt="" className="p-6 h-52 md:h-64 rounded" />
+
         </div>
         <form novalidate="" className="space-y-6">
           <div>
@@ -156,8 +164,10 @@ function ContactUs() {
             Send Message
           </button>
         </form>
+      </div> */}
+      <div className="m-10">
+      <NewContactUs />
       </div>
-
       <MKBox  mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>

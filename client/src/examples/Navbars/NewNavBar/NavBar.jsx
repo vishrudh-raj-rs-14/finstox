@@ -41,7 +41,7 @@ export default function NavBar() {
         <Disclosure as="nav" className="bg-slate-800  w-full z-40 fixed">
           {({ open }) => (
             <>
-              <div className="mx-auto mt-1  max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto mt-1  max-w-7xl px-4 z-40 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
@@ -84,7 +84,7 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div className="hidden md:block">
-                    <div className="my-4 flex items-center md:ml-6 rounded-md">
+                    <div className="my-4 flex items-center md:ml-6 z-40 rounded-md">
                       <Link to="/pages/authentication/sign-in"
                         type="button"
                         className="relative rounded-md min-w-24 bg-slate-950 lg:bg-slate-800  p-1 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"

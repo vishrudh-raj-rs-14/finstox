@@ -1,7 +1,7 @@
 export default function Pricing() {
   return (
     <section className="py-20 bg-gray-100 text-gray-800">
-      <div className="container px-4 mx-auto">
+      <div className="container px-4 lg:px-32 mx-auto">
         <div className="max-w-2xl mx-auto mb-16 text-center">
           <span className="font-bold tracki uppercase text-blue-600">Pricing</span>
           <h2 className="text-4xl font-bold lg:text-5xl">Choose your best plan</h2>
