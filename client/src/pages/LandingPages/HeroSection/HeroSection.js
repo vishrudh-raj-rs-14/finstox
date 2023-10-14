@@ -25,8 +25,8 @@ export default function HeroSection() {
   };
   return (
     <>
-      <section className="bg-white text-gray-800 pt-28 lg:px-48">
-        <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+      <section className="bg-white text-gray-800 ">
+        <div className="container flex flex-col max-w-7xl items-center justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
           <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
             {/* <h1 className="text-5xl font-bold leadi sm:text-7xl pb-4">
               FinstoX
@@ -36,7 +36,7 @@ export default function HeroSection() {
             <h2 className="text-3xl font-bold leadi sm:text-6xl">
               <span className="text-blue-600"> Where Learning </span>Meets Funding for Irresistible
               <br />
-              <span className="text-blue-600 text-yellow-500">
+              <span className=" text-yellow-500">
                 <Typewriter
                   words={["Trading", "Wealth-building!"]}
                   loop={Infinity}
@@ -73,13 +73,13 @@ export default function HeroSection() {
               {/* <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">Malesuada</a> */}
             </motion.div>
           </div>
-          <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+          <div className="flex items-center rounded-xl border-2 border-black h-[33rem] justify-center  xl:h-112 2xl:h-128">
             <motion.img
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               src={HeroImage}
               alt=""
-              className="object-contain h-72 sm:h-80 w-max lg:h-96 xl:h-112 2xl:h-128"
+              className="object-contain w-max h-fit  xl:h-112 2xl:h-128"
             />
           </div>
         </div>

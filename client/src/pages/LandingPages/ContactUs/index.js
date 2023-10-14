@@ -23,10 +23,23 @@ import NewContactUs from "./newContactUs/ContactUs";
 function ContactUs() {
   return (
     <>
-     <MKBox position="absolute" z-index={300} top="0" width="100%">
+      {/* <MKBox position="absolute" z-index={300} top="0" width="100%">
         <DefaultNavbar routes={routes} />
-      </MKBox>
-    
+      </MKBox> */}
+
+      {/* new navbar */}
+      <DefaultNavbar
+        routes={routes}
+        action={{
+          type: "internal",
+          route: "../pages/authentication/sign-in",
+          label: "Sign in",
+          color: "default",
+        }}
+        transparent
+        light
+      />
+
       {/* <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} lg={6}>
           <MKBox
@@ -166,9 +179,9 @@ function ContactUs() {
         </form>
       </div> */}
       <div className="m-10">
-      <NewContactUs />
+        <NewContactUs />
       </div>
-      <MKBox  mt={6}>
+      <MKBox mt={6}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

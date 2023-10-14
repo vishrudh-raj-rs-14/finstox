@@ -31,7 +31,9 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import routes from "routes";
 
 // Images
-import bgImage from "assets/images/bg-login.jpg";
+// import bgImage from "assets/images/bg-login.jpg";
+import bgImage from "../../../assets/newImages/svgtradingimg.svg";
+
 import { /*useContext,*/ useEffect, useState } from "react";
 import { useMaterialUIController } from "context";
 import { setLayout } from "context";

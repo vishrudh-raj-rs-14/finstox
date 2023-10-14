@@ -13,9 +13,15 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { TableRow } from "@mui/material";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion  } from "framer-motion";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+
+import LockIcon from '@mui/icons-material/Lock';
 
 const rows = [
   {
+    modules: 1,
     name: "Introduction to stock market",
     history: [
       {
@@ -45,6 +51,7 @@ const rows = [
     ],
   },
   {
+    modules: 2,
     name: "The Technical Analysis",
     history: [
       {
@@ -57,11 +64,42 @@ const rows = [
       },
     ],
   },
+  {
+    modules: 3,
+    name: "Comming Soon",
+    history: [
+      {
+        videoId: "#",
+        subtopic: "Comming Soon",
+      },
+      {
+        videoId: "#",
+        subtopic: "Comming Soon",
+      },
+    ],
+  },
+  {
+    modules: 4,
+    name: "Comming Soon",
+    history: [
+      {
+        videoId: "#",
+        subtopic: "Comming Soon",
+      },
+      {
+        videoId: "#",
+        subtopic: "Comming Soon",
+      },
+    ],
+  },
 ];
 
 function LearnDashboard() {
   // Create an array to store the open/close state of each row
   const [openRows, setOpenRows] = useState(Array(rows.length).fill(false));
+
+  // for framer motion
+  const [selectedId, setSelectedId] = useState(null)
 
   const toggleRow = (index) => {
     // Create a new copy of the openRows array with the clicked row toggled
@@ -88,7 +126,8 @@ function LearnDashboard() {
 
   return (
     <DashboardLayout>
-      <MKBox
+      <DashboardNavbar />
+      {/* <MKBox
         minHeight="60vh"
         width="100%"
         sx={{
@@ -113,16 +152,18 @@ function LearnDashboard() {
             marginTop: "10px",
           }}
         />
-      </MKBox>
+      </MKBox> */}
+
       <div style={{ paddingTop: "20px" }}>
-        <h4>Courses</h4>
+        <h4 className="lg:text-3xl font-bold">Courses</h4>
       </div>
+      
       <TableContainer component={Paper}>
-        <Table aria-label="collapsible table">
-          <TableBody>
+        <Table className="bg-white" aria-label="collapsible table">
+          <TableBody className="bg-white" >
             {rows.map((row, index) => (
               <React.Fragment key={row.name}>
-                <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+                <TableRow className="bg-slate-300"  sx={{ "& > *": { borderBottom: "unset" } }}>
                   <TableCell style={{ width: "35px", paddingRight: "0px" }}>
                     <IconButton
                       aria-label="expand row"
@@ -132,32 +173,69 @@ function LearnDashboard() {
                       {openRows[index] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                   </TableCell>
-                  <TableCell component="th" scope="row">
-                    {row.name}
+                  <TableCell className="bg-slate-300"   component="th" scope="row">
+                    <div className="flex flex-row justify-between">
+                      <h2 className="lg:text-xl font-medium"> <span >{row.modules}. </span> {row.name}</h2>
+                      <h2 className="lg:text-sm font-medium"> { row.history.length }</h2>
+                    </div>
                   </TableCell>
                 </TableRow>
-                <TableRow key={`subtopic-${index}`}>
-                  <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                
+                <TableRow className="bg-white"  key={`subtopic-${index}`}>
+                  <TableCell className="bg-white lg:mx-10" style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                     <Collapse in={openRows[index]} timeout="auto" unmountOnExit>
-                      <Box sx={{ margin: 1 }}>
-                        <Table size="small" aria-label="purchases">
-                          <TableBody>
+                      <Box sx={{ margin: 0 }}>
+                        <Table className="bg-white border-none" size="small" aria-label="purchases">
+                          <TableBody className="bg-white border-none" >
                             {row.history.map((historyRow) => (
-                              <TableRow key={historyRow.videoId}>
-                                <TableCell component="th" scope="row">
-                                  <span
-                                    id={`video-placeholder-${historyRow.videoId}`}
-                                    onClick={() => embedYouTubeVideo(historyRow.videoId)}
-                                    style={{ cursor: "pointer" }}
-                                  >
-                                    <img
-                                      src={`https://img.youtube.com/vi/${historyRow.videoId}/0.jpg`}
-                                      //alt={historyRow.subtopic}
-                                    />
-                                  </span>
-                                </TableCell>
-                                <TableCell>{historyRow.subtopic}</TableCell>
-                              </TableRow>
+                              // <TableRow key={historyRow.videoId}>
+                              //   <TableCell component="th" scope="row">
+                              //     <span
+                              //       id={`video-placeholder-${historyRow.videoId}`}
+                              //       onClick={() => embedYouTubeVideo(historyRow.videoId)}
+                              //       style={{ cursor: "pointer" }}
+                              //     >
+                              //       <img
+                              //         src={`https://img.youtube.com/vi/${historyRow.videoId}/0.jpg`}
+                              //         alt={historyRow.subtopic}
+                              //         width="2rem"
+                              //       />
+                              //     </span>
+                              //   </TableCell>
+                              //     <TableCell >{historyRow.subtopic}</TableCell>
+                              //     {/* <TableCell > 
+                              //       <a href={`https://youtube.com/watch?${historyRow.videoId} `}  target="_blank">
+                              //         {historyRow.subtopic}
+                              //       </a>
+                              //   </TableCell> */}
+                              // </TableRow>
+                              <>
+                              <div key={historyRow.videoId} className="m-4 h-16 mx-10 flex items-center bg-slate-200 rounded shadow-sm">
+                                <motion.div layoutId={historyRow.videoId} onClick={() => setSelectedId(historyRow.videoId)}>
+                                  {/* <motion.h5>{item.subtitle}</motion.h5> */}
+                                  <motion.h2 className="flex items-center mx-8 font-medium"> <span><LockIcon /> &nbsp;</span>  { historyRow.subtopic}</motion.h2>
+                                </motion.div>
+                              </div>
+                              <AnimatePresence>
+                                {selectedId && (
+                                  <motion.div layoutId={selectedId} className="fixed  flex flex-row items-start top-1/2 lg:left-96 justify-center min-w-full min-h-fit z-40 " onClick={() => setSelectedId(null)}>
+                                    {/* <motion.h5>{item.subtitle}</motion.h5> */}
+                                    {/* <motion.h2>"Not Avaliable"</motion.h2> */}
+                                    {/* <span
+                                        id={`video-placeholder-${rows.videoId}`}
+                                        onMouseEnter={() => embedYouTubeVideo(rows.videoId)}
+                                        style={{ cursor: "pointer" }}
+                                      >
+                                    </span> */}
+                                    <div className="flex justify-center mb-32">
+                                      <iframe src={`https://www.youtube.com/embed/${selectedId}`} width="560" height="315"></iframe>
+                                    </div>
+
+                                    <motion.button className="" onClick={() => setSelectedId(null)}>❌</motion.button>
+                                  </motion.div>
+                                )}
+                            </AnimatePresence>
+                              </>
                             ))}
                           </TableBody>
                         </Table>
@@ -165,11 +243,13 @@ function LearnDashboard() {
                     </Collapse>
                   </TableCell>
                 </TableRow>
+                
               </React.Fragment>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+       
     </DashboardLayout>
   );
 }

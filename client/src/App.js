@@ -21,7 +21,7 @@ import Configurator from "examples/Configurator";
 
 // import brandWhite from "assets/images/logo-ct.png";
 // import brandDark from "assets/images/logo-ct-dark.png";
-import finstoxLogo from "assets/images/finstox-logo.png";
+import finstoxLogo from "assets/logo/darklogobgrm.png";
 
 //import Icon from "@mui/material/Icon";
 import Learn from "pages/LandingPages/Learn";
@@ -29,7 +29,7 @@ import Learn from "pages/LandingPages/Learn";
 import Dashboard from "layouts/dashboard";
 import Icon from "@mui/material/Icon";
 import LearnDashboard from "layouts/learn";
-import PracticeDashboard from "layouts/practice";
+import PracticeDashboard from "layouts/practice"; 
 import FundDashboard from "layouts/funding";
 import AnalyseDashboard from "layouts/analyse";
 import axios from "axios";
@@ -190,7 +190,7 @@ export default function App() {
         {getRoutes(routes)}
 
         <Route path="/" element={<Presentation />} />
-      
+
         {/*<Route path="*" element={<Navigate to="/" />} />*/}
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />

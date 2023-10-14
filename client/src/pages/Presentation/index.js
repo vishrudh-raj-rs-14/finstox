@@ -47,6 +47,7 @@ import DetailBox from "pages/LandingPages/DetailBox/DetailBox";
 import generalImg from "../../assets/newImages/mentroshipbg.jpg";
 import Pricing from "pages/LandingPages/Pricing/Pricing";
 import DeviceModel from "pages/LandingPages/DeviceModel/DeviceModel";
+import HorizontalScrolledcard from "pages/LandingPages/comprehensiveServices/HorizontalScrolledcard";
 
 function Presentation() {
   const [, dispatch] = useMaterialUIController();
@@ -71,7 +72,8 @@ function Presentation() {
       /> */}
       <Navbar />
       <HeroSection />
-      <ComprehensiveServices />
+      {/* <ComprehensiveServices /> */}
+      <HorizontalScrolledcard />
       <DetailBox props={{ generalImg }} />
       {/* <DetailBox props={{ generalImg }} /> */}
       <DeviceModel />
