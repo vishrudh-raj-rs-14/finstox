@@ -40,8 +40,9 @@ import { useEffect } from "react";
 import { setLayout } from "context";
 import { useMaterialUIController } from "context";
 import HeroSection from "pages/LandingPages/HeroSection/HeroSection";
-import ComprehensiveServices from "pages/LandingPages/comprehensiveServices/ComprehensiveServices";
+// import ComprehensiveServices from "pages/LandingPages/comprehensiveServices/ComprehensiveServices";
 import DetailBox from "pages/LandingPages/DetailBox/DetailBox";
+import DiscoverSection from "../LandingPages/DiscoverSection/DiscoverSection";
 
 // Images
 import generalImg from "../../assets/newImages/mentroshipbg.jpg";
@@ -72,13 +73,14 @@ function Presentation() {
       /> */}
       <Navbar />
       <HeroSection />
+      <DiscoverSection />
       {/* <ComprehensiveServices /> */}
       <HorizontalScrolledcard />
       <DetailBox props={{ generalImg }} />
       {/* <DetailBox props={{ generalImg }} /> */}
       <DeviceModel />
       <Pricing />
-      <MKBox  pt={6} color={"white"}>
+      <MKBox color={"white"}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

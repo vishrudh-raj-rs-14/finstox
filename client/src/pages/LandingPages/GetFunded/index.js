@@ -9,6 +9,7 @@ import routes from "routes";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import footerRoutes from "footer.routes";
 import whiteLogo from "../../../assets/logo/whitebgLogo.jpg";
+import getFundedImg from "../../../assets/newImages/stockbgImg.jpg";
 
 function GetFundDashboard() {
   return (
@@ -25,7 +26,6 @@ function GetFundDashboard() {
         light
       />
 
-      
       {/* <div className=" h-screen ">
         <section className="bg-gray-100 text-gray-800 lg:pt-32">
           <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-around">
@@ -58,12 +58,11 @@ function GetFundDashboard() {
         </section>
       </div> */}
 
-   
-    <div class="relative overflow-hidden">
+      {/* <div class="relative overflow-hidden">
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:mb-16">
         <div class="max-w-2xl text-center mx-auto">
           <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl dark:text-gray-900">Get Funded <span class="text-blue-600">Qualify now</span> and get funded upto 10000</h1>
-          {/* <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Build your business here. Take it anywhere.</p> */}
+          <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Build your business here. Take it anywhere.</p>
         </div>
 
         <div class="mt-10 relative max-w-5xl mx-auto">
@@ -89,7 +88,37 @@ function GetFundDashboard() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
+
+      <section class="bg-white">
+        <div class="items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
+          <div class="max-w-2xl p-10 mx-auto z-10 relative text-center">
+            <div>
+              <p class="mt-8 text-5xl font-medium tracking-tighter text-black">
+                Get Funded <span class="text-blue-600">Qualify now</span> and get funded upto 10000
+              </p>
+              <p class="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-600">
+                Start your journey now
+              </p>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-3 mt-10 lg:flex-row">
+              <a
+                href="#"
+                class="items-center justify-center w-full px-6 py-2.5  text-center text-white duration-200 bg-black border-2 border-black rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none lg:w-auto focus-visible:outline-black text-sm focus-visible:ring-black"
+              >
+                Get Funded
+              </a>
+              {/* <a href="#" class="inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600">
+                        Learn more &nbsp; →
+                      </a> */}
+            </div>
+          </div>
+        </div>
+
+        <div class="relative items-center w-full z-0 mt-[-16rem] px-5 pb-12 mx-auto  md:px-12  max-w-7xl">
+          <img class="w-full bg-gray-300 rounded-xl" src={getFundedImg} alt="" />
+        </div>
+      </section>
 
       <MKBox>
         <DefaultFooter content={footerRoutes} />

@@ -35,7 +35,8 @@ import AnalyseDashboard from "layouts/analyse";
 import axios from "axios";
 //import Pricing from "layouts/pricing";
 import MDBox from "components/MDBox";
-import PriceList from "layouts/priceList";
+import Profile from "pages/LandingPages/Author/sections/Profile";
+// import PriceList from "layouts/priceList";
 // import NavBar from "examples/Navbars/NewNavBar/NavBar";
 //import PricePlan from "layouts/pricePlan";
 export default function App() {
@@ -150,20 +151,20 @@ export default function App() {
     },
     {
       type: "collapse",
-      name: "Pricing",
-      key: "pricing",
-      icon: <Icon fontSize="small">table_view</Icon>,
-      route: "/dashboard/pricing",
-      component: <PriceList />,
-    },
-    {
-      type: "collapse",
       name: "Practice",
       key: "practice",
       icon: <Icon fontSize="small">table_view</Icon>,
       route: "/dashboard/practice",
       component: membership >= 1 ? <PracticeDashboard /> : null,
     },
+    // {
+    //   type: "collapse",
+    //   name: "Profile",
+    //   key: "profile",
+    //   icon: <Icon fontSize="small">table_view</Icon>,
+    //   route: "/dashboard/profile",
+    //   component: membership >= 1 ? <Profile /> : null,
+    // },
     {
       type: "collapse",
       name: "Analyse",
@@ -202,7 +203,6 @@ export default function App() {
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/practice" ||
-          pathname == "/dashboard/pricing" ||
           pathname == "/dashboard/compete" ||
           pathname == "/dashboard/get-funded" ||
           pathname == "/dashboard/analyse") && (

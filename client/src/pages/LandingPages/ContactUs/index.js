@@ -1,24 +1,25 @@
 // @mui material components
-import Grid from "@mui/material/Grid";
+// import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
-import MKInput from "components/MKInput";
-import MKButton from "components/MKButton";
-import MKTypography from "components/MKTypography";
+// import MKInput from "components/MKInput";
+// import MKButton from "components/MKButton";
+// import MKTypography from "components/MKTypography";
 
 // Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
+// import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import routes from "routes";
+// import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
-import bgImage from "assets/images/illustrations/illustration-reset.jpg";
+// import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
 import NewContactUs from "./newContactUs/ContactUs";
+import Navbar from "examples/Navbars/NewNavBar/NavBar";
 
 function ContactUs() {
   return (
@@ -28,7 +29,7 @@ function ContactUs() {
       </MKBox> */}
 
       {/* new navbar */}
-      <DefaultNavbar
+      {/* <DefaultNavbar
         routes={routes}
         action={{
           type: "internal",
@@ -38,7 +39,9 @@ function ContactUs() {
         }}
         transparent
         light
-      />
+      /> */}
+
+      <Navbar />
 
       {/* <Grid container spacing={3} alignItems="center">
         <Grid item xs={12} lg={6}>
@@ -178,7 +181,7 @@ function ContactUs() {
           </button>
         </form>
       </div> */}
-      <div className="m-10">
+      <div className="p-10">
         <NewContactUs />
       </div>
       <MKBox mt={6}>

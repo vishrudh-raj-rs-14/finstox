@@ -187,7 +187,7 @@ function LearnDashboard() {
                       <Box sx={{ margin: 0 }}>
                         <Table className="bg-white border-none" size="small" aria-label="purchases">
                           <TableBody className="bg-white border-none" >
-                            {row.history.map((historyRow) => (
+                            {row.history.map((historyRow, index) => (
                               // <TableRow key={historyRow.videoId}>
                               //   <TableCell component="th" scope="row">
                               //     <span
@@ -213,7 +213,7 @@ function LearnDashboard() {
                               <div key={historyRow.videoId} className="m-4 h-16 mx-10 flex items-center bg-slate-200 rounded shadow-sm">
                                 <motion.div layoutId={historyRow.videoId} onClick={() => setSelectedId(historyRow.videoId)}>
                                   {/* <motion.h5>{item.subtitle}</motion.h5> */}
-                                  <motion.h2 className="flex items-center mx-8 font-medium"> <span><LockIcon /> &nbsp;</span>  { historyRow.subtopic}</motion.h2>
+                                  <motion.h2 className="flex items-center mx-8 font-medium"> {index + 1} <span>&nbsp; &nbsp;</span>  { historyRow.subtopic}</motion.h2>
                                 </motion.div>
                               </div>
                               <AnimatePresence>

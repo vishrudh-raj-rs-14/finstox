@@ -18,7 +18,7 @@ const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "Contact Us", href: "/pages/landing-pages/contact-us", current: false },
   { name: "Get Funded", href: "/pages/landing-pages/get-funded", current: false },
-  // { name: "About", href: "/about", current: false },
+  { name: "Pricing", href: "#pricingsection", current: false },
 ];
 const userNavigation = [{ name: "Sign In", href: "/pages/authentication/sign-in" }];
 
@@ -27,263 +27,257 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-
   const handlePricing = () => {
-    window.location.replace('/#pricingsection');
-  }
+    window.location.replace("/#pricingsection");
+  };
 
   return (
-    // <>
-    //   <div className="min-h-full">
-    //     <Disclosure as="nav" className="bg-slate-800  w-full z-40 fixed">
-    //       {({ open }) => (
-    //         <>
-    //           <div className="mx-auto mt-1  max-w-7xl px-4 z-40 sm:px-6 lg:px-8">
-    //             <div className="flex h-16 items-center justify-between">
-    //               <div className="flex items-center">
-    //                 <div className="flex-shrink-0">
-                      // <motion.img
-                      //   animate={{
-                      //     scale: [1, 1, 1.2, 1.2, 1],
-                      //     rotate: [0, 0, 270, 270, 0],
-                      //     borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-                      //   }}
-                      //   transition={{
-                      //     duration: 2,
-                      //     ease: "easeInOut",
-                      //     times: [0, 0.2, 0.5, 0.8, 1],
-                      //     repeat: Infinity,
-                      //     repeatDelay: 1,
-                      //   }}
-                      //   className="h-8 w-8 rounded"
-                      //   src={smallLogo}
-                      //   alt="Your Company"
-                      // />
-    //                 </div>
-    //                 <div className="hidden md:block">
-    //                   <div className="ml-10 flex items-baseline space-x-4">
-    //                     {navigation.map((item) => (
-    //                       <Link
-    //                         key={item.name}
-    //                         to={item.href}
-    //                         className={classNames(
-    //                           item.current
-    //                             ? "bg-gray-900 text-white"
-    //                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-    //                           "rounded-md px-3 py-2 text-sm font-medium"
-    //                         )}
-    //                         aria-current={item.current ? "page" : undefined}
-    //                       >
-    //                         {item.name}
-    //                       </Link>
-    //                     ))}
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //               <div className="hidden md:block">
-    //                 <div className="my-4 flex items-center md:ml-6 z-40 rounded-md">
-    //                   <Link
-    //                     to="/pages/authentication/sign-in"
-    //                     type="button"
-    //                     className="relative rounded-md min-w-24 bg-slate-950 lg:bg-slate-800  p-1 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-    //                   >
-    //                     <span className="absolute -inset-1.5" />
-    //                     <span className="sr-only">Sign In</span>
-    //                     Sign In
-    //                   </Link>
+    <>
+      {/* <>
+        <div className="min-h-full">
+          <Disclosure as="nav" className="bg-slate-800  w-full z-40 fixed">
+            {({ open }) => (
+              <>
+                <div className="mx-auto mt-1  max-w-7xl px-4 z-40 sm:px-6 lg:px-8">
+                  <div className="flex h-16 items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <motion.img
+                          animate={{
+                            scale: [1, 1, 1.2, 1.2, 1],
+                            rotate: [0, 0, 270, 270, 0],
+                            borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                          }}
+                          transition={{
+                            duration: 2,
+                            ease: "easeInOut",
+                            times: [0, 0.2, 0.5, 0.8, 1],
+                            repeat: Infinity,
+                            repeatDelay: 1,
+                          }}
+                          className="h-8 w-8 rounded"
+                          src={smallLogo}
+                          alt="Your Company"
+                        />
+                      </div>
+                      <div className="hidden md:block">
+                        <div className="ml-10 flex items-baseline space-x-4">
+                          {navigation.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.href}
+                              className={classNames(
+                                item.current
+                                  ? "bg-gray-900 text-white"
+                                  : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                "rounded-md px-3 py-2 text-sm font-medium"
+                              )}
+                              aria-current={item.current ? "page" : undefined}
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="hidden md:block">
+                      <div className="my-4 flex items-center md:ml-6 z-40 rounded-md">
+                        <Link
+                          to="/pages/authentication/sign-in"
+                          type="button"
+                          className="relative rounded-md min-w-24 bg-slate-950 lg:bg-slate-800  p-1 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        >
+                          <span className="absolute -inset-1.5" />
+                          <span className="sr-only">Sign In</span>
+                          Sign In
+                        </Link>
 
-    //                   {/* Profile dropdown */}
-    //                   {/* <Menu as="div" className="relative ml-3">
-    //                     <div>
-    //                       <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-    //                         <span className="absolute -inset-1.5" />
-    //                         <span className="sr-only">Open user menu</span>
-    //                         <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
-    //                       </Menu.Button>
-    //                     </div>
-    //                     <Transition
-    //                       as={Fragment}
-    //                       enter="transition ease-out duration-100"
-    //                       enterFrom="transform opacity-0 scale-95"
-    //                       enterTo="transform opacity-100 scale-100"
-    //                       leave="transition ease-in duration-75"
-    //                       leaveFrom="transform opacity-100 scale-100"
-    //                       leaveTo="transform opacity-0 scale-95"
-    //                     >
-    //                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-    //                         {userNavigation.map((item) => (
-    //                           <Menu.Item key={item.name}>
-    //                             {({ active }) => (
-    //                               <Link
-    //                                 to={item.href}
-    //                                 className={classNames(
-    //                                   active ? "bg-gray-100" : "",
-    //                                   "block px-4 py-2 text-sm text-gray-700"
-    //                                 )}
-    //                               >
-    //                                 {item.name}
-    //                               </Link>
-    //                             )}
-    //                           </Menu.Item>
-    //                         ))}
-    //                       </Menu.Items>
-    //                     </Transition>
-    //                   </Menu> */}
-    //                 </div>
-    //               </div>
-    //               <div className="-mr-2 flex md:hidden">
-    //                 {/* Mobile menu button */}
-    //                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-    //                   <span className="absolute -inset-0.5" />
-    //                   <span className="sr-only">Open main menu</span>
-    //                   {open ? (
-    //                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-    //                   ) : (
-    //                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-    //                   )}
-    //                 </Disclosure.Button>
-    //               </div>
-    //             </div>
-    //           </div>
+                        
+                      </div>
+                    </div>
+                    <div className="-mr-2 flex md:hidden">
+                      
+                      <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span className="absolute -inset-0.5" />
+                        <span className="sr-only">Open main menu</span>
+                        {open ? (
+                          <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                        ) : (
+                          <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                        )}
+                      </Disclosure.Button>
+                    </div>
+                  </div>
+                </div>
 
-    //           <Disclosure.Panel className="md:hidden">
-    //             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-    //               {navigation.map((item) => (
-    //                 <Disclosure.Button
-    //                   key={item.name}
-    //                   as="a"
-    //                   href={item.href}
-    //                   className={classNames(
-    //                     item.current
-    //                       ? "bg-gray-900 text-white"
-    //                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
-    //                     "block rounded-md px-3 py-2 text-base font-medium"
-    //                   )}
-    //                   aria-current={item.current ? "page" : undefined}
-    //                 >
-    //                   {item.name}
-    //                 </Disclosure.Button>
-    //               ))}
-    //             </div>
-    //             <div className="border-t border-gray-700 pb-3 pt-4">
-    //               <div className="flex items-center px-5">
-    //                 {/* <button
-    //                   type="button"
-    //                   className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-    //                 >
-    //                   <span className="absolute -inset-1.5" />
-    //                   <span className="sr-only">View notifications</span>
-    //                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-    //                 </button> */}
-    //               </div>
-    //               <div className="mt-3 space-y-1 px-2">
-    //                 {userNavigation.map((item) => (
-    //                   <Disclosure.Button
-    //                     key={item.name}
-    //                     as="a"
-    //                     href={item.href}
-    //                     className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-    //                   >
-    //                     {item.name}
-    //                   </Disclosure.Button>
-    //                 ))}
-    //               </div>
-    //             </div>
+                <Disclosure.Panel className="md:hidden">
+                  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                    {navigation.map((item) => (
+                      <Disclosure.Button
+                        key={item.name}
+                        as="a"
+                        href={item.href}
+                        className={classNames(
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "block rounded-md px-3 py-2 text-base font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    ))}
+                  </div>
+                  <div className="border-t border-gray-700 pb-3 pt-4">
+                    <div className="flex items-center px-5">
+                      <button
+                        type="button"
+                        className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">View notifications</span>
+                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      </button>
+                    </div>
+                    <div className="mt-3 space-y-1 px-2">
+                      {userNavigation.map((item) => (
+                        <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      ))}
+                    </div>
+                  </div>
 
-    //             {/* <div className="hidden md:block">
-    //                 <div className="my-4 flex items-center md:ml-6 rounded-md">
-    //                   <button
-    //                     type="button"
-    //                     className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-    //                   >
-    //                     <span className="absolute -inset-1.5" />
-    //                     <span className="sr-only">Sign In</span>
-    //                     Sign In
-    //                   </button>
-    //                   </div>
-    //             </div> */}
-    //           </Disclosure.Panel>
-    //         </>
-    //       )}
-    //     </Disclosure>
+                  <div className="hidden md:block">
+                    <div className="my-4 flex items-center md:ml-6 rounded-md">
+                      <button
+                        type="button"
+                        className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">Sign In</span>
+                        Sign In
+                      </button>
+                    </div>
+                  </div>
+                </Disclosure.Panel>
+              </>
+            )}
+          </Disclosure>
 
-    //     {/* <header className="bg-white shadow">
-    //       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    //         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-    //       </div>
-    //     </header> */}
-    //     {/* <main>
-    //       <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8"> Your content</div>
-    //     </main> */}
-    //   </div>
-    // </>
-
-    
-
-    <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
-      <nav class="relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-white dark:border-gray-700" aria-label="Global">
-        <div class="flex items-center justify-between">
-          <Link to="/" class="flex-none text-xl font-semibold dark:text-white"  aria-label="Brand">
-            <motion.img
-              animate={{
-                scale: [1, 1, 1.2, 1.2, 1],
-                rotate: [0, 0, 270, 270, 0],
-                borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeInOut",
-                times: [0, 0.2, 0.5, 0.8, 1],
-                repeat: Infinity,
-                repeatDelay: 1,
-              }}
-              className="h-12 w-12 rounded border-2 border-black"
-              src={smallLogo}
-              alt="Your Company"
-            />
-          </Link>
-          <div class="md:hidden">
-            <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
-              <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-              </svg>
-              <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-              </svg>
-            </button>
-          </div>
         </div>
-        <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
-          <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
-            <Link to="/" class="font-medium text-blue-600 md:py-6 dark:text-blue-500"  aria-current="page">Home</Link>
-            <Link to="/pages/landing-pages/contact-us" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" >Contact</Link>
-            <Link to="/pages/landing-pages/get-funded" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" >Get Funded</Link>
-            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#pricingsection" onClick={handlePricing}>Pricing</a>
+      </> */}
+    <div className="min-h-full">
+      <Disclosure as="nav" className=" py-4 w-full z-40 fixed">
+        {({ open }) => (
+          <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
+            <nav
+              class="relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-white dark:border-gray-700"
+              aria-label="Global"
+            >
+              <div class="flex items-center justify-between">
+                <Link to="/" class="flex-none text-xl font-semibold dark:text-white" aria-label="Brand">
+                  <motion.img
+                    animate={{
+                      scale: [1, 1, 1.2, 1.2, 1],
+                      rotate: [0, 0, 270, 270, 0],
+                      borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                    }}
+                    transition={{
+                      duration: 2,
+                      ease: "easeInOut",
+                      times: [0, 0.2, 0.5, 0.8, 1],
+                      repeat: Infinity,
+                      repeatDelay: 1,
+                    }}
+                    className="h-12 w-12 rounded border-2 border-black"
+                    src={smallLogo}
+                    alt="Your Company"
+                  />
+                </Link>
+                <div className="-mr-2 flex md:hidden">
+                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span className="absolute -inset-0.5" />
+                    <span className="sr-only">Open main menu</span>
+                    {open ? (
+                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    )}
+                  </Disclosure.Button>
+                </div>
+              </div>
+              <div
+                id="navbar-collapse-with-animation"
+                class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+              >
+                <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                  <Link
+                    to="/"
+                    class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
+                    aria-current="page"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="/pages/landing-pages/contact-us"
+                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    to="/pages/landing-pages/get-funded"
+                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                  >
+                    Get Funded
+                  </Link>
+                  <a
+                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                    href="#pricingsection"
+                    onClick={handlePricing}
+                  >
+                    Pricing
+                  </a>
 
-            {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
-              <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
-                Dropdown
-                <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                </svg>
-              </button>
-
-              <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5">
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
-                  About
-                </a>
-                <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
-                  <button type="button" class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                    Sub Menu
-                    <svg class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+                  <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
+                    Dropdown
+                    <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                   </button>
 
-                  <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]">
+                  <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5">
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
                       About
                     </a>
+                    <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
+                      <button type="button" class="w-full flex justify-between w-full items-center text-sm text-gray-800 rounded-md py-2 px-3 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                        Sub Menu
+                        <svg class="md:-rotate-90 ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                      </button>
+
+                      <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-white md:shadow-md rounded-lg p-2 dark:bg-gray-800 md:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute md:border before:-right-5 before:top-0 before:h-full before:w-5 top-0 right-full !mx-[10px]">
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                          About
+                        </a>
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                          Downloads
+                        </a>
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
+                          Team Account
+                        </a>
+                      </div>
+                    </div>
+
                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
                       Downloads
                     </a>
@@ -291,30 +285,96 @@ export default function NavBar() {
                       Team Account
                     </a>
                   </div>
+                </div> */}
+
+                  <Link
+                    to="/pages/authentication/sign-in"
+                    class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
+                  >
+                    <svg
+                      class="w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    </svg>
+                    Log in
+                  </Link>
                 </div>
-
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
-                  Downloads
-                </a>
-                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="#">
-                  Team Account
-                </a>
               </div>
-            </div> */}
+            </nav>
 
-            <Link to="/pages/authentication/sign-in" class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500" >
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-              </svg>
-              Log in
-            </Link>
-          </div>
-        </div>
-      </nav>
-    </header>
+            <Disclosure.Panel className="md:hidden bg-slate-800 rounded-2xl m-8 w-full">
+              <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                {navigation.map((item) => (
+                  <Disclosure.Button
+                    key={item.name}
+                    as="a"
+                    href={item.href}
+                    className={classNames(
+                      item.current
+                        ? "bg-gray-900 text-white"
+                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      "block rounded-md px-3 py-2 text-base font-medium"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Disclosure.Button>
+                ))}
+              </div>
+              <div className="border-t border-gray-700 pb-3 pt-4">
+                <div className="flex items-center px-5">
+                  <button
+                    type="button"
+                    className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">View notifications</span>
+                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
+                  </button>
+                </div>
+                <div className="mt-3 space-y-1 px-2">
+                  {userNavigation.map((item) => (
+                    <Disclosure.Button
+                      key={item.name}
+                      as="a"
+                      href={item.href}
+                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hidden md:block">
+                <div className="my-4 flex items-center md:ml-6 rounded-md">
+                  <button
+                    type="button"
+                    className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">Sign In</span>
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </Disclosure.Panel>
+          </header>
+       )}
+       </Disclosure>
+
+    </div>
+   
+
+
+    </>
   );
 }
-
 
 // import { useEffect, useState } from 'react'
 // import { Dialog } from '@headlessui/react'
@@ -351,7 +411,6 @@ export default function NavBar() {
 //     } console.log("checking");
 //   }, [])
 
-
 //   useEffect(() => {
 //     if (theme === "dark") {
 //       document.documentElement.classList.add("dark");
@@ -363,7 +422,6 @@ export default function NavBar() {
 //     }
 //   }, [theme])
 
-
 //   // Define a function to toggle the state.
 //   const handleToggle = () => {
 //     // setIsToggled(!isToggled);
@@ -372,8 +430,6 @@ export default function NavBar() {
 //     // setTheme(theme === "dark" ? "light" : "dark");
 
 //   };
-
-
 
 //   return (
 //     <header className="fixed inset-x-0 top-0 z-50">
@@ -402,7 +458,7 @@ export default function NavBar() {
 //             <Bars3Icon className="h-6 w-6 dark:bg-white rounded" aria-hidden="true" />
 //           </button>
 //         </div>
-        
+
 //         <div className="hidden sm:visible z-50 dark:bg-slate-700 lg:flex lg:gap-x-12 bg-blue-100 rounded-full px-5 py-4">
 //           {navigation.map((item) => (
 //             <>
@@ -415,8 +471,7 @@ export default function NavBar() {
 //               </Link>
 //             </>
 //           ))}
-          
-             
+
 //           {/* <div className="text-md font-semibold hover:bg-slate-600 leading-6 text-gray-900 dark:text-white">
 //             <button type="button" onClick={handleToggle}>
 //               {theme==="dark" ? "Light" : "Dark"}
@@ -443,7 +498,6 @@ export default function NavBar() {
 //               </Switch>
 //           </div> */}
 
-        
 //         </div>
 //         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
 //           <Link
@@ -488,7 +542,7 @@ export default function NavBar() {
 //                     {item.name}
 //                   </Link>
 //                 ))}
-                
+
 //               <div className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-slate-900 hover:text-green-600">
 //                 <div className="flex h-6 items-center ">
 //                   <Switch

@@ -40,8 +40,8 @@ function SignUpBasic() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [pastExp, setPastExp] = useState("");
   // const [termsChecked, setTermsChecked] = useState(false);
 
   const [emailError, setEmailError] = useState("");
@@ -132,7 +132,17 @@ function SignUpBasic() {
                 <MKBox component="form" role="form" onSubmit={handleSubmit}>
                   <MKBox mb={2}>
                     <MKInput
-                      type="name"
+                      label="Full Name"
+                      type="fullname"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.valu) }
+                      required
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="username"
                       value={username}
                       label="username"
                       onChange={handleUsernameChange}
@@ -176,6 +186,17 @@ function SignUpBasic() {
                       type="password"
                       value={confirmPassword}
                       onChange={handleConfirmPasswordChange}
+                      required
+                      fullWidth
+                    />
+                  </MKBox>
+                  
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="Past Experience"
+                      value={pastExp}
+                      label="pastExperience"
+                      onChange={(e)=> setPastExp(e.target.value)}
                       required
                       fullWidth
                     />
