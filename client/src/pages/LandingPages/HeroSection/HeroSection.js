@@ -73,7 +73,7 @@ export default function HeroSection() {
               {/* <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">Malesuada</a> */}
             </motion.div>
           </div>
-          <div className="flex items-center rounded-xl border-2 border-black h-[33rem] justify-center  xl:h-112 2xl:h-128">
+          <div className="hidden lg:visible lg:flex items-center rounded-xl border-2 border-black h-[33rem] justify-center  xl:h-112 2xl:h-128">
             <motion.img
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

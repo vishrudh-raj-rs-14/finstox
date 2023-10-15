@@ -78,7 +78,7 @@ function Presentation() {
       {/* <DetailBox props={{ generalImg }} /> */}
       <DeviceModel />
       <Pricing />
-      <MKBox  mt={6}>
+      <MKBox  pt={6} color={"white"}>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>

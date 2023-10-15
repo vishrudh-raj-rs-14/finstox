@@ -35,25 +35,25 @@ const HorizontalScrollCarousel = () => {
     
     <section ref={targetRef} className="  relative h-[300vh] bg-white">
         
-      <div className="sticky top-0  flex flex-row h-screen items-center overflow-hidden pl-32">
+      <div className="sticky top-0  flex flex-row h-screen items-center overflow-hidden lg:pl-32 pt-16">
         
         <motion.div style={{ x }} className="flex gap-4 ">
             <div className="relative  max-w-7xl flex flex-col items-center justify-center">
-                <h2 className="text-6xl sm:3xl font-bold text-gray-900">
+                <h2 className="lg:text-6xl text-2xl font-bold text-gray-900">
                 Comprehensive Services <br />
-                <span className="mt-2 text-2xl sm:xl font-bold text-gray-900">
+                <span className="mt-2 lg:text-2xl text-lg font-bold text-gray-900">
                 Your Financial Journey, All in One Place
                 </span>
                 </h2>
             </div>
           {callouts.map((callout) => (
 
-            <div key={callout.name} className={`group relative p-16 ${callout.BgColor} rounded-2xl lg:w-[898px] lg:h-[576px] w-[26rem] sm:flex sm:flex-col sm:items-center sm:justify-center mr-16`}>
-               <div className="relative h-[550px] w-full flex-col overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2  lg:aspect-w-1 group-hover:opacity-75">
+            <div key={callout.name} className={`group relative p-16 ${callout.BgColor} rounded-2xl lg:w-[898px]  lg:h-[576px] w-[26rem] sm:flex sm:flex-col sm:items-center sm:justify-center mr-16`}>
+               <div className="relative h-fit lg:h-[550px] w-full  flex-col overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2  lg:aspect-w-1 ">
                  <img
                    src={callout.imageSrc}
                    alt={callout.imageAlt}
-                   className=" lg:h-[600px] w-full object-cover object-center"
+                   className="h-[30vh] lg:h-[600px] w-full object-cover object-center"
                  />
                </div>
                <div>
@@ -94,7 +94,7 @@ const callouts = [
     {
       id: 2,
       name: "Virtual Trading & Practice",
-      BgColor: "bg-yellow-100",
+      BgColor: "bg-yellow-50",
       description:
         "Hone Strategies with 5 Lakh INR Virtual Capital in Realistic, Risk-Free Environments",
       imageSrc: practiceImg,
@@ -105,7 +105,7 @@ const callouts = [
     {
       id: 3,
       name: "Personalized Mentorships",
-      BgColor: "bg-blue-100",
+      BgColor: "bg-cyan-100",
       description:
         "Learn from past mistakes, optimize your trading with one-on-one guidance, and receive weekly expert strategies directly to your inbox/WhatsApp.",
       imageSrc: mentorshipImg,

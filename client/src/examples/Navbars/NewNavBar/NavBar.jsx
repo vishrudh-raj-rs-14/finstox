@@ -27,6 +27,11 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+
+  const handlePricing = () => {
+    window.location.replace('/#pricingsection');
+  }
+
   return (
     // <>
     //   <div className="min-h-full">
@@ -253,7 +258,7 @@ export default function NavBar() {
             <Link to="/" class="font-medium text-blue-600 md:py-6 dark:text-blue-500"  aria-current="page">Home</Link>
             <Link to="/pages/landing-pages/contact-us" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" >Contact</Link>
             <Link to="/pages/landing-pages/get-funded" class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" >Get Funded</Link>
-            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#pricingsection">Pricing</a>
+            <a class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#pricingsection" onClick={handlePricing}>Pricing</a>
 
             {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
               <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">

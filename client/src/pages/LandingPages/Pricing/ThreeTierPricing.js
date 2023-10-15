@@ -2,7 +2,7 @@
 export default function ThreeTierPricing() {
   return (
     
-    <div id="pricingsection" className=" sm:mx-8 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div id="pricingsection" className="bg-white sm:mx-8 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       
       <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
         <h2 className="text-2xl font-bold md:text-4xl  md:leading-tight text-blacke">Pricing</h2>
@@ -29,7 +29,7 @@ export default function ThreeTierPricing() {
         </label>
       </div> */}
      
-      <div className="mt-12 mx-32 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center">
+      <div className="mt-12 lg:mx-32 mx-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:items-center">
         
         <div className="flex flex-col border border-gray-200 text-center rounded-xl p-8 dark:border-gray-700">
           <h4 className="font-medium text-lg text-gray-800 dark:text-gray-600">Basic</h4>
