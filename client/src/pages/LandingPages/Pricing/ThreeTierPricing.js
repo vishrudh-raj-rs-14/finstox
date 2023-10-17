@@ -33,8 +33,8 @@ export default function ThreeTierPricing() {
           <div className="flex flex-col border border-gray-200 text-center rounded-xl p-8 dark:border-gray-700">
             <h4 className="font-medium text-lg text-gray-800 dark:text-gray-600">Basic</h4>
             <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-gray-600">
-              <span className="font-bold text-2xl -mr-2">₹</span>
-              39
+              ₹ 39
+              <span className="font-bold text-2xl -mr-2">/month</span>
             </span>
             <p className="mt-2 text-sm text-gray-500">Start your journey</p>
 
@@ -113,8 +113,8 @@ export default function ThreeTierPricing() {
             </p>
             <h4 className="font-medium text-lg text-gray-800 dark:text-gray-600">Premium</h4>
             <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-gray-900">
-              <span className="font-bold text-2xl -mr-2">₹</span>
-              299
+              ₹ 299
+              <span className="font-bold text-2xl -mr-2">/month</span>
             </span>
             <p className="mt-2 text-sm text-gray-500">All the basics for starting a new setup</p>
 
@@ -182,8 +182,8 @@ export default function ThreeTierPricing() {
           <div className="flex flex-col border border-gray-200 text-center rounded-xl p-8 dark:border-gray-700">
             <h4 className="font-medium text-lg text-gray-800 dark:text-gray-600">Medium</h4>
             <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-gray-600">
-              <span className="font-bold text-2xl -mr-2">₹</span>
-              179
+              ₹ 179
+              <span className="font-bold text-2xl -mr-2">/month</span>
             </span>
             <p className="mt-2 text-sm text-gray-500">Start your journey</p>
 
