@@ -39,7 +39,7 @@ export default function HeroSection() {
               
             </h2>
             <h2 className="text-3xl font-bold leadi sm:text-6xl">
-            <span className=" text-yellow-500">
+            <span className=" text-black">
                 <Typewriter
                   words={["Trading", "Wealth-building!"]}
                   loop={Infinity}

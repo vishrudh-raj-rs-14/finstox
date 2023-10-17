@@ -251,7 +251,7 @@ function BuySell() {
           </div>
         </Grid>
 
-        <Grid item xs={12} sm={6} style={{ backgroundColor: "lightred" }}>
+        <Grid item xs={12} sm={6} style={{ backgroundColor: "lightorange" }}>
           <MDBox
             style={{
               marginBottom: "5px",

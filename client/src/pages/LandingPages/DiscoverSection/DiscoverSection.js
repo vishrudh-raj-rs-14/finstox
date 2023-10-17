@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import discoverImg from "../../../assets/newImages/discoverDarkImg.png";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 function index() {
+          
+  const myref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+      target: myref,
+      offset: ["0 1", "1.11 1"],
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
     <section className="bg-white">
       <div className="items-center w-full px-5  mx-auto md:px-12 lg:px-16 max-w-7xl">
@@ -31,9 +44,10 @@ function index() {
         </div>
       </div>
 
-      <div className="relative items-center w-full  px-5 pb-12 mx-auto  md:px-12 lg:px-16 max-w-7xl">
+      <motion.div ref={myref}
+      style={{ scale: scaleProgress, opacity: opacityProgress }} className="relative items-center w-full  px-5 pb-12 mx-auto  md:px-12 lg:px-16 max-w-7xl">
         <img className="w-full bg-gray-300 rounded-2xl" src={discoverImg} alt="" />
-      </div>
+      </motion.div>
     </section>
   );
 }

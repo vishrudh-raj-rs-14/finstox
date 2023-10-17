@@ -2,38 +2,7 @@ import React from "react";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
-const tableItems = [
-  {
-      name: "Liam James",
-      email: "liamjames@example.com",
-      position: "Software engineer",
-      salary: "$100K"
-  },
-  {
-      name: "Olivia Emma",
-      email: "oliviaemma@example.com",
-      position: "Product designer",
-      salary: "$90K"
-  },
-  {
-      name: "William Benjamin",
-      email: "william.benjamin@example.com",
-      position: "Front-end developer",
-      salary: "$80K"
-  },
-  {
-      name: "Henry Theodore",
-      email: "henrytheodore@example.com",
-      position: "Laravel engineer",
-      salary: "$120K"
-  },
-  {
-      name: "Amelia Elijah",
-      email: "amelia.elijah@example.com",
-      position: "Open source manager",
-      salary: "$75K"
-  },
-]
+const tableItems = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 function AnalyseDashboard() {
   return (
@@ -45,7 +14,7 @@ function AnalyseDashboard() {
 
 
 
-    <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+    {/* <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <div className="max-w-lg">
             <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
                 Analysis
@@ -88,7 +57,129 @@ function AnalyseDashboard() {
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> */}
+
+<div className="container p-2 mx-auto rounded-md sm:p-4 text-gray-800 bg-gray-50">
+	<h2 className="mb-3 text-2xl font-semibold leadi">Analysis</h2>
+	<div className="overflow-x-auto">
+		<table className="min-w-full text-xs">
+			<thead className="rounded-t-lg bg-gray-300">
+				<tr className="text-right bg-slate-500">
+					<th title="Ranking" className="p-3 text-left">Day</th>
+					<th className="p-3"></th>
+					<th className="p-3"></th>
+					<th className="p-3"></th>
+					<th title="Team name" className="p-3 text-center">Wins</th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+					<th title="Win percentage" className="p-3">Losses</th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+          <th className="p-3"></th>
+				</tr>
+			</thead>
+      <thead className="rounded-t-lg bg-gray-300">
+				<tr className="text-right">
+					<th className="p-3"></th>
+					<th colSpan="3" title="Team name" className="p-3 text-center">Long Position		</th>
+          <th className="p-3"></th>
+          <th colSpan="3" title="Team name" className="p-3 text-center">Short Position		</th>
+          <th className="p-3"></th>
+          <th colSpan="3" title="Team name" className="p-3 text-center">Long Position		</th>
+          <th className="p-3"></th>
+          <th colSpan="3" title="Team name" className="p-3 text-center">Long Position		</th>      
+				</tr>
+			</thead>
+      <thead className="rounded-t-lg bg-gray-300">
+				<tr className="text-right">
+					<th className="p-3"></th>
+					<th className="p-3 text-center">% Profit</th>
+					<th className="p-3 text-center">Strategy</th>
+					<th className="p-3 text-center">Holding Time</th>
+          <th className="p-3"></th>
+					<th className="p-3 text-center">% Profit</th>
+					<th className="p-3 text-center">Strategy</th>
+					<th className="p-3 text-center">Holding Time</th>
+          <th className="p-3"></th>
+					<th className="p-3 text-center">% Profit</th>
+					<th className="p-3 text-center">Strategy</th>
+					<th className="p-3 text-center">Holding Time</th>
+          <th className="p-3"></th>
+					<th className="p-3 text-center">% Profit</th>
+					<th className="p-3 text-center">Strategy</th>
+					<th className="p-3 text-center">Holding Time</th>
+          <th className="p-3"></th>
+				</tr>
+			</thead>
+			<tbody>
+
+        { tableItems.map((row, index) => (
+          <tr className="text-right border-b border-opacity-20 border-gray-300 bg-gray-100">
+            <td className="px-3 py-2 text-left">
+              <span>{index +1}</span>
+            </td>
+            <td className="px-3 py-2 text-left">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2 text-right">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+            <td className="px-3 py-2">
+              <span></span>
+            </td>
+          </tr>
+        ))}
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
 
 
     </DashboardLayout>

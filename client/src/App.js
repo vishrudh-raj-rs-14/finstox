@@ -13,6 +13,7 @@ import Presentation from "layouts/pages/presentation";
 import routes from "routes";
 //import dashroutes from "dashroutes";
 import SignIn from "layouts/pages/authentication/sign-in";
+import ForgetPassword from "layouts/pages/authentication/forget-password";
 import CreateAccount from "layouts/pages/authentication/create-account";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import Sidenav from "examples/Sidenav";
@@ -29,7 +30,7 @@ import Learn from "pages/LandingPages/Learn";
 import Dashboard from "layouts/dashboard";
 import Icon from "@mui/material/Icon";
 import LearnDashboard from "layouts/learn";
-import PracticeDashboard from "layouts/practice"; 
+import PracticeDashboard from "layouts/practice";
 import FundDashboard from "layouts/funding";
 import AnalyseDashboard from "layouts/analyse";
 import axios from "axios";
@@ -195,6 +196,7 @@ export default function App() {
         {/*<Route path="*" element={<Navigate to="/" />} />*/}
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
+        <Route path="pages/authentication/forgot-password" element={<ForgetPassword />} />
         <Route path="pages/LandingPages/learn" element={<Learn />} />
         {getRoutes(dashroutes)}
       </Routes>
