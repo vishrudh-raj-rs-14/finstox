@@ -99,7 +99,7 @@ router.post("/getSuccess", async (req, res) => {
       (transaction) => transaction.orderType === "Sell"
     ).length;
     const successPercentage = totalSellTransactions > 0 ? (totalSellProfits / totalSellTransactions) * 100 : 0;
-    const roundedsuccess = parseFloat(successPercentage.toFixed(4));
+    const roundedsuccess = parseFloat(successPercentage.toFixed(2));
 
     
     user.totalSuccessRate = roundedsuccess;
@@ -132,7 +132,7 @@ router.post('/getTotalReturns', async (req,res)=>{
       (total, transaction) => total + transaction.roi,
       0
     );
-    const roundedtotalRoi = parseFloat(totalRoi.toFixed(4));
+    const roundedtotalRoi = parseFloat(totalRoi.toFixed(2));
 
     user.totalRoi = roundedtotalRoi;
     await user.save();
