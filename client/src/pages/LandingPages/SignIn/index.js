@@ -31,7 +31,9 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import routes from "routes";
 
 // Images
-import bgImage from "assets/images/bg-login.jpg";
+// import bgImage from "assets/images/bg-login.jpg";
+import bgImage from "../../../assets/images/bg-login.jpg";
+
 import { /*useContext,*/ useEffect, useState } from "react";
 import { useMaterialUIController } from "context";
 import { setLayout } from "context";
@@ -119,6 +121,7 @@ function SignInBasic() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          filter: "blur(4px)",
         }}
       />
       <MKBox px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>

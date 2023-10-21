@@ -2,6 +2,9 @@ import React from "react";
 import "./CardContainer.scss";
 import CardItem from "./CardItem";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
+import Pricing from "pages/LandingPages/Pricing/Pricing";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import ThreeTierPricing from "pages/LandingPages/Pricing/ThreeTierPricing";
 
 const allCardsInfo = [
   {
@@ -38,12 +41,19 @@ const allCardsInfo = [
 //CardContainer
 
 const PriceList = () => {
+
+
+
   return (
     <DashboardLayout>
-      <div className="card__container">
+      {/* <div className="card__container">
         {allCardsInfo.map((singleCard) => {
           return <CardItem objProp={singleCard} key={singleCard.level} />;
         })}
+      </div> */}
+      <DashboardNavbar />
+      <div>
+        <ThreeTierPricing />
       </div>
     </DashboardLayout>
   );

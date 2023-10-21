@@ -13,6 +13,7 @@ import Presentation from "layouts/pages/presentation";
 import routes from "routes";
 //import dashroutes from "dashroutes";
 import SignIn from "layouts/pages/authentication/sign-in";
+import ForgetPassword from "layouts/pages/authentication/forget-password";
 import CreateAccount from "layouts/pages/authentication/create-account";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import Sidenav from "examples/Sidenav";
@@ -21,7 +22,7 @@ import Configurator from "examples/Configurator";
 
 // import brandWhite from "assets/images/logo-ct.png";
 // import brandDark from "assets/images/logo-ct-dark.png";
-import finstoxLogo from "assets/images/finstox-logo.png";
+import finstoxLogo from "assets/logo/darklogobgrm.png";
 
 //import Icon from "@mui/material/Icon";
 import Learn from "pages/LandingPages/Learn";
@@ -35,7 +36,9 @@ import AnalyseDashboard from "layouts/analyse";
 import axios from "axios";
 //import Pricing from "layouts/pricing";
 import MDBox from "components/MDBox";
-import PriceList from "layouts/priceList";
+import Profile from "pages/LandingPages/Author/sections/Profile";
+// import PriceList from "layouts/priceList";
+// import NavBar from "examples/Navbars/NewNavBar/NavBar";
 //import PricePlan from "layouts/pricePlan";
 export default function App() {
   const { pathname } = useLocation();
@@ -149,20 +152,20 @@ export default function App() {
     },
     {
       type: "collapse",
-      name: "Pricing",
-      key: "pricing",
-      icon: <Icon fontSize="small">table_view</Icon>,
-      route: "/dashboard/pricing",
-      component: <PriceList />,
-    },
-    {
-      type: "collapse",
       name: "Practice",
       key: "practice",
       icon: <Icon fontSize="small">table_view</Icon>,
       route: "/dashboard/practice",
       component: membership >= 1 ? <PracticeDashboard /> : null,
     },
+    // {
+    //   type: "collapse",
+    //   name: "Profile",
+    //   key: "profile",
+    //   icon: <Icon fontSize="small">table_view</Icon>,
+    //   route: "/dashboard/profile",
+    //   component: membership >= 1 ? <Profile /> : null,
+    // },
     {
       type: "collapse",
       name: "Analyse",
@@ -184,12 +187,16 @@ export default function App() {
   return (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
+
       <Routes>
         {getRoutes(routes)}
+
         <Route path="/" element={<Presentation />} />
+
         {/*<Route path="*" element={<Navigate to="/" />} />*/}
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
+        <Route path="pages/authentication/forgot-password" element={<ForgetPassword />} />
         <Route path="pages/LandingPages/learn" element={<Learn />} />
         {getRoutes(dashroutes)}
       </Routes>
@@ -198,7 +205,6 @@ export default function App() {
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/learn" ||
           pathname == "/dashboard/practice" ||
-          pathname == "/dashboard/pricing" ||
           pathname == "/dashboard/compete" ||
           pathname == "/dashboard/get-funded" ||
           pathname == "/dashboard/analyse") && (

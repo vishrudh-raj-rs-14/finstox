@@ -5,6 +5,7 @@ import "./LearnDashboard.css";
 import axios from "axios";
 import WalletProfit from "./components/walletProfit";
 import BuySell from "./components/BuySell";
+import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
 let tvScriptLoadingPromise;
 
@@ -92,6 +93,7 @@ function LearnDashboard() {
 
   return (
     <DashboardLayout>
+      <DashboardNavbar />
       <div className="tradingview-widget-container">
         <div>
           <label htmlFor="symbolSelect">Select Symbol: </label>

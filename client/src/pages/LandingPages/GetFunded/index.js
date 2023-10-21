@@ -1,5 +1,6 @@
 import React from "react";
-import bgImage from "assets/images/stock-lap.jpg";
+import bgImage from "../../../assets/newImages/Investment data-rafiki.png";
+
 import MKBox from "components/MKBox";
 import { Link } from "react-router-dom";
 import "./FundDashboard.css"; // Import the CSS file
@@ -7,6 +8,8 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import routes from "routes";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 import footerRoutes from "footer.routes";
+import whiteLogo from "../../../assets/logo/whitebgLogo.jpg";
+import getFundedImg from "../../../assets/newImages/stockbgImg.jpg";
 
 function GetFundDashboard() {
   return (
@@ -22,31 +25,102 @@ function GetFundDashboard() {
         transparent
         light
       />
-      <MKBox
-        minHeight="80vh"
-        width="100%"
-        sx={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "20px",
-        }}
-      >
-        <div className="fund-dashboard-container">
-          <p className="fund-text">QUALIFY NOW</p>
-          <p className="fund-text">AND GET FUNDED</p>
-          <p className="fund-text">UPTO 1000000</p>
-          <Link to="/dashboard/practice">
-            <button className="fund-button">Start Trading</button>
-          </Link>
+
+      {/* <div className=" h-screen ">
+        <section className="bg-gray-100 text-gray-800 lg:pt-32">
+          <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-around">
+            <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+              <img
+                src={bgImage}
+                alt=""
+                className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
+              />
+            </div>
+            <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+              <h1 className="text-5xl font-bold leadi sm:text-6xl">
+                Get Funded
+              </h1>
+              <h1 className="text-5xl font-bold mt-10 leadi sm:text-6xl">
+                <span className="text-blue-600 pt-10">Qualify now  </span>and get funded upto 10000
+              </h1>
+              
+              <div className="flex flex-col mt-10 space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+                <Link
+                  rel="noopener noreferrer"
+                  to="#"
+                  className="px-8 py-3 text-lg font-semibold rounded bg-blue-600 text-gray-50"
+                >
+                  Start Trading
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div> */}
+
+      {/* <div class="relative overflow-hidden">
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:mb-16">
+        <div class="max-w-2xl text-center mx-auto">
+          <h1 class="block text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl dark:text-gray-900">Get Funded <span class="text-blue-600">Qualify now</span> and get funded upto 10000</h1>
+          <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">Build your business here. Take it anywhere.</p>
         </div>
-      </MKBox>
-      <MKBox pt={6} px={1} mt={6}>
+
+        <div class="mt-10 relative max-w-5xl mx-auto">
+          <div class="w-full object-cover h-96 sm:h-[480px] bg-[url('https://images.pexels.com/photos/7567565/pexels-photo-7567565.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-no-repeat bg-center bg-cover rounded-xl"></div>
+
+          <div class="absolute inset-0 w-full h-full">
+            <div class="flex flex-col justify-center items-center w-full h-full">
+              <a class="inline-flex justify-center items-center gap-x-1.5 text-center text-sm bg-white text-gray-800 hover:text-gray-600 rounded-full transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:bg-black dark:text-gray-200 dark:hover:text-gray-400 dark:focus:ring-offset-black" href="#">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                </svg>
+                Get Funded
+              </a>
+            </div>
+          </div>
+
+          <div class="absolute bottom-12 -left-20 -z-[1] w-48 h-48 bg-gradient-to-b from-orange-500 to-white p-px rounded-lg dark:to-slate-900">
+            <div class="bg-white w-48 h-48 rounded-lg dark:bg-slate-900"></div>
+          </div>
+
+          <div class="absolute -top-12 -right-20 -z-[1] w-48 h-48 bg-gradient-to-t from-blue-600 to-cyan-400 p-px rounded-full">
+            <div class="bg-white w-48 h-48 rounded-full dark:bg-slate-900"></div>
+          </div>
+        </div>
+      </div>
+    </div> */}
+
+      <section class="bg-white">
+        <div class="items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
+          <div class="max-w-2xl p-10 mx-auto z-10 relative text-center">
+            <div>
+              <p class="mt-8 text-5xl font-medium tracking-tighter text-black">
+                Get Funded <span class="text-blue-600">Qualify now</span> and get funded upto 10000
+              </p>
+              <p class="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-600">
+                Start your journey now
+              </p>
+            </div>
+            <div class="flex flex-col items-center justify-center gap-3 mt-10 lg:flex-row">
+              <a
+                href="#"
+                class="items-center justify-center w-full px-6 py-2.5  text-center text-white duration-200 bg-black border-2 border-black rounded-full inline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none lg:w-auto focus-visible:outline-black text-sm focus-visible:ring-black"
+              >
+                Get Funded
+              </a>
+              {/* <a href="#" class="inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600">
+                        Learn more &nbsp; →
+                      </a> */}
+            </div>
+          </div>
+        </div>
+
+        <div class="relative items-center w-full z-0 mt-[-16rem] px-5 pb-12 mx-auto  md:px-12  max-w-7xl">
+          <img class="w-full bg-gray-300 rounded-xl" src={getFundedImg} alt="" />
+        </div>
+      </section>
+
+      <MKBox>
         <DefaultFooter content={footerRoutes} />
       </MKBox>
     </>
