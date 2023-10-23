@@ -5,7 +5,7 @@ const User = require(__dirname + "/../models/User");
 router.post("/practiceBuy", async (req, res) => {
   const { email, symbol, orderType, amount, currentValue, journal } = req.body;
   console.log(req.body);
-  const stock = amount / currentValue;
+  const stock = parseFloat((amount / currentValue).toFixed(2));
   const stockLeft = stock;
   try {
     const user = await User.findOne({ email });
@@ -33,12 +33,11 @@ router.post("/practiceBuy", async (req, res) => {
       (entry) => entry.symbol === symbol
     );
     if (symbolStockEntry) {
-      symbolStockEntry.stockLeft =
-        (symbolStockEntry.stockLeft || 0) + amount / currentValue;
+      symbolStockEntry.stockLeft = parseFloat(((symbolStockEntry.stockLeft || 0) + amount / currentValue).toFixed(2));
     } else {
       user.symbolStock.push({
         symbol,
-        stockLeft: amount / currentValue,
+        stockLeft: parseFloat((amount / currentValue).toFixed(2)),
       });
     }
     await user.save();
@@ -53,7 +52,7 @@ router.post("/practiceBuy", async (req, res) => {
 router.post("/practiceSell", async (req, res) => {
   const { email, symbol, orderType, stock, currentValue, journal } = req.body;
   console.log(req.body);
-  const amount = stock * currentValue;
+  const amount = parseFloat((stock * currentValue).toFixed(2));
   try {
     const user = await User.findOne({ email });
 
@@ -111,7 +110,7 @@ router.post("/practiceSell", async (req, res) => {
         }
       }
     }
-    const profitSell = totalProfit;
+    const profitSell = parseFloat((totalProfit).toFixed(2));
     const roi = totalroi;
     user.practiceHistory.push({
       symbol,

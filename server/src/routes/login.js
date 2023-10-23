@@ -3,7 +3,10 @@ require('dotenv').config();
 var router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require(__dirname + '/../models/User');
+const OtpModel = require(__dirname + '/../models/Otp');
 const {maxAge,createToken} = require('../middlewares/authController');
+const {generateOTP} = require(__dirname + '/../middlewares/otp');
+const nodemailer = require('nodemailer');
 
 router.post('/loginUser', async (req, res) => {
   console.log(req.body);
@@ -34,6 +37,65 @@ router.post('/loginUser', async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+let otp;
+
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+    otp = generateOTP();
+
+    const otpsend = await OtpModel.findOneAndUpdate({email:email},{otp:otp});
+    //const email ='harivhari2020@gmail.com';
+    // Create a Nodemailer transporter using Gmail's SMTP server
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      //host: 'smtp.gmail.com',
+      //port: 465,
+      //secure: true,
+      auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
+      },
+    });
+
+    // Send the email
+    await transporter.sendMail({
+      from: process.env.EMAIL_USERNAME,
+      to: email,
+      subject: 'OTP for forgot-password confirmation',
+      text: otp,
+    });
+
+    res.status(200).json({ message: 'Email sent successfully' });
+
+    const otpDoc = await OtpModel.findOne({ email });
+    
+    if (otpDoc) {
+      otpDoc.otp = otp;
+      await otpDoc.save();
+    } else {
+      // If the email doesn't exist, create a new document
+      await OtpModel.create({ email, otp });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+
+
+router.post('/confirm-otp',async (req,res)=>{
+  const { email,otpNumber } = req.body;
+  const expectedOtp = await OtpModel.findOne({email:email});
+  if(otpNumber === expectedOtp.otp) {
+    return res.json({status:'ok'});
+  }
+  else{
+    return res.json({status:'error'});
   }
 });
 
