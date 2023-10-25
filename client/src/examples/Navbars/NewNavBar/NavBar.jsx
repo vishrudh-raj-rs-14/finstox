@@ -16,9 +16,9 @@ import "./index.css";
 // };
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Contact Us", href: "/pages/landing-pages/contact-us", current: false },
   { name: "Get Funded", href: "/pages/landing-pages/get-funded", current: false },
   { name: "Pricing", href: "#pricingsection", current: false },
+  { name: "Contact Us", href: "/pages/landing-pages/contact-us", current: false },
 ];
 const userNavigation = [{ name: "Sign In", href: "/pages/authentication/sign-in" }];
 
@@ -226,24 +226,24 @@ export default function NavBar() {
                     Home
                   </Link>
                   <Link
-                    to="/pages/landing-pages/contact-us"
-                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                  >
-                    Contact
-                  </Link>
-                  <Link
                     to="/pages/landing-pages/get-funded"
                     class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                   >
                     Get Funded
                   </Link>
-                  <a
+                  <Link
                     class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                    href="#pricingsection"
+                    to="#pricingsection"
                     onClick={handlePricing}
                   >
                     Pricing
-                  </a>
+                  </Link>
+                  <Link
+                    to="/pages/landing-pages/contact-us"
+                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                  >
+                    Contact
+                  </Link>
 
                   {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
                   <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">

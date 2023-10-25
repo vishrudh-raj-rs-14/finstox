@@ -15,28 +15,25 @@ import bgImage from "../../../assets/images/bg-login.jpg";
 import { /*useContext,*/ useEffect, useState } from "react";
 import { useMaterialUIController } from "context";
 import { setLayout } from "context";
-//import { DataContext } from "../../../DataContext";
-import { IconButton, InputAdornment } from "@mui/material";
 
-function ForgetPassword() {
+function OtpVerification() {
   const [, dispatch] = useMaterialUIController();
+  const [otp, setOtp] = useState("");
+
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  const handleForgetPassword = async (event) => {
+  const handleOtpVerification = async (event) => {
     event.preventDefault();
     const api = process.env.REACT_APP_BACKEND_URL;
     console.log(api);
 
-    const response = await fetch(`${api}/reset-password`, {
+    const response = await fetch(`${api}/confirm-otp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ otp }),
     });
 
     const data = await response.json();
@@ -44,13 +41,12 @@ function ForgetPassword() {
     // if (data.statu == 500) {
     //   navigate("/dashboard", { replace: true });
     // }
-    if (data.status === 500) {
+    if (data.status == 500) {
       alert("Failed to send email");
       setEmail("Internal Server Error");
-      // navigate("/pages/authentication/otp-verification")
     } else {
       setEmail("");
-      navigate("/pages/authentication/otp-verification");
+      navigate("/");
     }
   };
 
@@ -92,9 +88,9 @@ function ForgetPassword() {
                 <div className="mt-7 rounded-xl shadow-sm dark:border-gray-700">
                   <div className="p-4 sm:p-7">
                     <div className="text-center">
-                      <h1 className="block text-2xl font-bold text-gray-800 ">Forgot password?</h1>
+                      <h1 className="block text-2xl font-bold text-gray-800 ">Verify OTP</h1>
                       <p className="mt-2 text-sm text-gray-600">
-                        Remember your password?
+                        {/* Remember your password? */}
                         <Link
                           className="text-blue-600 decoration-2 hover:underline font-medium"
                           to="/pages/authentication/sign-in"
@@ -108,8 +104,8 @@ function ForgetPassword() {
                       <form>
                         <div className="grid gap-y-4">
                           <div>
-                            <label for="email" className="block text-sm mb-2 text-black">
-                              Email address
+                            <label for="otp" className="block text-sm mb-2 text-black">
+                              Enter OTP
                             </label>
                             <div className="relative">
                               <input
@@ -118,10 +114,10 @@ function ForgetPassword() {
                                 name="email"
                                 className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 dark:border-gray-700 dark:text-gray-400"
                                 required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
                               />
-                              <div className="hidden absolute inset-y-0 right-0 items-center pointer-events-none pr-3">
+                              <div className="hidden absolute inset-y-0 right-0  items-center pointer-events-none pr-3">
                                 <svg
                                   className="h-5 w-5 text-red-500"
                                   width="16"
@@ -142,9 +138,9 @@ function ForgetPassword() {
                           <button
                             type="submit"
                             className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                            onClick={handleForgetPassword}
+                            onClick={handleOtpVerification}
                           >
-                            Reset password
+                            Verify
                           </button>
                         </div>
                       </form>
@@ -160,4 +156,4 @@ function ForgetPassword() {
   );
 }
 
-export default ForgetPassword;
+export default OtpVerification;

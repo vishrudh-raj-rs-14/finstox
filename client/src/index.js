@@ -3,7 +3,6 @@ import * as ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
 import { MaterialUIControllerProvider } from "context";
-import ChakraUIProvider from "context/chakriUi/chakriui";
 
 import "./index.css";
 // import NavBar from "examples/Navbars/NewNavBar/NavBar";
@@ -15,11 +14,7 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <BrowserRouter>
     <MaterialUIControllerProvider>
-      {/* <NavBar/> */}
-      {/* <ChakraUIProvider > */}
-
       <App />
-      {/* </ChakraUIProvider> */}
     </MaterialUIControllerProvider>
   </BrowserRouter>
 );

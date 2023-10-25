@@ -15,6 +15,7 @@ import routes from "routes";
 import SignIn from "layouts/pages/authentication/sign-in";
 import ForgetPassword from "layouts/pages/authentication/forget-password";
 import CreateAccount from "layouts/pages/authentication/create-account";
+import OtpVerification from "./pages/LandingPages/OtpVerification/index";
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
@@ -197,6 +198,8 @@ export default function App() {
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
         <Route path="pages/authentication/forgot-password" element={<ForgetPassword />} />
+        <Route path="pages/authentication/otp-verification" element={<OtpVerification />} />
+        
         <Route path="pages/LandingPages/learn" element={<Learn />} />
         {getRoutes(dashroutes)}
       </Routes>
