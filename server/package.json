@@ -21,6 +21,7 @@
     "nodemailer": "^6.9.3",
     "prop-types": "^15.8.1",
     "razorpay": "^2.9.2",
+    "stripe": "^14.2.0",
     "validator": "^13.9.0"
   },
   "devDependencies": {
