@@ -21,6 +21,7 @@ app.use(require('./routes/practice'));
 app.use(require('./routes/membership'));
 app.use(require('./routes/payment'));
 app.use(require('./routes/analysis'));
+app.use(require('./routes/analyze'));
 app.use(require('./routes/stripe'));
 
 app.listen(PORT, () => {
