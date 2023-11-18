@@ -34,12 +34,14 @@ export default function HeroSection() {
             </h1> */}
             <img src={whitebgImg} className="lg:-ml-7" alt="imgage" />
             <h2 className="text-3xl font-bold leadi sm:text-6xl lg:w-[80rem]">
-               Where Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5]">Meets Funding for Irresistible</span>
+              Where Learning{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5]">
+                Meets Funding for Irresistible
+              </span>
               <br />
-              
             </h2>
             <h2 className="text-3xl font-bold leadi sm:text-6xl">
-            <span className=" text-black">
+              <span className=" text-black">
                 <Typewriter
                   words={["Trading", "Wealth-building!"]}
                   loop={Infinity}
@@ -78,7 +80,6 @@ export default function HeroSection() {
           </div>
           <div className="hidden lg:visible lg:flex items-center blur-sm z-0 lg:mt-[12rem] rounded-xl  h-[33rem] justify-center  xl:h-112 2xl:h-128">
             <img
-          
               src={HeroImage}
               alt=""
               className="object-contain w-max h-fit  xl:h-112 2xl:h-128"

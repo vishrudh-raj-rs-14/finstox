@@ -15,8 +15,8 @@ import PropTypes from "prop-types";
 // images
 import smallLogo from "../../../assets/logo/smallLogo.png";
 
-function DefaultFooter({ content }) {
-//   const { brand, socials, menus, copyright } = content;
+function DefaultFooter() {
+  //   const { brand, socials, menus, copyright } = content;
 
   return (
     // <MKBox component="footer">
@@ -108,7 +108,7 @@ function DefaultFooter({ content }) {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <div>
+              {/* <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Resources
                 </h2>
@@ -124,20 +124,23 @@ function DefaultFooter({ content }) {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                   Follow us
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="#" className="hover:underline ">
-                      Github
+                    <a
+                      href="https://www.linkedin.com/company/finstox-in/"
+                      className="hover:underline "
+                    >
+                      LinkedIn
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:underline">
-                      Discord
+                      Instagram
                     </a>
                   </li>
                 </ul>

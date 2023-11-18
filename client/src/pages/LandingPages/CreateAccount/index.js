@@ -39,9 +39,10 @@ function SignUpBasic() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  //const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [pastExp, setPastExp] = useState("");
+  const [mobile, setMobile] = useState("");
   // const [termsChecked, setTermsChecked] = useState(false);
 
   const [emailError, setEmailError] = useState("");
@@ -61,9 +62,9 @@ function SignUpBasic() {
     setPasswordError("");
   };
 
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
+  // const handleConfirmPasswordChange = (event) => {
+  //   setConfirmPassword(event.target.value);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -102,14 +103,14 @@ function SignUpBasic() {
 
   return (
     <>
-      <DefaultNavbar routes={routes} transparent light mb={3} />
+      <DefaultNavbar routes={routes} transparent mb={8} />
       <MKBox
         position="absolute"
         top={0}
         left={0}
         zIndex={1}
         width="100%"
-        minHeight="100vh"
+        minHeight="120vh"
         sx={{
           backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
             `${linearGradient(
@@ -121,7 +122,7 @@ function SignUpBasic() {
           backgroundRepeat: "no-repeat",
         }}
       />
-      <MKBox px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>
+      <MKBox pt={20} px={1} width="100%" height="100vh" mx="auto" position="relative" zIndex={2}>
         <Grid container spacing={1} justifyContent="center" alignItems="center" height="100%">
           <Grid item xs={11} sm={9} md={5} lg={4} xl={3}>
             <Card>
@@ -135,7 +136,7 @@ function SignUpBasic() {
                       label="Full Name"
                       type="fullname"
                       value={fullName}
-                      onChange={(e) => setFullName(e.target.valu) }
+                      onChange={(e) => setFullName(e.target.value)}
                       required
                       fullWidth
                     />
@@ -144,7 +145,7 @@ function SignUpBasic() {
                     <MKInput
                       type="username"
                       value={username}
-                      label="username"
+                      label="User name"
                       onChange={handleUsernameChange}
                       required
                       fullWidth
@@ -180,7 +181,7 @@ function SignUpBasic() {
                       </div>
                     )}
                   </MKBox>
-                  <MKBox mb={2}>
+                  {/* <MKBox mb={2}>
                     <MKInput
                       label="Confirm Password"
                       type="password"
@@ -189,14 +190,24 @@ function SignUpBasic() {
                       required
                       fullWidth
                     />
-                  </MKBox>
-                  
+                  </MKBox> */}
+
                   <MKBox mb={2}>
                     <MKInput
                       type="Past Experience"
                       value={pastExp}
-                      label="pastExperience"
-                      onChange={(e)=> setPastExp(e.target.value)}
+                      label="Past Experience"
+                      onChange={(e) => setPastExp(e.target.value)}
+                      required
+                      fullWidth
+                    />
+                  </MKBox>
+                  <MKBox mb={2}>
+                    <MKInput
+                      type="Telephone"
+                      value={mobile}
+                      label="Mobile Number"
+                      onChange={(e) => setMobile(e.target.value)}
                       required
                       fullWidth
                     />

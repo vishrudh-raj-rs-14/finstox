@@ -199,7 +199,6 @@ export default function App() {
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
         <Route path="pages/authentication/forgot-password" element={<ForgetPassword />} />
         <Route path="pages/authentication/otp-verification" element={<OtpVerification />} />
-        
         <Route path="pages/LandingPages/learn" element={<Learn />} />
         {getRoutes(dashroutes)}
       </Routes>

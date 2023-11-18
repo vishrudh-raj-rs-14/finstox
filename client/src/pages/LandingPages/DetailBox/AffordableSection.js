@@ -4,23 +4,23 @@ import affordableSecImg from "../../../assets/newImages/Investment data-rafiki.p
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function AffordableSection() {
+  const myref = useRef(null);
 
-    const  myref = useRef(null);
-
-    const { scrollYProgress } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: myref,
     offset: ["0 1", "1.11 1"],
-    });
+  });
 
-    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
-    <div
-      className="bg-white flex justify-center p-4"
-    >
-     <motion.div ref={myref}
-      style={{ scale: scaleProgress, opacity: opacityProgress }} className=" bg-white max-w-[85rem] lpx-4 py-10 sm:px-6  lg:py-14">
+    <div className="bg-white flex justify-center p-4">
+      <motion.div
+        ref={myref}
+        style={{ scale: scaleProgress, opacity: opacityProgress }}
+        className=" bg-white max-w-[85rem] lpx-4 py-10 sm:px-6  lg:py-14"
+      >
         <div className="grid sm:grid-cols-2  bg-slate-100 sm:items-center shadow-md gap-8 rounded-xl  p-4 lg:p-16">
           <div className="sm:order-2">
             <div className="relative pt-[50%] sm:pt-[100%] rounded-lg bg-blue-500">
@@ -84,7 +84,7 @@ function AffordableSection() {
             </div> */}
           </div>
         </div>
-    </motion.div>
+      </motion.div>
     </div>
   );
 }

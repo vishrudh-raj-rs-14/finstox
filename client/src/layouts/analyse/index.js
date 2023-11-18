@@ -7,12 +7,10 @@ const EmptyTable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 function AnalyseDashboard() {
   const [tableItems, setTableItems] = useState({ getLossAnalyse: [], getWinAnalyse: [] });
-  const [email, setEmail] = useState('');
-
-
-
+  const [email, setEmail] = useState("");
+  console.log(email);
   useEffect(() => {
-    const email = localStorage.getItem('userEmail');
+    const email = localStorage.getItem("userEmail");
 
     const fetchData = async () => {
       try {
@@ -20,9 +18,9 @@ function AnalyseDashboard() {
         console.log(api);
 
         const getWinDataResponse = await fetch(`${api}/getWinAnalyse`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email }),
         });
@@ -30,16 +28,16 @@ function AnalyseDashboard() {
         const getWinData = await getWinDataResponse.json();
 
         if (getWinData.status === 500) {
-          alert('Failed to get win data');
-          setEmail('Internal Server Error');
+          alert("Failed to get win data");
+          setEmail("Internal Server Error");
         } else {
           setTableItems((prevItems) => ({ ...prevItems, getWinAnalyse: getWinData }));
         }
 
         const getLossDataResponse = await fetch(`${api}/getLossAnalyse`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ email }),
         });
@@ -47,20 +45,20 @@ function AnalyseDashboard() {
         const getLossData = await getLossDataResponse.json();
 
         if (getLossData.status === 500) {
-          alert('Failed to get loss data');
-          setEmail('Internal Server Error');
+          alert("Failed to get loss data");
+          setEmail("Internal Server Error");
         } else {
           setTableItems((prevItems) => ({ ...prevItems, getLossAnalyse: getLossData }));
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
   }, []);
-  
-  console.log(tableItems)
+
+  console.log(tableItems);
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -137,51 +135,37 @@ function AnalyseDashboard() {
               </tr>
             </thead>
             <tbody>
-              {
-                tableItems.getLossAnalyse.length != 0 ?
-                
-                Object.keys(tableItems.getWinAnalyse).map((index) => (
-                  <tr className="text-right border-b border-opacity-20 border-gray-300 bg-gray-100">
-                    <td className="px-3 py-2 text-left">
-                      <span>{index + 1}</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getWinAnalyse[index].profit ? tableItems.getWinAnalyse[index].profit : ""}</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getWinAnalyse[index].strategy ? tableItems.getWinAnalyse[index].strategy : "" }</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getWinAnalyse[index].holdingTime ? tableItems.getWinAnalyse[index].holdingTime : ""}</span>
-                    </td>
-                    <td className="px-3 py-2 text-left">
-                      <span></span>
-                    </td>
-                    {/* <td className="px-3 py-2 text-right">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td> */}
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getLossAnalyse[index].profit ? tableItems.getLossAnalyse[index].profit : ""}</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getLossAnalyse[index].strategy ? tableItems.getLossAnalyse[index].strategy : "" }</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span>{tableItems.getLossAnalyse[index].holdingTime ? tableItems.getLossAnalyse[index].holdingTime : ""}</span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    {/* <td className="px-3 py-2">
+              {tableItems.getLossAnalyse.length != 0
+                ? Object.keys(tableItems.getWinAnalyse).map((index) => (
+                    <tr className="text-right border-b border-opacity-20 border-gray-300 bg-gray-100">
+                      <td className="px-3 py-2 text-left">
+                        <span>{index + 1}</span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getWinAnalyse[index].profit
+                            ? tableItems.getWinAnalyse[index].profit
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getWinAnalyse[index].strategy
+                            ? tableItems.getWinAnalyse[index].strategy
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getWinAnalyse[index].holdingTime
+                            ? tableItems.getWinAnalyse[index].holdingTime
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 text-left">
+                        <span></span>
+                      </td>
+                      {/* <td className="px-3 py-2 text-right">
                       <span></span>
                     </td>
                     <td className="px-3 py-2">
@@ -193,51 +177,31 @@ function AnalyseDashboard() {
                     <td className="px-3 py-2">
                       <span></span>
                     </td> */}
-                  </tr>
-                ))
-                :
-                EmptyTable.map((row, index) => (
-                  <tr className="text-right border-b border-opacity-20 border-gray-300 bg-gray-100">
-                    <td className="px-3 py-2 text-left">
-                      <span>{index + 1}</span>
-                    </td>
-                    <td className="px-3 py-2 text-left">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    {/* <td className="px-3 py-2 text-right">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td> */}
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    <td className="px-3 py-2">
-                      <span></span>
-                    </td>
-                    {/* <td className="px-3 py-2">
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getLossAnalyse[index].profit
+                            ? tableItems.getLossAnalyse[index].profit
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getLossAnalyse[index].strategy
+                            ? tableItems.getLossAnalyse[index].strategy
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span>
+                          {tableItems.getLossAnalyse[index].holdingTime
+                            ? tableItems.getLossAnalyse[index].holdingTime
+                            : ""}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      {/* <td className="px-3 py-2">
                       <span></span>
                     </td>
                     <td className="px-3 py-2">
@@ -249,9 +213,63 @@ function AnalyseDashboard() {
                     <td className="px-3 py-2">
                       <span></span>
                     </td> */}
-                  </tr>
-                ))
-              }
+                    </tr>
+                  ))
+                : EmptyTable.map((row, index) => (
+                    <tr className="text-right border-b border-opacity-20 border-gray-300 bg-gray-100">
+                      <td className="px-3 py-2 text-left">
+                        <span>{index + 1}</span>
+                      </td>
+                      <td className="px-3 py-2 text-left">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      {/* <td className="px-3 py-2 text-right">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td> */}
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      <td className="px-3 py-2">
+                        <span></span>
+                      </td>
+                      {/* <td className="px-3 py-2">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td>
+                    <td className="px-3 py-2">
+                      <span></span>
+                    </td> */}
+                    </tr>
+                  ))}
             </tbody>
           </table>
         </div>

@@ -3,12 +3,11 @@ import discoverImg from "../../../assets/newImages/discoverDarkImg.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function index() {
-          
   const myref = useRef(null);
 
   const { scrollYProgress } = useScroll({
-      target: myref,
-      offset: ["0 1", "1.11 1"],
+    target: myref,
+    offset: ["0 1", "1.11 1"],
   });
 
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
@@ -20,7 +19,7 @@ function index() {
         <div className="max-w-3xl p-10 mx-auto text-center">
           <div>
             <p className="mt-8 lg:text-5xl text-xl font-medium tracking-tighter text-black">
-              Discover Finstox Your Path to Financial Excellence
+              Discover Finstox Your Path to Financial Excellence!
             </p>
             {/* <p className="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-600">
               If you could kick the person in the pants responsible for most of your trouble, you
@@ -44,8 +43,11 @@ function index() {
         </div>
       </div>
 
-      <motion.div ref={myref}
-      style={{ scale: scaleProgress, opacity: opacityProgress }} className="relative items-center w-full  px-5 pb-12 mx-auto  md:px-12 lg:px-16 max-w-7xl">
+      <motion.div
+        ref={myref}
+        style={{ scale: scaleProgress, opacity: opacityProgress }}
+        className="relative items-center w-full  px-5 pb-12 mx-auto  md:px-12 lg:px-16 max-w-7xl"
+      >
         <img className="w-full bg-gray-300 rounded-2xl" src={discoverImg} alt="" />
       </motion.div>
     </section>

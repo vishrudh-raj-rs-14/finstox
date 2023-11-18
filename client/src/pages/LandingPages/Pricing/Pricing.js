@@ -1,4 +1,4 @@
-import NewPricing from "./ThreeTierPricing"
+import NewPricing from "./pr";
 
 export default function Pricing() {
   return (
