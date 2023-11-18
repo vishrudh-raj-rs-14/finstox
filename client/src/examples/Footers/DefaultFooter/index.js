@@ -139,7 +139,10 @@ function DefaultFooter() {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:underline">
+                    <a
+                      href="https://instagram.com/finstox.in?igshid=MzMyNGUyNmU2YQ=="
+                      className="hover:underline"
+                    >
                       Instagram
                     </a>
                   </li>
