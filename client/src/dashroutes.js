@@ -4,7 +4,7 @@ import Icon from "@mui/material/Icon";
 import LearnDashboard from "layouts/learn";
 import PracticeDashboard from "layouts/practice";
 import FundDashboard from "layouts/funding";
-import AnalyseDashboard from "layouts/analyse";
+import AnalyseDashboard from "layouts/analysing";
 
 const dashroutes = [
   {
@@ -37,19 +37,19 @@ if (membership >= 1) {
   });
 }
 
-if (membership >= 2) {
+if (membership >= 1) {
   // Add Analyse route for membership >= 2
   dashroutes.push({
     type: "collapse",
     name: "Analyse",
     key: "analyse",
     icon: <Icon fontSize="small">receipt_long</Icon>,
-    route: "/dashboard/analyse",
+    route: "/dashboard/analysing",
     component: <AnalyseDashboard />,
   });
 }
 
-if (membership >= 3) {
+if (membership >= 1) {
   // Add Get funded route for membership >= 3
   dashroutes.push({
     type: "collapse",

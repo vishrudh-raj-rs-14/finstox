@@ -92,6 +92,7 @@ router.post('/confirm-otp',async (req,res)=>{
   const { email,otpNumber } = req.body;
   const expectedOtp = await OtpModel.findOne({email:email});
   if(otpNumber === expectedOtp.otp) {
+    console.log("otp confirmed");
     return res.json({status:'ok'});
   }
   else{

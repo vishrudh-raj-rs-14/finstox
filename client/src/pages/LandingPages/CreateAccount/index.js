@@ -90,7 +90,7 @@ function SignUpBasic() {
         setPasswordError(data.password || "");
       }
       if (response.ok) {
-        navigate("/pages/authentication/sign-in");
+        navigate("/pages/authentication/otp-verification");
       } else {
         // Registration failed, handle accordingly (e.g., show error message, etc.)
         console.error("Registration failed");

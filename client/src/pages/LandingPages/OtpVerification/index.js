@@ -18,7 +18,7 @@ import { setLayout } from "context";
 
 function OtpVerification() {
   const [, dispatch] = useMaterialUIController();
-  const [otp, setOtp] = useState("");
+  const [otpNumber, setOtpNumber] = useState("");
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -27,26 +27,25 @@ function OtpVerification() {
     event.preventDefault();
     const api = process.env.REACT_APP_BACKEND_URL;
     console.log(api);
-
+    const email = localStorage.getItem("userEmail");
     const response = await fetch(`${api}/confirm-otp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ otp }),
+      body: JSON.stringify({ email, otpNumber }),
     });
 
     const data = await response.json();
 
-    // if (data.statu == 500) {
-    //   navigate("/dashboard", { replace: true });
-    // }
-    if (data.status == 500) {
+    if (data.status == "ok") {
+      navigate("/pages/authentication/sign-in");
+    } else if (data.status == 500) {
       alert("Failed to send email");
-      setEmail("Internal Server Error");
+      //setEmail("Internal Server Error");
     } else {
-      setEmail("");
-      navigate("/");
+      //setEmail("");
+      alert("Incorrect otp");
     }
   };
 
@@ -104,7 +103,7 @@ function OtpVerification() {
                       <form>
                         <div className="grid gap-y-4">
                           <div>
-                            <label for="otp" className="block text-sm mb-2 text-black">
+                            <label htmlFor="otp" className="block text-sm mb-2 text-black">
                               Enter OTP
                             </label>
                             <div className="relative">
@@ -114,8 +113,8 @@ function OtpVerification() {
                                 name="email"
                                 className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 bg-gray-100 dark:border-gray-700 dark:text-gray-400"
                                 required
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
+                                value={otpNumber}
+                                onChange={(e) => setOtpNumber(e.target.value)}
                               />
                               <div className="hidden absolute inset-y-0 right-0  items-center pointer-events-none pr-3">
                                 <svg
