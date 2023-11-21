@@ -173,79 +173,83 @@ export default function NavBar() {
 
         </div>
       </> */}
-    <div className="min-h-full">
-      <Disclosure as="nav" className=" py-4 w-full z-40 fixed">
-        {({ open }) => (
-          <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
-            <nav
-              class="relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-white dark:border-gray-700"
-              aria-label="Global"
-            >
-              <div class="flex items-center justify-between">
-                <Link to="/" class="flex-none text-xl font-semibold dark:text-white" aria-label="Brand">
-                  <motion.img
-                    animate={{
-                      scale: [1, 1, 1.2, 1.2, 1],
-                      rotate: [0, 0, 270, 270, 0],
-                      borderRadius: ["20%", "20%", "50%", "50%", "20%"],
-                    }}
-                    transition={{
-                      duration: 2,
-                      ease: "easeInOut",
-                      times: [0, 0.2, 0.5, 0.8, 1],
-                      repeat: Infinity,
-                      repeatDelay: 1,
-                    }}
-                    className="h-12 w-12 rounded border-2 border-black"
-                    src={smallLogo}
-                    alt="Your Company"
-                  />
-                </Link>
-                <div className="-mr-2 flex md:hidden">
-                  <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span className="absolute -inset-0.5" />
-                    <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
-                </div>
-              </div>
-              <div
-                id="navbar-collapse-with-animation"
-                class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+      <div className="min-h-full">
+        <Disclosure as="nav" className=" py-4 w-full z-40 fixed">
+          {({ open }) => (
+            <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
+              <nav
+                class="relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-white dark:border-gray-700"
+                aria-label="Global"
               >
-                <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                <div class="flex items-center justify-between">
                   <Link
                     to="/"
-                    class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
-                    aria-current="page"
+                    class="flex-none text-xl font-semibold dark:text-white"
+                    aria-label="Brand"
                   >
-                    Home
+                    <motion.img
+                      animate={{
+                        scale: [1, 1, 1.2, 1.2, 1],
+                        rotate: [0, 0, 270, 270, 0],
+                        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+                      }}
+                      transition={{
+                        duration: 0,
+                        ease: "easeInOut",
+                        times: [0, 0.2, 0.5, 0.8, 1],
+                        repeat: Infinity,
+                        repeatDelay: 1,
+                      }}
+                      className="h-12 w-12 rounded border-2 border-black"
+                      src={smallLogo}
+                      alt="Your Company"
+                    />
                   </Link>
-                  <Link
-                    to="/pages/landing-pages/get-funded"
-                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                  >
-                    Get Funded
-                  </Link>
-                  <Link
-                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                    to="#pricingsection"
-                    onClick={handlePricing}
-                  >
-                    Pricing
-                  </Link>
-                  <Link
-                    to="/pages/landing-pages/contact-us"
-                    class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-                  >
-                    Contact
-                  </Link>
+                  <div className="-mr-2 flex md:hidden">
+                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="absolute -inset-0.5" />
+                      <span className="sr-only">Open main menu</span>
+                      {open ? (
+                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                      ) : (
+                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                      )}
+                    </Disclosure.Button>
+                  </div>
+                </div>
+                <div
+                  id="navbar-collapse-with-animation"
+                  class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+                >
+                  <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7">
+                    <Link
+                      to="/"
+                      class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
+                      aria-current="page"
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/pages/landing-pages/get-funded"
+                      class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                    >
+                      Get Funded
+                    </Link>
+                    <Link
+                      class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                      to="#pricingsection"
+                      onClick={handlePricing}
+                    >
+                      Pricing
+                    </Link>
+                    <Link
+                      to="/pages/landing-pages/contact-us"
+                      class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
+                    >
+                      Contact
+                    </Link>
 
-                  {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
+                    {/* <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
                   <button type="button" class="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
                     Dropdown
                     <svg class="ml-2 w-2.5 h-2.5 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -287,91 +291,87 @@ export default function NavBar() {
                   </div>
                 </div> */}
 
-                  <Link
-                    to="/pages/authentication/sign-in"
-                    class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
-                  >
-                    <svg
-                      class="w-4 h-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
+                    <Link
+                      to="/pages/authentication/sign-in"
+                      class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
                     >
-                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                    </svg>
-                    Log in
-                  </Link>
+                      <svg
+                        class="w-4 h-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                      </svg>
+                      Log in
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </nav>
+              </nav>
 
-            <Disclosure.Panel className="md:hidden bg-slate-800 rounded-2xl m-8 w-full">
-              <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block rounded-md px-3 py-2 text-base font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
-              <div className="border-t border-gray-700 pb-3 pt-4">
-                <div className="flex items-center px-5">
-                  <button
-                    type="button"
-                    className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">View notifications</span>
-                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
-                  </button>
-                </div>
-                <div className="mt-3 space-y-1 px-2">
-                  {userNavigation.map((item) => (
+              <Disclosure.Panel className="md:hidden bg-slate-800 rounded-2xl m-8 w-full">
+                <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                  {navigation.map((item) => (
                     <Disclosure.Button
                       key={item.name}
                       as="a"
                       href={item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                      className={classNames(
+                        item.current
+                          ? "bg-gray-900 text-white"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                        "block rounded-md px-3 py-2 text-base font-medium"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
                     >
                       {item.name}
                     </Disclosure.Button>
                   ))}
                 </div>
-              </div>
-
-              <div className="hidden md:block">
-                <div className="my-4 flex items-center md:ml-6 rounded-md">
-                  <button
-                    type="button"
-                    className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">Sign In</span>
-                    Sign In
-                  </button>
+                <div className="border-t border-gray-700 pb-3 pt-4">
+                  <div className="flex items-center px-5">
+                    <button
+                      type="button"
+                      className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    >
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">View notifications</span>
+                      {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
+                    </button>
+                  </div>
+                  <div className="mt-3 space-y-1 px-2">
+                    {userNavigation.map((item) => (
+                      <Disclosure.Button
+                        key={item.name}
+                        as="a"
+                        href={item.href}
+                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </Disclosure.Panel>
-          </header>
-       )}
-       </Disclosure>
 
-    </div>
-   
-
-
+                <div className="hidden md:block">
+                  <div className="my-4 flex items-center md:ml-6 rounded-md">
+                    <button
+                      type="button"
+                      className="relative rounded-sm w-20 bg-slate-950 p-1 text-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    >
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Sign In</span>
+                      Sign In
+                    </button>
+                  </div>
+                </div>
+              </Disclosure.Panel>
+            </header>
+          )}
+        </Disclosure>
+      </div>
     </>
   );
 }
