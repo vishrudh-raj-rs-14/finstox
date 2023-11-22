@@ -173,7 +173,7 @@ export default function App() {
       key: "analyse",
       icon: <Icon fontSize="small">receipt_long</Icon>,
       route: "/dashboard/analyse",
-      component: membership >= 2 ? <AnalyseDashboard /> : null,
+      component: membership >= 1 ? <AnalyseDashboard /> : null,
     },
     {
       type: "collapse",
@@ -181,7 +181,7 @@ export default function App() {
       key: "getFunded",
       icon: <Icon fontSize="small">receipt_long</Icon>,
       route: "/dashboard/get-funded",
-      component: membership >= 3 ? <FundDashboard /> : null,
+      component: membership >= 1 ? <FundDashboard /> : null,
     },
   ];
 
