@@ -55,8 +55,8 @@ function FundDashboard() {
           <div className="max-w-2xl p-10 mx-auto z-10 relative text-center">
             <div>
               <p className="mt-8 text-5xl font-medium tracking-tighter text-black">
-                Get Funded <span className="text-blue-600">Qualify now</span> and get funded upto
-                10000
+                Get Funded: <span className="text-blue-600">Qualify now</span> and get funded upto
+                ₹10000
               </p>
               <p className="max-w-xl mx-auto mt-4 text-lg tracking-tight text-gray-600">
                 Start your journey now

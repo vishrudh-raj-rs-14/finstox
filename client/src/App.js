@@ -37,6 +37,8 @@ import AnalyseDashboard from "layouts/analysing";
 import axios from "axios";
 //import Pricing from "layouts/pricing";
 import MDBox from "components/MDBox";
+import NewPassword from "pages/LandingPages/New-password";
+import OtpRegister from "pages/LandingPages/OtpRegister";
 //import Profile from "pages/LandingPages/Author/sections/Profile";
 // import PriceList from "layouts/priceList";
 // import NavBar from "examples/Navbars/NewNavBar/NavBar";
@@ -147,7 +149,7 @@ export default function App() {
       type: "collapse",
       name: "Learn",
       key: "learn",
-      icon: <Icon fontSize="small">table_view</Icon>,
+      icon: <Icon fontSize="small">book</Icon>,
       route: "/dashboard/learn",
       component: <LearnDashboard />,
     },
@@ -179,7 +181,7 @@ export default function App() {
       type: "collapse",
       name: "Get funded",
       key: "getFunded",
-      icon: <Icon fontSize="small">receipt_long</Icon>,
+      icon: <Icon fontSize="small">money</Icon>,
       route: "/dashboard/get-funded",
       component: membership >= 1 ? <FundDashboard /> : null,
     },
@@ -196,9 +198,11 @@ export default function App() {
 
         {/*<Route path="*" element={<Navigate to="/" />} />*/}
         <Route path="pages/authentication/sign-in" element={<SignIn />} />
+        <Route path="pages/authentication/new-password" element={<NewPassword />} />
         <Route path="pages/authentication/create-account" element={<CreateAccount />} />
         <Route path="pages/authentication/forgot-password" element={<ForgetPassword />} />
         <Route path="pages/authentication/otp-verification" element={<OtpVerification />} />
+        <Route path="pages/authentication/otp-register" element={<OtpRegister />} />
         <Route path="pages/LandingPages/learn" element={<Learn />} />
         {getRoutes(dashroutes)}
       </Routes>

@@ -38,7 +38,7 @@ function ForgetPassword() {
       },
       body: JSON.stringify({ email }),
     });
-
+    const userEmail = email;
     const data = await response.json();
 
     // if (data.statu == 500) {
@@ -50,6 +50,7 @@ function ForgetPassword() {
       // navigate("/pages/authentication/otp-verification")
     } else {
       setEmail("");
+      localStorage.setItem("userEmail", userEmail);
       navigate("/pages/authentication/otp-verification");
     }
   };

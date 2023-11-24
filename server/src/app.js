@@ -23,6 +23,7 @@ app.use(require('./routes/payment'));
 app.use(require('./routes/analysis'));
 app.use(require('./routes/analyze'));
 app.use(require('./routes/stripe'));
+app.use(require('./routes/resetPassword'));
 
 app.listen(PORT, () => {
   console.log(`Server Started at Port ${PORT}`);

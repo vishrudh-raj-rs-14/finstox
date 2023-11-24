@@ -66,29 +66,29 @@ const rows = [
   },
   {
     modules: 3,
-    name: "Comming Soon",
+    name: "Coming Soon",
     history: [
       {
         videoId: "#",
-        subtopic: "Comming Soon",
+        subtopic: "Coming Soon",
       },
       {
         videoId: "#",
-        subtopic: "Comming Soon",
+        subtopic: "Coming Soon",
       },
     ],
   },
   {
     modules: 4,
-    name: "Comming Soon",
+    name: "Coming Soon",
     history: [
       {
         videoId: "#",
-        subtopic: "Comming Soon",
+        subtopic: "Coming Soon",
       },
       {
         videoId: "#",
-        subtopic: "Comming Soon",
+        subtopic: "Coming Soon",
       },
     ],
   },

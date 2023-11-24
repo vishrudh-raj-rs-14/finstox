@@ -39,7 +39,7 @@ function OtpVerification() {
     const data = await response.json();
 
     if (data.status == "ok") {
-      navigate("/pages/authentication/sign-in");
+      navigate("/pages/authentication/new-password");
     } else if (data.status == 500) {
       alert("Failed to send email");
       //setEmail("Internal Server Error");

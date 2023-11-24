@@ -46,6 +46,7 @@ let otp;
 router.post('/reset-password', async (req, res) => {
   try {
     const { email } = req.body;
+    console.log(email);
     otp = generateOTP();
 
     const otpsend = await OtpModel.findOneAndUpdate({email:email},{otp:otp});
@@ -90,6 +91,7 @@ router.post('/reset-password', async (req, res) => {
 
 router.post('/confirm-otp',async (req,res)=>{
   const { email,otpNumber } = req.body;
+  console.log(email,otpNumber);
   const expectedOtp = await OtpModel.findOne({email:email});
   if(otpNumber === expectedOtp.otp) {
     console.log("otp confirmed");
@@ -99,5 +101,13 @@ router.post('/confirm-otp',async (req,res)=>{
     return res.json({status:'error'});
   }
 });
+router.delete('/logout', (req, res) => {
+  // Clear cookies
+  res.clearCookie('jwt');
+  res.json({ status: 'ok', message: 'Logout successful' });
+});
+
+module.exports = router;
+
 
 module.exports = router;

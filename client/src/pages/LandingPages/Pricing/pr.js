@@ -48,10 +48,10 @@ export default function ThreeTierPricing() {
           <div className="mt-12 mx-8 grid sm:grid-cols-2 lg:grid-cols-1 gap-6 lg:col-span-1 lg:items-center">
             <div className="flex flex-col border-2 border-blue-600 text-center shadow-xl rounded-xl p-8 dark:border-blue-700">
               <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-gray-900">
-                ₹ 49
+                ₹ 99
                 <span className="font-bold text-2xl -mr-2">/month</span>
               </span>
-              <p className="mt-2 text-sm text-gray-500">All the basics for starting a new setup</p>
+              {/* <p className="mt-2 text-sm text-gray-500">All the basics for starting a new setup</p> */}
 
               <ul className="mt-7 space-y-2.5 text-sm">
                 <li className="flex space-x-2">
