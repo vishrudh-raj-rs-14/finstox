@@ -43,8 +43,10 @@ export default function ThreeTierPricing() {
         id="pricingsection"
         className="bg-white sm:mx-8 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
+        <div className="flex items-center justify-center text-center mx-4">
+          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight text-blacke">Pricing</h2>
+        </div>
         <div className="lg:col-span-2">
-          {/* Your existing code */}
           <div className="mt-12 mx-8 grid sm:grid-cols-2 lg:grid-cols-1 gap-6 lg:col-span-1 lg:items-center">
             <div className="flex flex-col border-2 border-blue-600 text-center shadow-xl rounded-xl p-8 dark:border-blue-700">
               <span className="mt-5 font-bold text-5xl text-gray-800 dark:text-gray-900">
@@ -114,9 +116,6 @@ export default function ThreeTierPricing() {
               </Link>
             </div>
           </div>
-        </div>
-        <div className="flex items-center justify-center text-center mx-4">
-          <h2 className="text-2xl font-bold md:text-4xl md:leading-tight text-blacke">Pricing</h2>
         </div>
       </div>
     </div>

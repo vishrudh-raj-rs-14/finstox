@@ -36,9 +36,11 @@ import FundDashboard from "layouts/funding";
 import AnalyseDashboard from "layouts/analysing";
 import axios from "axios";
 //import Pricing from "layouts/pricing";
+import Pricing from "pages/LandingPages/Pricing/Pricing";
 import MDBox from "components/MDBox";
 import NewPassword from "pages/LandingPages/New-password";
 import OtpRegister from "pages/LandingPages/OtpRegister";
+import Buyplan from "layouts/Buyplan";
 //import Profile from "pages/LandingPages/Author/sections/Profile";
 // import PriceList from "layouts/priceList";
 // import NavBar from "examples/Navbars/NewNavBar/NavBar";
@@ -159,7 +161,7 @@ export default function App() {
       key: "practice",
       icon: <Icon fontSize="small">table_view</Icon>,
       route: "/dashboard/practice",
-      component: membership >= 1 ? <PracticeDashboard /> : null,
+      component: membership >= 1 ? <PracticeDashboard /> : <Buyplan />,
     },
     // {
     //   type: "collapse",
@@ -175,7 +177,7 @@ export default function App() {
       key: "analyse",
       icon: <Icon fontSize="small">receipt_long</Icon>,
       route: "/dashboard/analyse",
-      component: membership >= 1 ? <AnalyseDashboard /> : null,
+      component: membership >= 1 ? <AnalyseDashboard /> : <Buyplan />,
     },
     {
       type: "collapse",
@@ -183,7 +185,7 @@ export default function App() {
       key: "getFunded",
       icon: <Icon fontSize="small">money</Icon>,
       route: "/dashboard/get-funded",
-      component: membership >= 1 ? <FundDashboard /> : null,
+      component: membership >= 1 ? <FundDashboard /> : <Buyplan />,
     },
   ];
 

@@ -40,6 +40,17 @@ export default function ThreeTierPricing() {
   return (
     <div className="bg-white flex justify-center p-4">
       <div className="grid sm:grid-cols-2  bg-green-50 sm:items-center shadow-md gap-8 rounded-xl p-4 lg:p-16">
+        <div className="sm:order-1">
+          {/* <p className="mb-5 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+                Business insight
+              </p> */}
+
+          <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl lg:leading-tight xl:text-5xl xl:leading-tight text-white">
+            <a className="text-black" href="#">
+              Pricing
+            </a>
+          </h2>
+        </div>
         <div className="sm:order-2 ">
           <div className="relative pt-[50%] sm:pt-[100%] rounded-lg bg-blue-500">
             <div className="mt-12 mx-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:col-span-1 lg:items-center">
@@ -114,18 +125,6 @@ export default function ThreeTierPricing() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="sm:order-1">
-          {/* <p className="mb-5 inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
-                Business insight
-              </p> */}
-
-          <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl lg:leading-tight xl:text-5xl xl:leading-tight text-white">
-            <a className="text-black" href="#">
-              Pricing
-            </a>
-          </h2>
         </div>
       </div>
     </div>
