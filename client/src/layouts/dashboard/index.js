@@ -86,6 +86,23 @@ function Dashboard() {
     fetchTotalAction();
   }, []);
 
+  const [totalAmount, setTotalAmount] = useState(0);
+  const fetchTotalAmount = async () => {
+    try {
+      const storedUserEmail = localStorage.getItem("userEmail");
+      const SymbolStockResponse = await axios.post("http://localhost:4337/getAmountLeft", {
+        email: storedUserEmail,
+      });
+      setTotalAmount(SymbolStockResponse.data);
+    } catch (error) {
+      console.error("Error fetching practice history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTotalAmount();
+  }, []);
+
   const [totalRoi, setTotalRoi] = useState(0);
   const fetchTotalRoi = async () => {
     try {
@@ -178,8 +195,8 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Ranking"
-                count="2,300"
+                title="Amount Left"
+                count={"₹" + totalAmount}
                 // percentage={{
                 //   color: "success",
                 //   amount: "+3%",

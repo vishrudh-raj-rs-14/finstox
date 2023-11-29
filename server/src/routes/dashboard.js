@@ -303,6 +303,25 @@ router.post('/getRoiDay', async (req, res) => {
   }
 });
 
+router.post('/getAmountLeft', async (req,res)=>{
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const score = user.amountLeft;
+    const roundedAmount = parseFloat(score.toFixed(0));
+    res.json(roundedAmount);
+   
+  } catch (error) {
+    console.error("Error fetching total profit:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 
 module.exports = router;

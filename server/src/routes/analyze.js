@@ -84,7 +84,7 @@ router.post("/getAnalysis", async (req, res) => {
       });
     }
 
-    return res.status(200).json(analysisResults);
+    return res.status(200).json(analysisResults.reverse());
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Server error" });

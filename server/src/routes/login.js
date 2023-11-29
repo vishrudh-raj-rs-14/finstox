@@ -67,8 +67,8 @@ router.post('/reset-password', async (req, res) => {
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
       to: email,
-      subject: 'OTP for forgot-password confirmation',
-      text: otp,
+      subject: 'OTP confirmation',
+      text: "Thanks for interest in finstox\n Verify your identity with the following otp in our website to continue\n OTP: " + otp,
     });
 
     res.status(200).json({ message: 'Email sent successfully' });

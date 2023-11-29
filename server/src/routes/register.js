@@ -25,6 +25,7 @@ router.post('/registerUser', async (req, res) => {
     const isPresent = await User.findOne({ username: username,email:email});
     if (isPresent) {
       console.log('User already present');
+      return res.json({status:'exists'});
     }
     else {
       //const passwordCrypted = bcrypt.hashSync(password, saltRounds);

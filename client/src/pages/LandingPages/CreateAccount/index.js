@@ -84,21 +84,7 @@ function SignUpBasic() {
       });
       const data = await response.json();
       console.log(data);
-      const res = await fetch("http://localhost:4337/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
       const userEmail = email;
-
-      const data1 = await res.json();
-      console.log(data1);
-
-      if (!res.ok) {
-        console.error("Reset password failed");
-      }
 
       if (data) {
         // Update email and password errors based on the response
@@ -106,10 +92,24 @@ function SignUpBasic() {
         setPasswordError(data.password || "");
       }
       if (response.ok) {
-        localStorage.setItem("userEmail", userEmail);
-        navigate("/pages/authentication/otp-register");
+        const res = await fetch("http://localhost:4337/reset-password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+        const data1 = await res.json();
+        console.log(data1);
+        if (!res.ok) {
+          console.error("Reset password failed");
+        } else {
+          localStorage.setItem("userEmail", userEmail);
+          navigate("/pages/authentication/otp-register");
+        }
       } else {
         // Registration failed, handle accordingly (e.g., show error message, etc.)
+        alert("user already registered");
         console.error("Registration failed");
       }
     } catch (error) {
