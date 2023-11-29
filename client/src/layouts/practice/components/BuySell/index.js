@@ -19,8 +19,8 @@ import { useMaterialUIController } from "context";
 function BuySell() {
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
-  const [selectedSymbol2, setSelectedSymbol2] = useState("EURUSD");
-  const [selectedSymbol3, setSelectedSymbol3] = useState("EURUSD");
+  const [selectedSymbol2, setSelectedSymbol2] = useState("EURINR");
+  const [selectedSymbol3, setSelectedSymbol3] = useState("EURINR");
   const [practiceHistory, setPracticeHistory] = useState([]);
   const fetchPracticeHistory = async () => {
     try {
@@ -222,17 +222,15 @@ function BuySell() {
           <div>
             <label htmlFor="symbolSelect1">Select Symbol:</label>
             <select id="symbolSelect1" value={selectedSymbol2} onChange={handleSymbolChange2}>
-              <option value="EURUSD">FX:EURUSD</option>
-              <option value="GBPUSD">FX:GBPUSD</option>
+              <option value="EURINR">FX_IDC:EURINR</option>
+              <option value="GBPINR">FX_IDC:GBPINR</option>
               <option value="USDINR">FX_IDC:USDINR</option>
-              <option value="USDJPY">FX:USDJPY</option>
-              <option value="GBPJPY">FX:GBPJPY</option>
-              <option value="AUDUSD">FX:AUDUSD</option>
-              <option value="USDCAD">FX:USDCAD</option>
-              <option value="EURJPY">FX:EURJPY</option>
-              <option value="USDCHF">FX:USDCHF</option>
-              <option value="USDCNH">FX:USDCNH</option>
-              <option value="AAPL">AAPL</option>
+              <option value="JPYINR">FX_IDC:JPYINR</option>
+              <option value="MXNINR">FX_IDC:MXNINR</option>
+              <option value="NZDINR">FX_IDC:NZDINR</option>
+              <option value="CHFINR">FX_IDC:CHFINR</option>
+              <option value="CADINR">FX_IDC:CADINR</option>
+              <option value="AUDINR">FX_IDC:AUDINR</option>
             </select>
           </div>
           <div className="order-amount">
@@ -274,17 +272,15 @@ function BuySell() {
           <div>
             <label htmlFor="symbolSelect1">Select Symbol:</label>
             <select id="symbolSelect1" value={selectedSymbol3} onChange={handleSymbolChange3}>
-              <option value="EURUSD">FX:EURUSD</option>
-              <option value="GBPUSD">FX:GBPUSD</option>
+              <option value="EURINR">FX_IDC:EURINR</option>
+              <option value="GBPINR">FX_IDC:GBPINR</option>
               <option value="USDINR">FX_IDC:USDINR</option>
-              <option value="USDJPY">FX:USDJPY</option>
-              <option value="GBPJPY">FX:GBPJPY</option>
-              <option value="AUDUSD">FX:AUDUSD</option>
-              <option value="USDCAD">FX:USDCAD</option>
-              <option value="EURJPY">FX:EURJPY</option>
-              <option value="USDCHF">FX:USDCHF</option>
-              <option value="USDCNH">FX:USDCNH</option>
-              <option value="AAPL">AAPL</option>
+              <option value="JPYINR">FX_IDC:JPYINR</option>
+              <option value="MXNINR">FX_IDC:MXNINR</option>
+              <option value="NZDINR">FX_IDC:NZDINR</option>
+              <option value="CHFINR">FX_IDC:CHFINR</option>
+              <option value="CADINR">FX_IDC:CADINR</option>
+              <option value="AUDINR">FX_IDC:AUDINR</option>
             </select>
           </div>
           <div className="order-amount">

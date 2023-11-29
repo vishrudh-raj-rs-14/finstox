@@ -11,7 +11,7 @@ let tvScriptLoadingPromise;
 
 function LearnDashboard() {
   //trade symbols
-  const [selectedSymbol, setSelectedSymbol] = useState("FX:EURUSD");
+  const [selectedSymbol, setSelectedSymbol] = useState("FX_IDC:EURINR");
 
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -98,17 +98,16 @@ function LearnDashboard() {
         <div>
           <label htmlFor="symbolSelect">Select Symbol: </label>
           <select id="symbolSelect" value={selectedSymbol} onChange={handleSymbolChange}>
-            <option value="FX:EURUSD">FX:EURUSD</option>
-            <option value="FX:GBPUSD">FX:GBPUSD</option>
-            <option value="FX_IDC:USDINR">FX_IDC:USDINR</option>
-            <option value="FX:USDJPY">FX:USDJPY</option>
-            <option value="FX:GBPJPY">FX:GBPJPY</option>
-            <option value="FX:AUDUSD">FX:AUDUSD</option>
-            <option value="FX:USDCAD">FX:USDCAD</option>
-            <option value="FX:EURJPY">FX:EURJPY</option>
-            <option value="FX:USDCHF">FX:USDCHF</option>
-            <option value="FX:USDCNH">FX:USDCNH</option>
-            <option value="NASDAQ:AAPL">AAPL</option>
+            <option value="EURINR">FX_IDC:EURINR</option>
+            <option value="GBPINR">FX_IDC:GBPINR</option>
+            <option value="USDINR">FX_IDC:USDINR</option>
+            <option value="JPYINR">FX_IDC:JPYINR</option>
+            <option value="MXNINR">FX_IDC:MXNINR</option>
+            <option value="NZDINR">FX_IDC:NZDINR</option>
+            <option value="CHFINR">FX_IDC:CHFINR</option>
+            <option value="CADINR">FX_IDC:CADINR</option>
+            <option value="AUDINR">FX_IDC:AUDINR</option>
+            {/* <option value="NASDAQ:AAPL">AAPL</option> */}
             {/* Add more symbols as needed */}
           </select>
         </div>
