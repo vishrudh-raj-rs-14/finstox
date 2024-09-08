@@ -32,7 +32,7 @@ function Dashboard() {
     // Get the token from localStorage
     const jwtCookie = localStorage.getItem("jwt");
     axios
-      .get("http://localhost:4337/checkAuthentication", {
+      .get("process.env.REACT_APP_BACKEND_URL/checkAuthentication", {
         headers: {
           Authorization: `Bearer ${jwtCookie}`,
         },
@@ -56,9 +56,12 @@ function Dashboard() {
   const fetchTotalProfit = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getTotalProfit", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/getTotalProfit",
+        {
+          email: storedUserEmail,
+        }
+      );
       setTotalProfit(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -73,7 +76,7 @@ function Dashboard() {
   const fetchTotalAction = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getSuccess", {
+      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getSuccess", {
         email: storedUserEmail,
       });
       setTotalAction(SymbolStockResponse.data);
@@ -90,9 +93,12 @@ function Dashboard() {
   const fetchTotalAmount = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getAmountLeft", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/getAmountLeft",
+        {
+          email: storedUserEmail,
+        }
+      );
       setTotalAmount(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -107,9 +113,12 @@ function Dashboard() {
   const fetchTotalRoi = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getTotalReturns", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/getTotalReturns",
+        {
+          email: storedUserEmail,
+        }
+      );
       setTotalRoi(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -124,9 +133,12 @@ function Dashboard() {
   const fetchTradechartData = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getTradesDay", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/getTradesDay",
+        {
+          email: storedUserEmail,
+        }
+      );
       setTradeChartData(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -141,9 +153,12 @@ function Dashboard() {
   const fetchProfitchartData = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getProfitDay", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/getProfitDay",
+        {
+          email: storedUserEmail,
+        }
+      );
       setProfitChartData(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -158,7 +173,7 @@ function Dashboard() {
   const fetchRoichartData = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getRoiDay", {
+      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getRoiDay", {
         email: storedUserEmail,
       });
       setRoiChartData(SymbolStockResponse.data);

@@ -12,7 +12,7 @@ function WalletProfit() {
   const fetchSymbolStock = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getStocks", {
+      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getStocks", {
         email: storedUserEmail,
       });
       setSymbolStock(SymbolStockResponse.data);
@@ -28,9 +28,12 @@ function WalletProfit() {
   const fetchSellProfit = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/sellProfits", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/sellProfits",
+        {
+          email: storedUserEmail,
+        }
+      );
       setSellProfit(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);

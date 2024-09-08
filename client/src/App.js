@@ -127,7 +127,7 @@ export default function App() {
   const fetchMember = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/membership", {
+      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/membership", {
         email: storedUserEmail,
       });
       setMember(SymbolStockResponse.data);

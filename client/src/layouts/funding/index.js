@@ -10,10 +10,8 @@ import { Card, CardContent, Typography } from "@mui/material";
 import axios from "axios";
 import MDBox from "components/MDBox";
 
-
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import getFundedImg from "../../assets/newImages/stockbgImg.jpg";
-
 
 function FundDashboard() {
   const CardComponent = ({ title, content }) => (
@@ -34,7 +32,7 @@ function FundDashboard() {
   const fetchTotalScore = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("http://localhost:4337/getScore", {
+      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getScore", {
         email: storedUserEmail,
       });
       setTotalScore(SymbolStockResponse.data);
@@ -132,5 +130,3 @@ function FundDashboard() {
 }
 
 export default FundDashboard;
-
-

@@ -12,9 +12,12 @@ export default function data() {
   const fetchPracticeHistory = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const practiceHistoryResponse = await axios.post("http://localhost:4337/practiceHistory", {
-        email: storedUserEmail,
-      });
+      const practiceHistoryResponse = await axios.post(
+        "process.env.REACT_APP_BACKEND_URL/practiceHistory",
+        {
+          email: storedUserEmail,
+        }
+      );
       setPracticeHistory(practiceHistoryResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
