@@ -90,6 +90,10 @@ const UserSchema = new mongoose.Schema({
           return this.orderType === "Buy"; // Not required for Sell orders
         },
       },
+      closed: {
+        type: Boolean,
+        default: false,
+      },
       profitSell: {
         type: Number, // Added to track remaining stock
         required: function () {

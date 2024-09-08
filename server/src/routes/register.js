@@ -29,6 +29,7 @@ router.post('/registerUser', async (req, res) => {
     }
     else {
       //const passwordCrypted = bcrypt.hashSync(password, saltRounds);
+      console.log(password)
       const newUser = await User.create({ username: username, email: email, password: password});
       if (newUser) {
         console.log('User created successfully');
