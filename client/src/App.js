@@ -32,11 +32,12 @@ import Dashboard from "layouts/dashboard";
 import Icon from "@mui/material/Icon";
 import LearnDashboard from "layouts/learn";
 import PracticeDashboard from "layouts/practice";
+// import PractiseDashboard from "layouts/practise";
 import FundDashboard from "layouts/funding";
 import AnalyseDashboard from "layouts/analysing";
 import axios from "axios";
 //import Pricing from "layouts/pricing";
-import Pricing from "pages/LandingPages/Pricing/Pricing";
+// import Pricing from "pages/LandingPages/Pricing/Pricing";
 import MDBox from "components/MDBox";
 import NewPassword from "pages/LandingPages/New-password";
 import OtpRegister from "pages/LandingPages/OtpRegister";
@@ -121,7 +122,7 @@ export default function App() {
       </Icon>
     </MDBox>
   );
-  const [membership, setMember] = useState(0);
+  const [membership, setMember] = useState(2);
 
   const fetchMember = async () => {
     try {
@@ -161,7 +162,7 @@ export default function App() {
       key: "practice",
       icon: <Icon fontSize="small">table_view</Icon>,
       route: "/dashboard/practice",
-      component: membership >= 1 ? <PracticeDashboard /> : <Buyplan />,
+      component: membership >= 1 ? <Buyplan /> : <PracticeDashboard />,
     },
     // {
     //   type: "collapse",

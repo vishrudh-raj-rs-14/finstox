@@ -59,14 +59,9 @@ function BuySell() {
   };
   const handleOrderSubmitBuy = async () => {
     try {
-      const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
-      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol2}`, {
-        headers: {
-          "X-RapidAPI-Key": rapidApiKey,
-          "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
-        },
-      });
-      const price = response.data.price;
+      // const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
+
+      const price = curPrice;
       const orderType = "Buy";
       const storedUserEmail = localStorage.getItem("userEmail");
       const orderData = {
@@ -76,7 +71,9 @@ function BuySell() {
         amount: orderAmount,
         currentValue: price,
         journal: modalFormData,
+        closed: false,
       };
+      console.log(orderData);
 
       // Send the data to the backend endpoint
       const backendResponse = await axios.post("http://localhost:4337/practiceBuy", orderData);
@@ -92,14 +89,8 @@ function BuySell() {
   };
   const handleOrderSubmitSell = async () => {
     try {
-      const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY;
-      const response = await axios.get(`https://realstonks.p.rapidapi.com/${selectedSymbol3}`, {
-        headers: {
-          "X-RapidAPI-Key": rapidApiKey,
-          "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
-        },
-      });
-      const price = response.data.price;
+      const price = curPrice;
+      console.log(price);
       const orderType = "Sell";
       const storedUserEmail = localStorage.getItem("userEmail");
       const orderData = {
@@ -137,7 +128,8 @@ function BuySell() {
       stock: entry.stock,
     })),
   };
-
+  const [curPrice, setCurPrice] = useState();
+  const [curTime, setCurTime] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [openModalSell, setOpenModalSell] = useState(false);
 
@@ -153,6 +145,34 @@ function BuySell() {
   });
 
   const handleOpenModal = () => {
+    console.log(selectedSymbol2);
+    async function getPrice() {
+      const response = await axios.get(
+        `http://data.fixer.io/api/latest?access_key=${"8616229e96bf90950c68b397abd27f47"}`,
+        {
+          // headers: {
+          // "X-RapidAPI-Key": rapidApiKey,
+          // "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
+          // },
+        }
+      );
+      console.log(response);
+      const price =
+        response.data.rates[selectedSymbol2.slice(3, 6)] /
+        response.data.rates[selectedSymbol2.slice(0, 3)];
+      return price;
+    }
+    getPrice()
+      .then((price) => {
+        console.log(price);
+        setCurPrice(price);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    let date = new Date();
+    let currentTime = date.toISOString().substring(11, 16);
+    setCurTime(currentTime);
     setOpenModal(true);
   };
   const handleCloseModal = () => {
@@ -160,10 +180,11 @@ function BuySell() {
   };
 
   // Function to handle changes in modal form fields
-  const handleModalInputChange = (event) => {
+  const handleModalInputChange = async (event) => {
     const { name, value } = event.target;
     setModalFormData({
       ...modalFormData,
+      entryPrice: curPrice,
       [name]: value,
     });
   };
@@ -175,6 +196,31 @@ function BuySell() {
   });
 
   const handleOpenModalSell = () => {
+    async function getPrice() {
+      const response = await axios.get(
+        `http://data.fixer.io/api/latest?access_key=${"8616229e96bf90950c68b397abd27f47"}`,
+        {
+          // headers: {
+          // "X-RapidAPI-Key": rapidApiKey,
+          // "X-RapidAPI-Host": "realstonks.p.rapidapi.com",
+          // },
+        }
+      );
+      console.log(response);
+      const price =
+        response.data.rates[selectedSymbol2.slice(3, 6)] /
+        response.data.rates[selectedSymbol2.slice(0, 3)];
+      return price;
+    }
+    setCurTime(Date.now());
+    getPrice()
+      .then((price) => {
+        console.log(price);
+        setCurPrice(price);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setOpenModalSell(true);
   };
   const handleCloseModalSell = () => {
@@ -348,8 +394,8 @@ function BuySell() {
             <TextField
               label="Entry Price"
               name="entryPrice"
-              value={modalFormData.entryPrice}
-              onChange={handleModalInputChange}
+              value={curPrice ? curPrice : 0}
+              // onChange={handleModalInputChange}
               fullWidth
               required
               margin="normal"
@@ -357,8 +403,9 @@ function BuySell() {
             <TextField
               label="Entry Time"
               name="entryTime"
-              value={modalFormData.entryTime}
-              onChange={handleModalInputChange}
+              value={curTime}
+              type="time"
+              // onChange={handleModalInputChange}
               fullWidth
               required
               margin="normal"

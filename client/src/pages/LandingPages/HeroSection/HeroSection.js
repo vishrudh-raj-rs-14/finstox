@@ -27,7 +27,12 @@ export default function HeroSection() {
     <>
       <section className="bg-white text-gray-800 pt[35rem] lg:pt-[14rem] justify-center lg:pb-32 ">
         <div className="container flex flex-col pt[35rem]  max-w-7xl items-center justify-center mx-auto sm:py-12 lg:py-0 lg:flex-row lg:justify-center">
-          <div className="flex flex-col items-center lg:mt-[-30rem] justify-center z-10 static sm:pt-8 lg:absolute p-6 pt-16 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+          <div
+            className="flex flex-col items-center lg:mt-[-30rem] justify-center z-10 static sm:pt-8 lg:absolute p-6 pt-16 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left"
+            style={{
+              fontFamily: "Roboto",
+            }}
+          >
             {/* <h1 className="text-5xl font-bold leadi sm:text-7xl pb-4">
               FinstoX
               <br />
