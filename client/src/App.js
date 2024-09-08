@@ -127,9 +127,12 @@ export default function App() {
   const fetchMember = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/membership", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/membership`,
+        {
+          email: storedUserEmail,
+        }
+      );
       setMember(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);

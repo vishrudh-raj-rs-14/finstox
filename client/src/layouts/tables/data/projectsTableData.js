@@ -13,7 +13,7 @@ export default function data() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const practiceHistoryResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceHistory",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceHistory`,
         {
           email: storedUserEmail,
         }

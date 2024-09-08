@@ -60,7 +60,7 @@ const initPayment = (data) => {
     order_id: data.id,
     handler: async (response) => {
       try {
-        const verifyUrl = "process.env.REACT_APP_BACKEND_URL/api/payment/verify";
+        const verifyUrl = `${process.env.REACT_APP_BACKEND_URL}/api/payment/verify`;
         const { data } = await axios.post(verifyUrl, response);
         console.log(data);
       } catch (error) {
@@ -77,7 +77,7 @@ const initPayment = (data) => {
 
 const handlePaymentBasic = async () => {
   try {
-    const orderUrl = "process.env.REACT_APP_BACKEND_URL/api/payment/orders";
+    const orderUrl = `${process.env.REACT_APP_BACKEND_URL}/api/payment/orders`;
     const { data } = await axios.post(orderUrl, { amount: tiers[0].price });
     console.log(data);
     initPayment(data.data);

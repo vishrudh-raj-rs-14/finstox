@@ -20,11 +20,14 @@ export default function ThreeTierPricing() {
     const headers = {
       "Content-Type": "application/json",
     };
-    const response = await fetch("process.env.REACT_APP_BACKEND_URL/api/create-checkout-session", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/api/create-checkout-session`,
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body),
+      }
+    );
 
     const session = await response.json();
 

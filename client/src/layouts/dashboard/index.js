@@ -32,7 +32,7 @@ function Dashboard() {
     // Get the token from localStorage
     const jwtCookie = localStorage.getItem("jwt");
     axios
-      .get("process.env.REACT_APP_BACKEND_URL/checkAuthentication", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/checkAuthentication`, {
         headers: {
           Authorization: `Bearer ${jwtCookie}`,
         },
@@ -57,7 +57,7 @@ function Dashboard() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/getTotalProfit",
+        `${process.env.REACT_APP_BACKEND_URL}/getTotalProfit`,
         {
           email: storedUserEmail,
         }
@@ -76,9 +76,12 @@ function Dashboard() {
   const fetchTotalAction = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getSuccess", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/getSuccess`,
+        {
+          email: storedUserEmail,
+        }
+      );
       setTotalAction(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);
@@ -94,7 +97,7 @@ function Dashboard() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/getAmountLeft",
+        `${process.env.REACT_APP_BACKEND_URL}/getAmountLeft`,
         {
           email: storedUserEmail,
         }
@@ -114,7 +117,7 @@ function Dashboard() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/getTotalReturns",
+        `${process.env.REACT_APP_BACKEND_URL}/getTotalReturns`,
         {
           email: storedUserEmail,
         }
@@ -134,7 +137,7 @@ function Dashboard() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/getTradesDay",
+        `${process.env.REACT_APP_BACKEND_URL}/getTradesDay`,
         {
           email: storedUserEmail,
         }
@@ -154,7 +157,7 @@ function Dashboard() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/getProfitDay",
+        `${process.env.REACT_APP_BACKEND_URL}/getProfitDay`,
         {
           email: storedUserEmail,
         }
@@ -173,9 +176,12 @@ function Dashboard() {
   const fetchRoichartData = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getRoiDay", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/getRoiDay`,
+        {
+          email: storedUserEmail,
+        }
+      );
       setRoiChartData(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);

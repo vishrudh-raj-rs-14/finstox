@@ -32,9 +32,12 @@ function FundDashboard() {
   const fetchTotalScore = async () => {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
-      const SymbolStockResponse = await axios.post("process.env.REACT_APP_BACKEND_URL/getScore", {
-        email: storedUserEmail,
-      });
+      const SymbolStockResponse = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/getScore`,
+        {
+          email: storedUserEmail,
+        }
+      );
       setTotalScore(SymbolStockResponse.data);
     } catch (error) {
       console.error("Error fetching practice history:", error);

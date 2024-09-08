@@ -29,7 +29,7 @@ function WalletProfit() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const SymbolStockResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/sellProfits",
+        `${process.env.REACT_APP_BACKEND_URL}/sellProfits`,
         {
           email: storedUserEmail,
         }

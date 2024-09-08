@@ -70,7 +70,7 @@ function SignUpBasic() {
     event.preventDefault();
     // const name = { firstName: firstName, lastName: lastName };
     try {
-      const response = await fetch("process.env.REACT_APP_BACKEND_URL/registerUser", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/registerUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ function SignUpBasic() {
         setPasswordError(data.password || "");
       }
       if (response.ok) {
-        const res = await fetch("process.env.REACT_APP_BACKEND_URL/reset-password", {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/reset-password`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

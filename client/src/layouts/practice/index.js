@@ -19,7 +19,7 @@ function LearnDashboard() {
     // Get the token from localStorage
     const jwtCookie = localStorage.getItem("jwt");
     axios
-      .get("process.env.REACT_APP_BACKEND_URL/checkAuthentication", {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/checkAuthentication`, {
         headers: {
           Authorization: `Bearer ${jwtCookie}`,
         },

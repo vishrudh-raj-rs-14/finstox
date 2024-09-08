@@ -26,7 +26,7 @@ function BuySell() {
     try {
       const storedUserEmail = localStorage.getItem("userEmail");
       const practiceHistoryResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceHistory",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceHistory`,
         {
           email: storedUserEmail,
         }
@@ -80,13 +80,13 @@ function BuySell() {
 
       // Send the data to the backend endpoint
       const backendResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceBuy",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceBuy`,
         orderData
       );
       console.log("Backend Response:", backendResponse.data);
 
       const practiceHistoryResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceHistory",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceHistory`,
         {
           email: storedUserEmail,
         }
@@ -113,13 +113,13 @@ function BuySell() {
 
       // Send the data to the backend endpoint
       const backendResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceSell",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceSell`,
         orderData
       );
       console.log("Backend Response:", backendResponse.data);
 
       const practiceHistoryResponse = await axios.post(
-        "process.env.REACT_APP_BACKEND_URL/practiceHistory",
+        `${process.env.REACT_APP_BACKEND_URL}/practiceHistory`,
         {
           email: storedUserEmail,
         }
