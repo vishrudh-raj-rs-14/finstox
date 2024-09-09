@@ -12,7 +12,7 @@ const corsOptions = {
 };
 
 // Enable CORS with the specified options
-app.options("*", cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
