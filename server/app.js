@@ -6,7 +6,13 @@ const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 5500;
 const bodyParser = require("body-parser");
 //middlewares
-app.use(cors({ origin: "https://finstox.vercel.app", credentials: true }));
+const corsOptions = {
+  origin: "https://finstox.vercel.app", // Replace with the domain you're trying to allow
+  credentials: true,
+};
+
+// Enable CORS with the specified options
+app.use(cors({ corsOptions }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
